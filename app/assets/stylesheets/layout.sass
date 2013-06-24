@@ -56,6 +56,9 @@ body
         padding: 0 15px
         color: #aaa
         margin-bottom: 15px
+        h1
+          line-height: 1
+          font-size: 24px
         .content
           .image-container
             @include box-sizing(border-box)
@@ -64,3 +67,11 @@ body
             background: rgba(0,0,0,0.2)
             img
               width: 100%
+        &:first-child
+          padding-top: 10px
+          h1
+            font-size: 40px
+      .news-entry + .news-entry
+        padding-top: 10px
+        margin-top: 30px
+        border-top: 1px dotted black
