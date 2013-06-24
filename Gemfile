@@ -9,7 +9,7 @@ gem 'simple_form'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
+gem 'thin'
 # gem 'devise'
 # 
 # gem 'forem', github: 'radar/forem'
@@ -25,8 +25,6 @@ gem 'pg'
 group :development do
   gem 'debugger'
   gem 'capistrano'
-  
-  gem 'thin'
 end
 
 
