@@ -1,0 +1,66 @@
+@import 'bootstrap/mixins'
+@import 'bootstrap/variables'
+
+body
+  background: #000 image-url('slash_it.png') top left
+  padding-bottom: 20px
+  #banner
+    height: 250px
+    overflow: hidden
+    position: relative
+    img
+      position: absolute
+      bottom: -120px
+      width: 100%
+  #menu
+    padding: 2px 0
+    ul.nav-pills
+      margin: 0
+      background: rgba(0,0,0,.1)
+      border-top: 1px solid #000
+      border-bottom: 1px solid #000
+      li
+        a
+          @include transition(all 0.2s linear)
+          font-family: 'Lato'
+          font-weight: 300
+          font-size: 18px
+          text-transform: uppercase
+          padding-left: 18px
+          padding-right: 18px
+          line-height: 22px
+          &:hover
+            background: none
+            color: #fff
+            text-shadow: 0 0 3px $linkColor, 0 0 10px $linkColor, 0 0 20px $linkColor, 0 0 30px $linkColor
+        &.active
+          a
+            background: none
+            color: #fff
+            text-shadow: 0 0 3px $linkColor, 0 0 10px $linkColor, 0 0 20px $linkColor, 0 0 30px $linkColor
+  #content
+    background: rgba(32,32,32,0.75)
+    border-top: 1px solid #000
+    .sidebar
+      padding: 10px 20px
+      &#left-sidebar
+        padding-right: 0
+      &#right-sidebar  
+        padding-left: 0  
+    #main-content
+      @include border-radius(0 0 4px 4px)
+      background: rgba(0,0,0,.05)
+      @include box-shadow(0 0 20px rgba(0,0,0,0.1))
+      
+      .news-entry
+        padding: 0 15px
+        color: #aaa
+        margin-bottom: 15px
+        .content
+          .image-container
+            @include box-sizing(border-box)
+            width: 100%
+            padding: 10px
+            background: rgba(0,0,0,0.2)
+            img
+              width: 100%

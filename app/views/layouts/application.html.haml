@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title Ascendance - EU Alonsus
+    = stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Lato:300,400|Nunito:400,300"
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    #wrapper.container
+      .row
+        #banner.span12
+          = image_tag 'banner.jpg'
+      .row
+        #menu.span12
+          %ul.nav.nav-pills
+            %li.active= link_to 'Home', '#'
+            %li= link_to 'Forums', '#'
+            %li= link_to 'Apply', '#'
+      .row
+        #content.span12
+          .row-fluid
+            .span3
+              #left-sidebar.sidebar
+                %h3 Shoutbox
+                = simple_form_for 'shotbox' do |f|
+                  = f.input 'message', label: false, input_html: { class: 'input-block-level' }
+            .span6#main-content
+              = yield
+            .span3
+              #right-sidebar.sidebar
+                %h3 Recruitment
