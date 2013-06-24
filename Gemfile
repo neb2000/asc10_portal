@@ -19,8 +19,8 @@ gem 'thin'
 # gem 'bootstrap-will_paginate'
 # 
 # gem 'ckeditor'
-gem 'carrierwave'
-gem 'mini_magick'
+# gem 'carrierwave'
+# gem 'mini_magick'
 
 group :development do
   gem 'debugger'
