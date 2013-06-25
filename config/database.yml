@@ -13,3 +13,10 @@ development:
 test:
   adapter: postgresql
   database: asc10_portal_test
+
+production:
+  adapter: postgresql
+  host: ec2-54-217-213-236.eu-west-1.compute.amazonaws.com
+  database: db5ufk8vcg665e
+  username: fyjtelnkjhcfle
+  password: LcMgzEHzF8OcEmqOz2QZzwiGvV
