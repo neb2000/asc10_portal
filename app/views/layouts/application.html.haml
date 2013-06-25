@@ -20,17 +20,14 @@
       .row
         #content.span12
           .row-fluid
-            .span3
-              #left-sidebar.sidebar
-                %h3 Shoutbox
-                = simple_form_for ShoutboxMessage.new, html: { id: 'shoutbox' }, remote: true do |f|
-                  = f.input :message, label: false, input_html: { class: 'input-block-level', placeholder: 'Your message...' }, as: :string, required: true
-                  %ul.unstyled#existing-messages{ data: { load_content_url: url_for([:shoutbox_messages]) } }
-            .span6#main-content
+            - if content_for?(:left_sidebar)
+              .span3
+                #left-sidebar.sidebar= yield :left_sidebar
+            #main-content{ class: main_content_class }
               = yield
-            .span3
-              #right-sidebar.sidebar
-                %h3 Recruitment
+            - if content_for?(:right_sidebar)
+              .span3
+                #right-sidebar.sidebar= yield :right_sidebar
       .row
         .span12
           #footer

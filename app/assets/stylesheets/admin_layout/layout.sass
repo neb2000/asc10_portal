@@ -33,6 +33,11 @@ body
     .well
       @include box-shadow(0 3px 10px rgba(0,0,0,.1))
       background: rgba(255,255,255,0.5)
+      .btn-link
+        text-shadow: 1px 1px 0 #fff, 0px 2px 0 #fff
+        &:hover
+          text-decoration: none
+          text-shadow: 1px 1px 10px rgba(0,0,0,.3), -1px 0px 0 #fff, 0px -1px 0 #fff, 0px 1px 0 #fff, 1px 0px 0 #fff
       &.well-form
         padding: 0
         form
@@ -92,6 +97,7 @@ body
         left: 15%
         right: 15%
         @include gradient-horizontal-three-colors(rgba(0,0,0,0.5), $navbarInverseBorder, 50%, rgba(0,0,0,0.5))
+        z-index: 1032
       a
         @include transition(all 0.2s linear)
         @include border-radius(0)

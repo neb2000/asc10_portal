@@ -1,0 +1,4 @@
+%h3 Shoutbox
+= simple_form_for ShoutboxMessage.new, html: { id: 'shoutbox' }, remote: true do |f|
+  = f.input :message, label: false, input_html: { class: 'input-block-level', placeholder: 'Your message...' }, as: :string, required: true
+  %ul.unstyled#existing-messages{ data: { load_content_url: url_for([:shoutbox_messages]) } }

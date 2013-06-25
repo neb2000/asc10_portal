@@ -72,6 +72,7 @@ body
       //@include box-shadow(0 0 20px rgba(0,0,0,0.1))      
       position: relative
       &:before, &:after
+        display: none
         content: ''
         position: absolute
         width: 1px
@@ -79,11 +80,15 @@ body
         bottom: 0
         @include gradient-vertical-three-colors(rgba(0,136,204,0), rgba(0,136,204,0.5), 50%, rgba(0,136,204,0))
         background-color: transparent
-      &:before
-        left: -1px
-      &:after
-        right: -1px
-      .news-entry
+      &.span6, &.left-bordered
+        &:before
+          left: -1px
+          display: block
+      &.span6, &.right-bordered
+        &:after
+          right: -1px
+          display: block
+      .news-entry, .content-box
         padding: 0 15px
         color: #aaa
         margin-bottom: 15px
@@ -99,9 +104,31 @@ body
           padding-top: 10px
           h1
             font-size: 28px
-      .news-entry + .news-entry
+      .news-entry + .news-entry, .content-box + .content-box
         padding-top: 10px
         margin-top: 30px
+      .content-box
+        .actions
+          //background: rgba(0,0,0,.1)
+          position: relative
+          background: none
+          padding: 10px 0
+          border-top: none
+          &:after
+            content: ''
+            position: absolute
+            top: -1px
+            height: 1px
+            left: -10px
+            right: -10px
+            @include gradient-horizontal-three-colors(rgba(0,136,204,0), lighten($linkColor, 30%), 50%, rgba(0,136,204,0))
+            background-color: transparent
+          
+          
+        input[type='text'], input[type='password'], input[type='email']
+          color: #eee
+          background: rgba(255,255,255,.05)
+          border: none
   #footer
     padding: 10px 0
     font-size: 10px
