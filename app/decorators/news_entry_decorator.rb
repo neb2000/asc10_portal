@@ -18,6 +18,7 @@ class NewsEntryDecorator < Draper::Decorator
   end
   
   def display_cover_image(version = :small)
-    h.image_tag source.cover_image.url(version)
+    return if source.cover_image.blank? || source.cover_image.file.blank?
+    h.content_tag :div, h.image_tag(source.cover_image.url(version)), class: 'cover-image'
   end
 end

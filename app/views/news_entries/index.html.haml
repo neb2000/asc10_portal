@@ -4,7 +4,7 @@
   .news-entry.latest
     %h1= news_entry.display_title
     %p.datetime-stamp= news_entry.display_created_at
-    .cover-image= news_entry.display_cover_image(:large)
+    = news_entry.display_cover_image(:large)
     .content= news_entry.display_truncated_content
   - @news_entries.to_a.in_groups_of(2, false) do |entries|
     .row-fluid
@@ -12,4 +12,4 @@
         .news-entry.span8
           %h1= news_entry.display_title
           %p.datetime-stamp= news_entry.display_created_at
-          .cover-image= news_entry.display_cover_image
+          = news_entry.display_cover_image
