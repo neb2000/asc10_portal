@@ -16,4 +16,8 @@ class NewsEntryDecorator < Draper::Decorator
   def display_created_at
     h.l source.created_at, format: :full
   end
+  
+  def display_cover_image(version = :small)
+    h.image_tag source.cover_image.url(version)
+  end
 end

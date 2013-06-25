@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625131047) do
+ActiveRecord::Schema.define(:version => 20130625162627) do
 
   create_table "bootsy_image_galleries", :force => true do |t|
     t.integer  "bootsy_resource_id"
@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(:version => 20130625131047) do
     t.string   "title"
     t.string   "slug"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "cover_image"
   end
 
   add_index "news_entries", ["slug"], :name => "index_news_entries_on_slug", :unique => true

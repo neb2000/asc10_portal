@@ -2,17 +2,17 @@
 %html
   %head
     %title Ascendance - EU Alonsus
-    = stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Lato:300,400|Titillium+Web:400,700,400italic|Hammersmith+One"
+    = stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Lato:300,400|Titillium+Web:400,600,700,400italic"
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     #wrapper.container
       .row
-        #banner.span12
+        #banner.span16
           = image_tag 'banner.png'
       .row
-        #menu.span12
+        #menu.span16
           %ul.nav.nav-pills.pull-right
             %li= link_to 'Login', '#'
           %ul.nav.nav-pills
@@ -22,18 +22,18 @@
             - all_pages.each do |page|
               %li= link_to page.display_title, page
       .row
-        #content.span12
-          .row-fluid
+        #content.span16
+          .row
             - if content_for?(:left_sidebar)
-              .span3
+              .span4
                 #left-sidebar.sidebar= yield :left_sidebar
             #main-content{ class: main_content_class }
               = yield
             - if content_for?(:right_sidebar)
-              .span3
+              .span4
                 #right-sidebar.sidebar= yield :right_sidebar
       .row
-        .span12
+        .span16
           #footer
             .pull-left
               Powered by 

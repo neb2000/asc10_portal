@@ -1,13 +1,13 @@
 module ApplicationHelper
   def main_content_class
     if content_for?(:left_sidebar) && content_for?(:right_sidebar)
-      'span6'
+      'span8'
     elsif content_for?(:left_sidebar)
-      'span9 left-bordered'
+      'span12 left-bordered'
     elsif content_for?(:right_sidebar)
-      'span9 right-bordered'
+      'span12 right-bordered'
     else
-      'span12'
+      'span16'
     end
   end
   
