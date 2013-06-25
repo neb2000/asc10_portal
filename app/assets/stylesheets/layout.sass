@@ -41,7 +41,19 @@ body
     background: rgba(70,70,70,0.75)
     border-top: 1px solid #000
     .sidebar
-      padding: 10px 20px
+      padding: 20px 20px
+      .sidebar-widget + .sidebar-widget
+        position: relative
+        padding-top: 15px
+        &:after
+          content: ''
+          position: absolute
+          top: -1px
+          height: 1px
+          left: 0px
+          right: 0px
+          @include gradient-horizontal-three-colors(rgba(0,136,204,0), rgba(0,136,204,1), 50%, rgba(0,136,204,0))
+          background-color: transparent
       &#left-sidebar
         padding-right: 0
         #shoutbox
@@ -79,18 +91,18 @@ body
         bottom: 15px
         @include gradient-vertical-three-colors(rgba(0,136,204,0.2), rgba(0,136,204,1), 50%, rgba(0,136,204,0.2))
         background-color: transparent
-      &.span8, &.left-bordered
+      &.left-bordered
         &:before
           left: -1px
           display: block
-      &.span8, &.right-bordered
+      &.right-bordered
         &:after
           right: -1px
           display: block
       .news-entry, .content-box
-        padding: 15px
+        padding: 20px
         color: #ddd
-        margin-bottom: 15px
+        margin-bottom: 20px
         font-size: 13px
         line-height: 19.5px
         h1
@@ -120,7 +132,7 @@ body
             @include gradient-horizontal-three-colors(rgba(0,136,204,0), rgba(0,136,204,1), 50%, rgba(0,136,204,0))
             background-color: transparent
       .row-fluid
-        .news-entry.span8
+        .news-entry
           padding-top: 0
           padding-bottom: 0
           &:nth-child(1)

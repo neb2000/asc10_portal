@@ -1,4 +1,4 @@
-= display_shoutbox_and_recruitment
+= display_sidebars
 - unless @news_entries.empty?
   - news_entry = @news_entries.shift
   .news-entry.latest
@@ -9,7 +9,7 @@
   - @news_entries.to_a.in_groups_of(2, false) do |entries|
     .row-fluid
       - entries.each do |news_entry|
-        .news-entry.span8
+        .news-entry.span6
           %h1= news_entry.display_title
           %p.datetime-stamp= news_entry.display_created_at
           = news_entry.display_cover_image

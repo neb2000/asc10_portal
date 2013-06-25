@@ -1,26 +1,26 @@
 module ApplicationHelper
   def main_content_class
     if content_for?(:left_sidebar) && content_for?(:right_sidebar)
-      'span8'
+      'span6 left-bordered right-bordered'
     elsif content_for?(:left_sidebar)
-      'span12 left-bordered'
+      'span9 left-bordered'
     elsif content_for?(:right_sidebar)
-      'span12 right-bordered'
+      'span9 right-bordered'
     else
-      'span16'
+      'span12'
     end
   end
   
-  def display_shoutbox_and_recruitment
-    display_shoutbox
-    display_recruitment
+  def display_sidebars
+    display_left_sidebar
+    display_right_sidebar
   end
   
-  def display_shoutbox
-    content_for(:left_sidebar, render('shoutbox'))
+  def display_left_sidebar
+    content_for(:left_sidebar, render('left_sidebar'))
   end
   
-  def display_recruitment
-    content_for(:right_sidebar, render('recruitment')) 
+  def display_right_sidebar
+    content_for(:right_sidebar, render('right_sidebar')) 
   end
 end

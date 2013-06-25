@@ -9,10 +9,10 @@
   %body
     #wrapper.container
       .row
-        #banner.span16
+        #banner.span12
           = image_tag 'banner.png'
       .row
-        #menu.span16
+        #menu.span12
           %ul.nav.nav-pills.pull-right
             %li= link_to 'Login', '#'
           %ul.nav.nav-pills
@@ -22,18 +22,18 @@
             - all_pages.each do |page|
               %li= link_to page.display_title, page
       .row
-        #content.span16
+        #content.span12
           .row
             - if content_for?(:left_sidebar)
-              .span4
+              .span3
                 #left-sidebar.sidebar= yield :left_sidebar
             #main-content{ class: main_content_class }
               = yield
             - if content_for?(:right_sidebar)
-              .span4
+              .span3
                 #right-sidebar.sidebar= yield :right_sidebar
       .row
-        .span16
+        .span12
           #footer
             .pull-left
               Powered by 
