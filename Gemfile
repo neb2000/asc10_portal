@@ -10,16 +10,24 @@ gem 'simple_form'
 
 gem 'pg'
 gem 'thin'
-# gem 'devise'
+
+gem 'draper'
+
+gem 'friendly_id'
+gem 'truncate_html'
+
+gem 'devise'
+gem 'cancan'
 # 
 # gem 'forem', github: 'radar/forem'
 # gem 'forem-theme-twist', github: 'radar/forem-theme-twist'
 # 
-# gem 'will_paginate'
-# gem 'bootstrap-will_paginate'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 # 
 # gem 'ckeditor'
-# gem 'carrierwave'
+gem 'bootsy-simple_form'
+gem 'carrierwave'
 # gem 'mini_magick'
 
 group :development do
@@ -37,6 +45,8 @@ group :assets do
   
   gem 'bootstrap-sass'      # Twitter bootstrap in sass form
   gem 'font-awesome-rails'  # Bootstrap's icons rendered as a font
+
+  gem 'epi_js'
 end
 
 gem 'jquery-rails'

@@ -1,0 +1,12 @@
+.page-header
+  .pull-right
+    = link_to [:new, :admin, :news_entry], class: 'btn btn-link' do
+      %i.icon-plus.text-success
+      %span.text-success
+        Add
+  %h1 News entries
+- if @news_entries.empty?
+  %p.no-record
+    No records to display
+- else
+  = render @news_entries

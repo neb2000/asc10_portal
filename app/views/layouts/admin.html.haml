@@ -1,0 +1,41 @@
+!!!
+%html
+  %head
+    %title Ascendance - EU Alonsus
+    = stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Lato:300,400"
+    = stylesheet_link_tag    "admin", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .flash-messages
+      - unless flash.blank?
+        - flash.each do |name, msg|
+          .alert.fade{ class: "alert-#{ name == :notice ? 'success' : 'error' }" }
+            %a.close{ data: { dismiss: :alert } } &times;
+            = msg
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          %a.btn.btn-navbar{ data: { toggle: 'collapse', target: '.nav-collapse' } }
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar           
+          = link_to :root, class: :brand do
+            Ascendance
+          .nav-collapse
+            %ul.nav
+    %ul.nav.nav-pills.nav-stacked#sidebar
+      %li.active
+        = link_to [:admin, :news_entries] do
+          %i.icon-star
+          News entries
+      %li
+        = link_to '#' do
+          %i.icon-copy
+          Pages
+      %li
+        = link_to '#' do
+          %i.icon-bullhorn
+          Recruitment
+    #main-content
+      = yield

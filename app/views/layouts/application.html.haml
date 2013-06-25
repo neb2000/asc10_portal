@@ -23,10 +23,20 @@
             .span3
               #left-sidebar.sidebar
                 %h3 Shoutbox
-                = simple_form_for 'shotbox' do |f|
-                  = f.input 'message', label: false, input_html: { class: 'input-block-level' }
+                = simple_form_for ShoutboxMessage.new, html: { id: 'shoutbox' }, remote: true do |f|
+                  = f.input :message, label: false, input_html: { class: 'input-block-level', placeholder: 'Your message...' }, as: :string, required: true
+                  %ul.unstyled#existing-messages{ data: { load_content_url: url_for([:shoutbox_messages]) } }
             .span6#main-content
               = yield
             .span3
               #right-sidebar.sidebar
                 %h3 Recruitment
+      .row
+        .span12
+          #footer
+            .pull-left
+              Powered by 
+              = link_to 'Ruby on Rails', 'http://rubyonrails.org/', target: '_blank'
+              (Ruby #{RUBY_VERSION}).
+            .pull-right
+              &copy; #{Date.today.year}

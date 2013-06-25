@@ -2,4 +2,21 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  will_paginate:
+    previous_label: '<i class="icon-caret-left"></i> Prev'
+    next_label: 'Next <i class="icon-caret-right"></i>'
+  date:
+    order:
+      - :day
+      - :month
+      - :year    
+    formats:
+      default: "%d/%m/%Y"
+      with_dow: "%a %d/%m/%Y"
+      full: "%a %e %B %Y"
+  time:
+    formats:
+      full: "%a %e %B %Y at %H:%M"
+      date_only: "%d/%m/%Y"
+      time_24: "%H:%M"
+  

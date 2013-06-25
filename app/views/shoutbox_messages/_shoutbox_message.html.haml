@@ -1,0 +1,5 @@
+%li.shoutbox-message[shoutbox_message.source]
+  %strong.user-name
+    #{shoutbox_message.display_user_name}:
+  = shoutbox_message.display_message
+  %span.muted.timestamp [#{shoutbox_message.display_created_at}]

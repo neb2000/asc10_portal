@@ -12,4 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require bootstrap
+//= require ajax_modal
+//= require flash_message
+//= require bootsy
+//= require ajax_load_content
