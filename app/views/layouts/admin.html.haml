@@ -25,12 +25,12 @@
           .nav-collapse
             %ul.nav
     %ul.nav.nav-pills.nav-stacked#sidebar
-      %li.active
+      %li{ class: ('active' if @current_nav_identifier == :news_entries )}
         = link_to [:admin, :news_entries] do
           %i.icon-star
           News entries
-      %li
-        = link_to '#' do
+      %li{ class: ('active' if @current_nav_identifier == :pages )}
+        = link_to [:admin, :pages] do
           %i.icon-copy
           Pages
       %li

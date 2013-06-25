@@ -12,7 +12,15 @@ module ApplicationHelper
   end
   
   def display_shoutbox_and_recruitment
-    content_for(:left_sidebar, render('shoutbox')) 
+    display_shoutbox
+    display_recruitment
+  end
+  
+  def display_shoutbox
+    content_for(:left_sidebar, render('shoutbox'))
+  end
+  
+  def display_recruitment
     content_for(:right_sidebar, render('recruitment')) 
   end
 end

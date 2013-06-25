@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625014423) do
+ActiveRecord::Schema.define(:version => 20130625131047) do
 
   create_table "bootsy_image_galleries", :force => true do |t|
     t.integer  "bootsy_resource_id"
@@ -41,8 +41,10 @@ ActiveRecord::Schema.define(:version => 20130625014423) do
     t.string   "title"
     t.string   "slug"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.boolean  "display_shoutbox",    :default => true
+    t.boolean  "display_recruitment", :default => true
   end
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug"
