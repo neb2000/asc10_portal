@@ -17,8 +17,8 @@ body
     border-bottom: 1px solid #000
     ul.nav-pills
       margin: 0
-      li
-        a
+      > li
+        > a
           @include transition(all 0.2s linear)
           font-family: 'Titillium Web'
           font-weight: 400
@@ -28,18 +28,23 @@ body
           padding-right: 18px
           line-height: 16px
           color: #fff
-          &:hover
+          &:hover, &:focus
             background: none
             color: #fff
             text-shadow: 0 0 3px $linkColor, 0 0 10px $linkColor, 0 0 20px $linkColor, 0 0 30px $linkColor
-        &.active
+        &.dropdown
           a
+            .caret
+              border-top-color: white
+        &.active, &.open
+          > a
             background: none
             color: #fff
             text-shadow: 0 0 3px $linkColor, 0 0 10px $linkColor, 0 0 20px $linkColor, 0 0 30px $linkColor
   #content
     background: rgba(70,70,70,0.75)
     border-top: 1px solid #000
+    min-height: 100%
     .sidebar
       padding: 20px 20px
       .sidebar-widget + .sidebar-widget
@@ -60,13 +65,13 @@ body
           input
             color: #eee
             background: rgba(0,0,0,.5)
-            border: 2px solid black
+            border: 1px solid black
             margin: 0
           #existing-messages
             overflow-y: auto
             max-height: 400px
             background: rgba(0,0,0,.5)
-            border: 2px solid black
+            border: 1px solid black
             color: #999
             padding: 10px
             @include border-radius(4px)
@@ -82,23 +87,6 @@ body
         padding-left: 0  
     #main-content
       position: relative
-      &:before, &:after
-        display: none
-        content: ''
-        position: absolute
-        width: 1px
-        top: 15px
-        bottom: 15px
-        @include gradient-vertical-three-colors(rgba(0,136,204,0.2), rgba(0,136,204,1), 50%, rgba(0,136,204,0.2))
-        background-color: transparent
-      &.left-bordered
-        &:before
-          left: -1px
-          display: block
-      &.right-bordered
-        &:after
-          right: -1px
-          display: block
       .news-entry, .content-box
         padding: 20px
         color: #ddd
@@ -109,11 +97,13 @@ body
           line-height: 1
           margin: 0
         .cover-image
-          //border: 5px solid black
-          padding: 6px
-          background: rgba(0,0,0,.7)
+          border: 1px solid black
+          padding: 5px
+          background: rgba(0,0,0,.5)          
           margin-bottom: 6px
           img
+            @include box-sizing(border-box)
+            border: 1px solid black
             width: 100%
         .content
           .read-more-link
@@ -140,8 +130,27 @@ body
           &:nth-child(2)
             padding-left: 0
       .content-box
+        .page-header
+          margin: 0
+          padding: 0
+          position: relative
+          border-bottom: none
+          margin-bottom: 20px 
+          padding-bottom: 3px
+          &:after
+            content: ''
+            position: absolute
+            bottom: -1px
+            height: 1px
+            left: -30px
+            right: -30px
+            @include gradient-horizontal-three-colors(rgba(0,136,204,0), rgba(0,136,204,1), 50%, rgba(0,136,204,0))
+            background-color: transparent
+            
         .actions
           //background: rgba(0,0,0,.1)
+          .btn-link
+            text-shadow: none
           position: relative
           background: none
           padding: 10px 0
@@ -151,16 +160,17 @@ body
             position: absolute
             top: -1px
             height: 1px
-            left: -10px
-            right: -10px
-            @include gradient-horizontal-three-colors(rgba(0,136,204,0), lighten($linkColor, 30%), 50%, rgba(0,136,204,0))
+            left: -30px
+            right: -30px
+            @include gradient-horizontal-three-colors(rgba(0,136,204,0), rgba(0,136,204,1), 50%, rgba(0,136,204,0))
             background-color: transparent
           
           
-        input[type='text'], input[type='password'], input[type='email']
+        input[type='text'], input[type='password'], input[type='email'], .add-on
           color: #eee
-          background: rgba(255,255,255,.05)
-          border: none
+          background: rgba(0,0,0,.5)
+          border: 1px solid black
+          text-shadow: none
   #footer
     padding: 10px 0
     font-size: 10px

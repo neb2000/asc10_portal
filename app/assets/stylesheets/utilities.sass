@@ -1,0 +1,29 @@
+@import 'bootstrap/mixins'
+@import 'variables'
+
+.no-whitespace
+  margin-top: 0  !important
+  margin-bottom: 0 !important
+
+.left-bordered
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    width: 1px
+    top: 15px
+    bottom: 15px
+    @include gradient-vertical-three-colors(rgba(0,136,204,0), rgba(0,136,204,1), 50%, rgba(0,136,204,0))
+    background-color: transparent
+    left: -1px
+.right-bordered
+  position: relative
+  &:after
+    content: ''
+    position: absolute
+    width: 1px
+    top: 15px
+    bottom: 15px
+    @include gradient-vertical-three-colors(rgba(0,136,204,0), rgba(0,136,204,1), 50%, rgba(0,136,204,0))
+    background-color: transparent
+    right: -1px

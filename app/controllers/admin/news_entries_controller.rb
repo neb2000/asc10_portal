@@ -1,6 +1,7 @@
 class Admin::NewsEntriesController < Admin::ApplicationController
   before_filter :find_news_entry
   before_filter { @current_nav_identifier = :news_entries }
+  authorize_resource
   
   def index
     @news_entries = NewsEntry.ordered.decorate

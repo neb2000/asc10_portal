@@ -24,15 +24,36 @@
             Ascendance
           .nav-collapse
             %ul.nav
+            %ul.nav.pull-right
+              %li.dropdown
+                = link_to '#', class: 'dropdown-toggle', data: {toggle: :dropdown} do
+                  = current_user.name
+                  %span.caret
+                %ul.dropdown-menu.pull-right
+                  %li
+                    = link_to edit_user_registration_path do
+                      %i.icon-user
+                      Edit profile
+                  %li
+                    = link_to destroy_user_session_path, method: :delete do
+                      %i.icon-signout
+                      Logout
     %ul.nav.nav-pills.nav-stacked#sidebar
-      %li{ class: ('active' if @current_nav_identifier == :news_entries )}
-        = link_to [:admin, :news_entries] do
-          %i.icon-star
-          News entries
-      %li{ class: ('active' if @current_nav_identifier == :pages )}
-        = link_to [:admin, :pages] do
-          %i.icon-copy
-          Pages
+      - if can? :manage, NewsEntry
+        %li{ class: ('active' if @current_nav_identifier == :news_entries )}
+          = link_to [:admin, :news_entries] do
+            %i.icon-star
+            News entries
+      - if can? :manage, Page
+        %li{ class: ('active' if @current_nav_identifier == :pages )}
+          = link_to [:admin, :pages] do
+            %i.icon-copy
+            Pages
+      - if can? :manage, User
+        %li{ class: ('active' if @current_nav_identifier == :users )}
+          = link_to [:admin, :users] do
+            %i.icon-group
+            Users
       %li
         = link_to '#' do
           %i.icon-bullhorn

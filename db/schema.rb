@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625162627) do
+ActiveRecord::Schema.define(:version => 20130625230940) do
 
   create_table "bootsy_image_galleries", :force => true do |t|
     t.integer  "bootsy_resource_id"
@@ -49,6 +49,23 @@ ActiveRecord::Schema.define(:version => 20130625162627) do
   end
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug"
+
+  create_table "permissions", :force => true do |t|
+    t.string   "identifier"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "permissions", ["identifier"], :name => "index_permissions_on_identifier"
+
+  create_table "permissions_users", :id => false, :force => true do |t|
+    t.integer "permission_id"
+    t.integer "user_id"
+  end
+
+  add_index "permissions_users", ["permission_id"], :name => "index_permissions_users_on_permission_id"
+  add_index "permissions_users", ["user_id"], :name => "index_permissions_users_on_user_id"
 
   create_table "shoutbox_messages", :force => true do |t|
     t.integer  "user_id"

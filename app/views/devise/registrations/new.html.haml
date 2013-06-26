@@ -1,0 +1,15 @@
+.row
+  .span6.offset3
+    .content-box.no-whitespace
+      .page-header
+        %h3 Sign up
+      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: 'form-horizontal no-whitespace', autocomplete: 'off' }) do |f|
+        .inputs
+          = f.input :name, :required => true, :autofocus => true
+          = f.input :email, :required => true
+          = f.input :password, :required => true
+          = f.input :password_confirmation, :required => true
+        .actions
+          .pull-right
+            = render "devise/shared/links"
+          = f.button :submit, "Sign up", class: 'btn btn-primary'

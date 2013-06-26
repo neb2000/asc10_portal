@@ -23,4 +23,8 @@ module ApplicationHelper
   def display_right_sidebar
     content_for(:right_sidebar, render('right_sidebar')) 
   end
+  
+  def latest_shoutbox_messages
+    @latest_shoutbox_messages ||= ShoutboxMessage.ordered.page(params[:page]).decorate
+  end
 end

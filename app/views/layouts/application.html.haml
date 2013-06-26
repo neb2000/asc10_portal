@@ -14,7 +14,31 @@
       .row
         #menu.span12
           %ul.nav.nav-pills.pull-right
-            %li= link_to 'Login', '#'
+            - if user_signed_in?
+              %li.dropdown
+                = link_to '#', class: 'dropdown-toggle', data: {toggle: :dropdown} do
+                  = current_user.name
+                  %span.caret
+                %ul.dropdown-menu.pull-right
+                  %li
+                    = link_to edit_user_registration_path do
+                      %i.icon-user
+                      Edit profile
+                  %li
+                    = link_to destroy_user_session_path, method: :delete do
+                      %i.icon-signout
+                      Logout
+                  - if current_user.permission_identifiers.any?
+                    %li.divider
+                    %li
+                      = link_to [:admin, :root] do
+                        %i.icon-cogs
+                        Admin
+              
+                      
+                  
+            - else
+              %li= link_to 'Login', new_user_session_path
           %ul.nav.nav-pills
             %li.active= link_to 'Home', :root
             %li= link_to 'Forums', '#'
@@ -41,3 +65,6 @@
               (Ruby #{RUBY_VERSION}).
             .pull-right
               &copy; #{Date.today.year}
+:coffee
+  $ -> 
+    $('#main-content').css('min-height', $('#content').height())

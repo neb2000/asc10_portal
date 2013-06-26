@@ -1,6 +1,7 @@
 class Admin::PagesController < Admin::ApplicationController
   before_filter :find_page  
   before_filter { @current_nav_identifier = :pages }
+  authorize_resource
   
   def index
     @pages = Page.ordered.decorate

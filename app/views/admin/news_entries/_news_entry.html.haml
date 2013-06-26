@@ -1,4 +1,4 @@
-.news-entry.well[news_entry.source]
+.news-entry.clearfix.well[news_entry.source]
   .btn-group.pull-right
     = link_to [:edit, :admin, news_entry], class: 'btn btn-link' do
       %i.icon-pencil
@@ -7,4 +7,5 @@
   %h3
     = news_entry.display_title
     %small.muted= news_entry.display_created_at
+  .pull-left{ style: 'margin-right: 20px'}= news_entry.display_cover_image
   .content= news_entry.display_content

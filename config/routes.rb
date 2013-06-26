@@ -6,6 +6,7 @@ Asc10Portal::Application.routes.draw do
   namespace :admin do
     resources :news_entries
     resources :pages
+    resources :users
     
     root to: 'news_entries#index'
   end
