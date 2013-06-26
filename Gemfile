@@ -31,6 +31,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'remotipart'
 
+gem 'dalli'
+
 group :development do
   gem 'debugger'
   gem 'capistrano'
