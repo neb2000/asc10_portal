@@ -12,4 +12,8 @@ class PageDecorator < Draper::Decorator
   def display_truncated_content
     h.sanitize h.truncate_html(source.content, length: 1000, omission: h.link_to(' ...Click here for more', source, class: 'read-more-link'))
   end
+  
+  def self.collection_decorator_class
+    PaginatingDecorator
+  end
 end

@@ -21,6 +21,11 @@ class Ability
   
   def manage_users
     can :manage, User
+    cannot :edit, User, id: @user.id
+  end
+  
+  def manage_messages
+    can :manage, ShoutboxMessage
   end
   
   def manage_settings

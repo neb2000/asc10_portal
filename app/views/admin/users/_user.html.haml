@@ -1,0 +1,13 @@
+%tr[user.source]
+  %td
+    = user.display_name
+  %td
+    = user.display_email
+  %td
+    = user.display_permissions
+  %td
+    = user.display_last_signed_in
+  %td.td-actions
+    - if can? :edit, user
+      = link_to [:edit, :admin, user], class: 'btn btn-link ajax-modal' do
+        %i.icon-pencil

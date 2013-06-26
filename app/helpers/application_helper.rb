@@ -27,4 +27,10 @@ module ApplicationHelper
   def latest_shoutbox_messages
     @latest_shoutbox_messages ||= ShoutboxMessage.ordered.page(params[:page]).decorate
   end
+  
+  def dismiss_modal_button(text = 'Close', &block)
+    link_text = block_given? ? capture(&block) : text
+    link_to link_text, '#', class: 'btn', data: { dismiss: 'modal' }
+  end
+  
 end

@@ -13,4 +13,7 @@ class ShoutboxMessageDecorator < Draper::Decorator
     h.l source.created_at, format: :date_only
   end
   
+  def self.collection_decorator_class
+    PaginatingDecorator
+  end
 end

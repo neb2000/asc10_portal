@@ -21,4 +21,8 @@ class NewsEntryDecorator < Draper::Decorator
     return if source.cover_image.blank? || source.cover_image.file.blank?
     h.content_tag :div, h.image_tag(source.cover_image.url(version)), class: 'cover-image'
   end
+  
+  def self.collection_decorator_class
+    PaginatingDecorator
+  end
 end

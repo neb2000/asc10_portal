@@ -1,10 +1,5 @@
 class ShoutboxMessagesController < ApplicationController
-  respond_to :js, only: [:index, :create]
-  
-  def index
-    @shoutbox_messages = ShoutboxMessage.ordered.page(params[:page]).decorate
-    respond_with(@shoutbox_messages)
-  end
+  respond_to :js, only: [:create]
   
   def create
     message = ShoutboxMessage.new(user: current_user)

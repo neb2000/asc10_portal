@@ -2,4 +2,5 @@
 .news-entry
   %h1= @news_entry.display_title
   %p.datetime-stamp= @news_entry.display_created_at
+  = @news_entry.display_cover_image(:large)
   .content= @news_entry.display_content
