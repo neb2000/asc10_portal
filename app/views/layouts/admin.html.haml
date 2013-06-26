@@ -38,25 +38,26 @@
                     = link_to destroy_user_session_path, method: :delete do
                       %i.icon-signout
                       Logout
-    %ul.nav.nav-pills.nav-stacked#sidebar
-      - if can? :manage, NewsEntry
-        %li{ class: ('active' if @current_nav_identifier == :news_entries )}
-          = link_to [:admin, :news_entries] do
-            %i.icon-star
-            News entries
-      - if can? :manage, Page
-        %li{ class: ('active' if @current_nav_identifier == :pages )}
-          = link_to [:admin, :pages] do
-            %i.icon-copy
-            Pages
-      - if can? :manage, User
-        %li{ class: ('active' if @current_nav_identifier == :users )}
-          = link_to [:admin, :users] do
-            %i.icon-group
-            Users
-      %li
-        = link_to '#' do
-          %i.icon-bullhorn
-          Recruitment
-    #main-content
-      = yield
+    #wrapper
+      %ul.nav.nav-pills.nav-stacked#sidebar
+        - if can? :manage, NewsEntry
+          %li{ class: ('active' if @current_nav_identifier == :news_entries )}
+            = link_to [:admin, :news_entries] do
+              %i.icon-star
+              News entries
+        - if can? :manage, Page
+          %li{ class: ('active' if @current_nav_identifier == :pages )}
+            = link_to [:admin, :pages] do
+              %i.icon-copy
+              Pages
+        - if can? :manage, User
+          %li{ class: ('active' if @current_nav_identifier == :users )}
+            = link_to [:admin, :users] do
+              %i.icon-group
+              Users
+        %li
+          = link_to '#' do
+            %i.icon-bullhorn
+            Recruitment
+      #main-content
+        = yield
