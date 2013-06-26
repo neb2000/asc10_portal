@@ -29,6 +29,8 @@ class Ability
   end
   
   def manage_settings
+    can :manage, :settings
+    can :manage, BannerImage
   end
   
 end

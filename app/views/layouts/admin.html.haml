@@ -55,6 +55,12 @@
             = link_to [:admin, :users] do
               %i.icon-group
               Users
+        - if can? :manage, :settings
+          %li{ class: ('active' if @current_nav_identifier == :settings )}
+            = link_to [:admin, :settings] do
+              %i.icon-cogs
+              Settings
+  
         %li
           = link_to '#' do
             %i.icon-bullhorn

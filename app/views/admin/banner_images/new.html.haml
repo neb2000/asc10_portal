@@ -1,0 +1,10 @@
+= simple_form_for [:admin, @banner_image], html: { class: 'no-whitespace' }, remote: true do |f|
+  .modal-header
+    = link_to '#', class: 'close', data: { dismiss: 'modal' } do
+      &times;
+    %h3 New banner image
+  .modal-body
+    = f.input :file
+  .modal-footer
+    = dismiss_modal_button
+    = submit_button

@@ -1,0 +1,12 @@
+%li.span2[banner_image.source]
+  .thumbnail{ data: {target: banner_image.display_large_image} }
+    = banner_image.display_current_banner
+    = image_tag(banner_image.display_thumbnail)
+  .links.clearfix
+    - if can? :destroy, banner_image
+      .pull-right
+        = link_to [:admin, banner_image], method: :delete, remote: true, confirm: 'Are you sure you want to delete this image?', class: 'btn btn-link' do
+          %i.icon-trash.text-error
+    - if can? :set_active, banner_image
+      = link_to [:set_active, :admin, banner_image], method: :put, remote: true, class: 'btn btn-link' do
+        %i.icon-ok.text-success

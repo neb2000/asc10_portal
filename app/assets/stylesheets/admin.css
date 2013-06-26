@@ -2,7 +2,11 @@
   *= require admin_layout/twitter_bootstrap
   *= require font-awesome
   *= require bootsy
+  *= require bootstrap-lightbox
   *= require flash_message
   *= require utilities
   *= require admin_layout/layout
+  *= require admin_layout/banner_images
+  *= require admin_layout/ribbon
+  *= require admin_layout/misc
 */

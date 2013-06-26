@@ -204,8 +204,10 @@ DEPENDENCIES
   friendly_id
   haml-rails
   jquery-rails
+  mini_magick
   pg
   rails
+  remotipart
   sass-rails
   simple_form
   thin

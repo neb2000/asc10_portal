@@ -28,7 +28,8 @@ gem 'bootstrap-will_paginate'
 # gem 'ckeditor'
 gem 'bootsy-simple_form'
 gem 'carrierwave'
-# gem 'mini_magick'
+gem 'mini_magick'
+gem 'remotipart'
 
 group :development do
   gem 'debugger'

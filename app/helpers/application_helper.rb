@@ -33,4 +33,9 @@ module ApplicationHelper
     link_to link_text, '#', class: 'btn', data: { dismiss: 'modal' }
   end
   
+  def current_banner_image
+    @banner_image ||= BannerImage.where(active: true).decorate.first
+    @banner_image.try(:display_large_image) || 'banner_green.png'
+  end
+  
 end

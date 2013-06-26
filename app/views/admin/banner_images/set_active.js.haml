@@ -1,0 +1,6 @@
+:plain
+  if($('#banner_image_#{@banner_image.id} #current-banner-ribbon').size() === 0) {
+    $('#current-banner-ribbon').fadeOut(200, function(){ $(this).remove() });
+    $ribbon = $('#{j @banner_image.display_current_banner}').hide();
+    $('#banner_image_#{@banner_image.id} .thumbnail').prepend($ribbon.fadeIn(200))
+  }

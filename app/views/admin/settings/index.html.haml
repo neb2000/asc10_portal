@@ -1,0 +1,12 @@
+.page-header
+  %h1 Site settings
+.well.content-box
+  .content-header
+    .pull-right
+      = link_to [:new, :admin, :banner_image], class: 'btn btn-link ajax-modal' do
+        %i.icon-plus.text-success
+        %span.text-success
+          Add
+    %h2 Banner image
+  .row-fluid
+    %ul.thumbnails.no-whitespace#banner-images{ data: { toggle: :lightbox } }= render @banner_images
