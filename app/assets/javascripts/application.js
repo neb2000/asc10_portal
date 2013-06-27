@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootsy
 //= require ajax_modal
 //= require flash_message
 //= require bootstrap-lightbox
-//= require bootsy

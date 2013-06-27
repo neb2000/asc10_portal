@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '~> 3.2.13'
 
 gem 'haml-rails'
 gem 'simple_form'
@@ -30,7 +30,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # 
 # gem 'ckeditor'
-gem 'bootsy-simple_form'
+gem 'bootsy-simple_form', github: 'volmer/bootsy-simple_form'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'remotipart'

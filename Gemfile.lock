@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/volmer/bootsy-simple_form.git
+  revision: 2f532782e14b6e7789c98d6d88daf1aa8ee2337f
+  specs:
+    bootsy-simple_form (0.2.0)
+      bootsy (~> 0.2.1)
+      simple_form (~> 2.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -42,13 +50,10 @@ GEM
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
-    bootsy (0.1.8)
+    bootsy (0.2.1)
       carrierwave (~> 0.8.0)
-      mini_magick (~> 3.4)
-      remotipart (~> 1.0.2)
-    bootsy-simple_form (0.1.2)
-      bootsy (~> 0.1.8)
-      simple_form (~> 2.0.4)
+      mini_magick (~> 3.5.0)
+      remotipart (~> 1.0.5)
     builder (3.0.4)
     cancan (1.6.10)
     capistrano (2.15.4)
@@ -121,7 +126,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
-    mini_magick (3.6.0)
+    mini_magick (3.5.0)
       subexec (~> 0.2.1)
     multi_json (1.7.7)
     net-scp (1.1.1)
@@ -169,7 +174,7 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    simple_form (2.0.4)
+    simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
     sprockets (2.2.2)
@@ -210,7 +215,7 @@ DEPENDENCIES
   acts-as-messageable
   bootstrap-sass
   bootstrap-will_paginate
-  bootsy-simple_form
+  bootsy-simple_form!
   cancan
   capistrano
   carrierwave
@@ -227,7 +232,7 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   pg
-  rails
+  rails (~> 3.2.13)
   remotipart
   rvm-capistrano
   sass-rails
