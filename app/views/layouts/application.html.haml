@@ -2,12 +2,15 @@
 %html
   %head
     %title Ascendance - EU Alonsus
-    = stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Lato:300,400|Titillium+Web:400,600,700,400italic"
+    = stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,400italic"
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     :coffee
       $.fn.wysihtml5.defaultOptions.size = 'inverse'
+      $ -> 
+        if $('.sidebar').size() > 0
+          $('#main-content').css('min-height', $('#content').height())
   %body
     #wrapper.container
       .row
@@ -70,7 +73,4 @@
               (Ruby #{RUBY_VERSION}).
             .pull-right
               &copy; #{Date.today.year}
-:coffee
-  $ -> 
-    if $('.sidebar').size() > 0
-      $('#main-content').css('min-height', $('#content').height())
+              = link_to 'Azuresong', 'http://www.azuresong.co.uk', target: '_blank'
