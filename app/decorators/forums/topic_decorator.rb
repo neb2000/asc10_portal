@@ -20,6 +20,10 @@ class Forums::TopicDecorator < Draper::Decorator
     (posts_count / source.class.per_page.to_f).ceil
   end
   
+  def display_last_post_at_in_word
+    "#{h.time_ago_in_words source.last_post_at} ago"
+  end
+  
   def display_icon_for(user)
     return h.content_tag(:i, '', class: 'icon-pushpin') if source.pinned
     return h.content_tag(:i, '', class: 'icon-lock text-error') if source.locked

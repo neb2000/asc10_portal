@@ -7,3 +7,8 @@
     
 .sidebar-widget
   %h3 Recent posts
+  %ul.unstyled.well.well-black.well-small
+    - latest_forum_topics.each do |topic|
+      %li
+        %h5= link_to topic.display_subject, forums_board_topic_path(topic.board, topic)
+        %small.muted= topic.display_last_post_at_in_word

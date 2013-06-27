@@ -28,6 +28,10 @@ module ApplicationHelper
     @latest_shoutbox_messages ||= ShoutboxMessage.ordered.page(params[:page]).decorate
   end
   
+  def latest_forum_topics
+    @latest_forum_topics ||= Forums::Topic.accessible_by(current_ability).order('forums_topics.last_post_at DESC').includes(:board).limit(5).decorate
+  end
+  
   def dismiss_modal_button(text = 'Close', &block)
     link_text = block_given? ? capture(&block) : text
     link_to link_text, '#', class: 'btn', data: { dismiss: 'modal' }
