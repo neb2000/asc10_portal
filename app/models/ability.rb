@@ -27,6 +27,9 @@ class Ability
     can [:read, :reply], Forums::Topic, board: { category: { public: true } }
     can [:read, :reply], Forums::Post,  topic: { board: { category: { public: true } } }
     
+    can :manage, Forums::Topic, board: { id: @user.managed_board_id_list }
+    can :manage, Forums::Post,  topic: { board: { id: @user.managed_board_id_list } }
+    
     can [:update, :destroy], [Forums::Post, Forums::Topic], user_id: @user.id
     cannot [:update, :destroy, :reply], Forums::Topic, locked: true
     cannot [:update, :destroy, :reply], Forums::Post, topic: { locked: true }

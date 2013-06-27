@@ -7,7 +7,7 @@
 #  slug        :string(255)
 #  description :text
 #  category_id :integer
-#  views_count  :integer          default(0)
+#  views_count  :integer         default(0)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -18,14 +18,16 @@ class Forums::Board < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
   
-  attr_accessible :category_id, :description, :name, :views_count
+  attr_accessible :category_id, :description, :name, :manager_ids
   
   belongs_to :category, class_name: 'Forums::Category'
   
   has_many :topics, dependent: :destroy
   has_many :posts, through: :topics, dependent: :destroy
   
+  has_and_belongs_to_many :managers, join_table: 'boards_managers', association_foreign_key: :manager_id, class_name: 'User'
+  
   validates :category, :name, :description, presence: true
   
-  default_scope ->{ order(:id) }
+  default_scope ->{ order('forums_boards.id') }
 end

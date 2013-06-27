@@ -37,13 +37,19 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   
   belongs_to :user_group
+  
   has_and_belongs_to_many :permissions
+  has_and_belongs_to_many :managed_boards, join_table: 'boards_managers', foreign_key: :manager_id, class_name: 'Forums::Board'
   
   has_many :topics, class_name: 'Forums::Topic'
   has_many :posts, class_name: 'Forums::Post'
   
   delegate :name, to: :user_group, allow_nil: true, prefix: true
   delegate :readable_category_ids, to: :user_group, allow_nil: true
+  
+  def managed_board_id_list
+    @managed_board_id_list ||= managed_board_ids
+  end
   
   acts_as_messageable
   

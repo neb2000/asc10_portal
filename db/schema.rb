@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627195518) do
+ActiveRecord::Schema.define(:version => 20130627233719) do
 
   create_table "banner_images", :force => true do |t|
     t.string   "file"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20130627195518) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "boards_managers", :id => false, :force => true do |t|
+    t.integer "board_id"
+    t.integer "manager_id"
+  end
+
+  add_index "boards_managers", ["board_id"], :name => "index_boards_managers_on_board_id"
+  add_index "boards_managers", ["manager_id"], :name => "index_boards_managers_on_manager_id"
 
   create_table "bootsy_image_galleries", :force => true do |t|
     t.integer  "bootsy_resource_id"
