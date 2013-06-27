@@ -19,5 +19,9 @@
           - if can? :destroy, post
             = link_to forums_topic_post_path(post.topic, post), method: :delete, confirm: 'Are you sure you want to delete this post?', class: 'btn btn-link' do
               %i.icon-trash
-        %small.muted= l post.created_at, format: :full
+        %small.muted
+          = l post.created_at, format: :full
+        - if post.reply_to
+          %p.muted
+            %em Reply to #{post.display_reply_to_user}
       = post.display_text

@@ -2,6 +2,7 @@ class Forums::PostDecorator < Draper::Decorator
   delegate_all
   decorates_association :user
   decorates_association :topic
+  decorates_association :reply_to, with: Forums::PostDecorator
   
   def display_subject
     topic.display_subject
@@ -13,6 +14,10 @@ class Forums::PostDecorator < Draper::Decorator
   
   def display_user
     user.display_name
+  end
+  
+  def display_reply_to_user
+    reply_to.display_user
   end
   
   def display_user_gravatar(options = {})
