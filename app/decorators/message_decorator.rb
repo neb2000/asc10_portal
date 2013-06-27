@@ -4,11 +4,11 @@ class MessageDecorator < Draper::Decorator
   decorates_association :received_messageable, with: UserDecorator
   
   def display_sender
-    sent_messageable.display_name
+    sent_messageable.blank? ? '-' : sent_messageable.display_name
   end
   
   def display_recipient
-    received_messageable.display_name
+    received_messageable.blank? ? '-' : received_messageable.display_name
   end
   
   def display_topic
