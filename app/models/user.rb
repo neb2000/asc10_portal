@@ -12,7 +12,13 @@ class User < ActiveRecord::Base
   
   has_and_belongs_to_many :permissions
   
+  acts_as_messageable
+  
   def permission_identifiers
     @permission_identifiers ||= permissions.pluck(:identifier)
+  end
+  
+  def self.find_by_name(name)
+    where(arel_table[:name].matches(name)).first
   end
 end

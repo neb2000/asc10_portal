@@ -1,0 +1,12 @@
+= display_left_sidebar
+.content-box
+  .page-header
+    %h3 Reply message
+  = simple_form_for @message, url: [:create_reply, :messages], as: 'message', html: { class: 'no-whitespace' } do |f|
+    = f.hidden_field :reply_to, value: @message_object.id
+    = f.input :topic, input_html: { class: 'input-block-level' }, label: 'Title', autofocus: true
+    = f.input :body, as: :bootsy, input_html: { class: 'input-block-level', rows: 10 }, label: false
+    .actions
+      .pull-right
+        = cancel_button(url_for(action: :index))
+      = submit_button('Reply')

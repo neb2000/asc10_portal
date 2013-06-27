@@ -1,0 +1,2 @@
+$('#acts_as_messageable_message_#{@message.id}').replaceWith('#{j render MessageDecorator.decorate @message}');
+$('[data-count="unread_messages"]').html('#{j unread_message_badge}')

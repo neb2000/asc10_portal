@@ -1,0 +1,24 @@
+= display_left_sidebar
+.content-box
+  .page-header
+    %h3
+      .pull-right
+        = link_to [:new, :message], class: 'btn btn-inverse' do
+          %i.icon-edit
+          New message
+      Inbox
+  - if @messages.empty?
+    %p
+      No messages
+  - else
+    .well.well-small.well-black
+      %table.table.no-whitespace#message-table
+        %thead
+          %tr
+            %th.mini
+            %th.span5 Subject
+            %th From
+            %th Date
+            %th
+        %tbody= render @messages
+      

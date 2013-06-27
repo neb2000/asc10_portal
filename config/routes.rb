@@ -22,5 +22,23 @@ Asc10Portal::Application.routes.draw do
   
   resources :pages, only: [:show]
   
+  resources :users, only: [] do
+    get :ajax_get_users, on: :collection
+  end
+  
+  resources :messages, except: [:edit, :update] do
+    collection do
+      get  :sent
+      get  :deleted
+      post :create_reply
+    end
+    member do
+      put :restore
+      put :mark_as_read, action: 'mark_read_unread',   read: true
+      put :mark_as_unread, action: 'mark_read_unread', read: false
+      get :reply
+    end
+  end
+  
   root to: 'news_entries#index'
 end

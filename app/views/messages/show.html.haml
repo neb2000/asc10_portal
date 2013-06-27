@@ -1,0 +1,22 @@
+= display_left_sidebar
+.content-box.clearfix
+  .page-header
+    %h3
+      .pull-right
+        = link_to :back, class: 'btn btn-inverse' do
+          %i.icon-arrow-left
+          Back
+      = @message.display_topic
+  .well.well-black
+    .pull-right.btn-group
+      = link_to reply_message_path(@message), class: 'btn btn-link btn-small' do
+        %i.icon-reply
+      = link_to '#', class: 'btn btn-link btn-small' do
+        %i.icon-trash
+    = @message.display_body
+    -# = simple_form_for @quick_reply, url: [:create_reply, :messages], as: 'message', html: { class: 'no-whitespace' } do |f|
+    -#   = f.hidden_field :reply_to, value: @message_object.id
+    -#   = f.hidden_field :topic, input_html: { class: 'input-block-level' }, label: 'Title'
+    -#   = f.input :body, as: :text, input_html: { class: 'input-block-level', rows: 3, placeholder: 'Quick reply...' }, label: false
+    -#   .actions
+    -#     = submit_button('Reply')

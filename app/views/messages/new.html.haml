@@ -1,0 +1,24 @@
+= display_left_sidebar
+.content-box
+  .page-header
+    %h3 New message
+  = simple_form_for @message, url: :messages, as: 'message', html: { class: 'no-whitespace' } do |f|
+    = f.input :recipient, input_html: { autocomplete: 'off', data: { typeahead_url: ajax_get_users_users_path(format: :json) } }, autofocus: true
+    = f.input :topic, input_html: { class: 'input-block-level' }, label: 'Title'
+    = f.input :body, as: :bootsy, input_html: { class: 'input-block-level', rows: 10 }, label: false
+    .actions
+      .pull-right
+        = cancel_button(url_for(action: :index))
+      = submit_button('Send')
+      
+  
+:coffee
+  $ ->
+    $('[data-typeahead-url]').each ->
+      $this = $(this)
+      $(this).typeahead(
+        source: (query, process) ->
+          $.get($this.data('typeahead-url'), { query: query }, (data) ->
+            process data
+          , 'json')
+      )

@@ -1,0 +1,22 @@
+@import 'bootstrap/mixins'
+@import 'variables'
+
+.well-black
+  background: $inputBackground
+  border: 1px solid $inputBorder
+  .btn-link
+    color: #fff
+    &:hover, &:focus
+      background: none
+      color: #fff
+      text-shadow: 0 0 3px $linkColor, 0 0 10px $linkColor
+      text-decoration: none
+  
+a.mark-as-unread
+  @include opacity(0)
+  @include transition(opacity .2s linear)
+  &:hover
+    @include opacity(50)
+    text-decoration: none
+a.mark-as-read:hover
+  text-decoration: none

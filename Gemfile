@@ -5,13 +5,17 @@ gem 'rails'
 gem 'haml-rails'
 gem 'simple_form'
 
+gem 'acts-as-messageable'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'thin'
 
 gem 'draper'
+gem 'virtus'
+
+gem 'jbuilder'
 
 gem 'friendly_id'
 gem 'truncate_html'
@@ -37,12 +41,15 @@ group :development do
   gem 'debugger'
   gem 'capistrano'
   gem 'rvm-capistrano'
+  
+  gem 'thin'
 end
 
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'jquery-rails'
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
@@ -52,8 +59,6 @@ group :assets do
 
   gem 'epi_js'
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

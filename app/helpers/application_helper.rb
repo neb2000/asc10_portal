@@ -38,4 +38,14 @@ module ApplicationHelper
     @banner_image.try(:display_large_image) || 'banner_green.png'
   end
   
+  def unread_message_count
+    @unread_message_count ||= current_user.received_messages.unreaded.size
+  end
+  
+  def unread_message_badge
+    if unread_message_count > 0
+      content_tag(:span, unread_message_count, class: 'label label-important')
+    end
+  end
+  
 end

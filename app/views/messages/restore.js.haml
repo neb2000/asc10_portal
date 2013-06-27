@@ -1,0 +1,8 @@
+:plain
+  $('#acts_as_messageable_message_#{@message_object.id}').fadeOut(200, function(){
+    $(this).remove()
+    if($('#message-table tbody tr').size() === 0) {
+      $('#message-table').closest('.well').replaceWith($('<p>').html('No messages'))
+    }
+  });
+  $('[data-count="unread_messages"]').html('#{j unread_message_badge}')

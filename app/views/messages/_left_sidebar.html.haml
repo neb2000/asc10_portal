@@ -1,0 +1,14 @@
+%ul.nav.nav-pills.nav-stacked
+  %li{ class: (:active if params[:action] == 'index') }
+    = link_to :messages do
+      .pull-right{data: { count: 'unread_messages' }}= unread_message_badge
+      %i.icon-inbox
+      Inbox
+  %li{ class: (:active if params[:action] == 'sent') }
+    = link_to [:sent, :messages] do
+      %i.icon-arrow-right
+      Sent messages
+  %li
+    = link_to [:deleted, :messages] do
+      %i.icon-trash
+      Deleted messages

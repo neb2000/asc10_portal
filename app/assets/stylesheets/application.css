@@ -15,4 +15,7 @@
  *= require utilities
  *= require font
  *= require bootsy
+ *= require modal
+ *= require form
+ *= require misc
 */
