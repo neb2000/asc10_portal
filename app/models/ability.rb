@@ -7,7 +7,7 @@ class Ability
       self.send permission if self.respond_to?(permission)
     end
     
-    can :read, ActsAsMessageable::Message, received_messageable_id: @user.id, received_messageable_type: 'User'
+    can [:read, :mark_read_unread], ActsAsMessageable::Message, received_messageable_id: @user.id, received_messageable_type: 'User'
     can :manage, ActsAsMessageable::Message, sent_messageable_id: @user.id, sent_messageable_type: 'User'
   end
   
