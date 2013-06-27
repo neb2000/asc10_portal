@@ -4,12 +4,14 @@
 .breadcrumb
   background: $inputBackground
   border: 1px solid $inputBorder
+  @include box-shadow(0 5px 10px rgba(#000,.1))
   > li
     text-shadow: none
 
 .well-black
   background: $inputBackground
   border: 1px solid $inputBorder
+  @include box-shadow(0 5px 10px rgba(#000,.1))
 .well-black .btn-link, .btn-link.btn-link-white
   color: #fff
   &:hover, &:focus
