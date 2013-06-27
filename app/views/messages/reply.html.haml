@@ -7,6 +7,5 @@
     = f.input :topic, input_html: { class: 'input-block-level' }, label: 'Title', autofocus: true
     = f.input :body, as: :bootsy, input_html: { class: 'input-block-level', rows: 10 }, label: false
     .actions
-      .pull-right
-        = cancel_button(url_for(action: :index))
       = submit_button('Reply')
+      = cancel_button(url_for(action: :index))

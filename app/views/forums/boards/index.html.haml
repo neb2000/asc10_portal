@@ -1,0 +1,4 @@
+.content-box.forum-box
+  %ul.breadcrumb
+    %li.active #{link_to_unless_current 'Forums', [:forums, :root]}
+  = render @categories

@@ -1,0 +1,2 @@
+$('.modal').html('#{j render template: 'admin/forums/categories/edit' }');
+setTimeout(function() { $('.modal form .control-group.error input').first().focus(); }, 0); // Use setTimeout to fix the issue in firefox

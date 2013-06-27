@@ -1,0 +1,7 @@
+:plain
+  $('#forums_category_#{@category.id}').fadeOut(200, function(){
+    $(this).remove();
+    if ($('#category-list .forums_category').size() === 0) {
+      $('#category-list').prepend($('<p>').addClass('no-record').html('No records to display'));
+    }
+  })

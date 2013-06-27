@@ -1,0 +1,6 @@
+= simple_form_for @post, url: (@post.new_record? ? forums_topic_posts_path(@topic) : forums_topic_post_path(@topic, @post)), html: { class: 'no-whitespace', autocomplete: 'off' } do |f|
+  = f.hidden_field :reply_to_id
+  = f.input :text, input_html: { class: 'input-block-level', rows: 10, name: 'forums_post[text]', value: @post.text }, as: :bootsy, label: false, autofocus: true
+  .actions
+    = submit_button('Post')
+    = cancel_button(forums_board_topic_path(@topic.board, @topic))

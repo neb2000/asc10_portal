@@ -1,6 +1,8 @@
 class NewsEntriesController < ApplicationController
   respond_to :html
   
+  before_filter { @current_nav_identifier = :home }
+  
   def index
     @news_entries = NewsEntry.ordered.decorate
     respond_with(@news_entries)

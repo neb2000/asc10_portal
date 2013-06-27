@@ -14,7 +14,25 @@ Asc10Portal::Application.routes.draw do
       put :set_active, on: :member
     end
     
+    namespace :forums do
+      resources :categories
+      resources :boards
+    end
+    
     root to: 'news_entries#index'
+  end
+  
+  namespace :forums do
+    resources :categories, only: [:index, :show]
+    
+    resources :boards, only: [:index, :show] do
+      resources :topics
+    end
+    
+    resources :topics, only: [:new, :create, :index, :show, :destroy] do
+      resources :posts
+    end
+    root to: 'boards#index'
   end
   
   resources :news_entries, only: [:index, :show], path: '/news'

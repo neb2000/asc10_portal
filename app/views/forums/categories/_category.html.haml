@@ -1,0 +1,13 @@
+- if can?(:read, category)
+  .well.well-black.well-small[category.source]
+    .page-header
+      %h3= link_to category.display_name, category
+    .row-fluid
+      %table.table.no-whitespace
+        %thead
+          %tr
+            %th.span9 Forum
+            %th.span1.center Topics
+            %th.span1.center Posts
+            %th.span1.center Views
+        %tbody= render category.boards

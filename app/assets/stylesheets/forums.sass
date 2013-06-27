@@ -1,0 +1,40 @@
+@import 'bootstrap/mixins'
+@import 'variables'
+.forum-box
+  > .well-black
+    margin: 0
+    &.forums_category
+      margin-top: 20px
+  .breadcrumb
+    margin: 0
+  .breadcrumb + .page-header
+    margin-top: 20px !important
+  > .pagination
+    float: right
+    margin: 20px 0
+    line-height: 0
+    border: none
+    ul
+      @include box-shadow(none)
+      li
+        border: none
+        a
+          border: none
+          background: none
+  > .btn-toolbar
+    margin: 20px 0
+  .forums_post
+    .author
+      margin-bottom: 10px
+    .gravatar
+      img
+        @include border-radius(4px)
+        overflow: hidden
+    .post-container
+      //min-height: 150px
+      .post-content
+        padding: 0 20px 20px 0
+    & + .forums_post
+      margin-top: 20px
+      padding-top: 20px
+      border-top: 1px solid #000

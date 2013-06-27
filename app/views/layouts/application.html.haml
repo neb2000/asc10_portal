@@ -45,11 +45,11 @@
             - else
               %li= link_to 'Login', new_user_session_path
           %ul.nav.nav-pills
-            %li.active= link_to 'Home', :root
-            %li= link_to 'Forums', '#'
+            %li{ class: ('active' if @current_nav_identifier == :home) }= link_to 'Home', :root
+            %li{ class: ('active' if @current_nav_identifier == :forums) }= link_to 'Forums', [:forums, :root]
             %li= link_to 'Apply', '#'
             - all_pages.each do |page|
-              %li= link_to page.display_title, page
+              %li{ class: ('active' if @current_nav_identifier == page.slug) }= link_to page.display_title, page
       .row
         #content.span12
           .row

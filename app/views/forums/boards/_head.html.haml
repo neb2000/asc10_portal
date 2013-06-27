@@ -1,0 +1,11 @@
+%ul.breadcrumb
+  %li #{link_to_unless_current 'Forums', [:forums, :root]}<span class="divider">&raquo;</span>
+  %li #{link_to board.display_category, board.category}<span class="divider">&raquo;</span>
+  %li.active
+    = link_to_unless_current board.display_name, board
+  -# - if @topic
+  -#   .btn-group
+  -#     = link_to t('forem.topic.links.back_to_topics'), forem.forum_path(forum), class: 'btn btn-inverse'
+  -# - if can? :moderate, @forum
+  -#   .btn-group
+  -#     = link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum), class: 'btn btn-inverse'

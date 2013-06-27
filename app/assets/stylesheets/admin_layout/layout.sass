@@ -82,11 +82,43 @@ html
       bottom: 0
       width: 240px
       //z-index: 1031
-      li
+      > li
         border-bottom: 1px solid black
         position: relative
+        background: $navbarInverseBackground
+        &.with-submenu
+          > ul.nav
+            margin-left: 6px
+            > li
+              > a
+                border-top: 1px solid #000
+                border-bottom: 1px solid $navbarInverseBorder
+                @include transition(all 0.2s linear)
+                @include border-radius(0)
+                font-family: 'Lato'
+                font-weight: 400
+                padding-left: 15px
+                color: #999
+                margin: 0
+                font-size: 14px
+                line-height: 16px
+                background: lighten($navbarInverseBackground, 2%)
+                i
+                  margin-right: 17px
+                &:hover
+                  background: lighten($navbarInverseBackground, 2%)
+                  color: #fff
+                  text-shadow: 0 0 10px $linkColor
+              &:last-child > a
+                border-bottom: none
+              &.active
+                > a
+                  background: lighten($navbarInverseBackground, 2%)
+                  color: #fff
+                  text-shadow: 0 0 10px $linkColor
+                
         &.active
-          a
+          > a
             background: $navbarInverseBackground
             color: #fff
             text-shadow: 0 0 10px $linkColor
@@ -119,7 +151,7 @@ html
           right: 15%
           @include gradient-horizontal-three-colors(rgba(0,0,0,0.5), $navbarInverseBorder, 50%, rgba(0,0,0,0.5))
           z-index: 10
-        a
+        > a
           @include transition(all 0.2s linear)
           @include border-radius(0)
           font-family: 'Lato'

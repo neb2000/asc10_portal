@@ -1,0 +1,27 @@
+.content-box.forum-box
+  = render 'head', board: @board
+  = will_paginate @topics
+  .btn-toolbar
+    - if can? :create_topic, @board
+      .btn-group
+        = link_to [:new, @board, :topic], class: 'btn btn-inverse' do
+          %i.icon-plus
+          New topic
+  .well.well-small.well-black
+    .row-fluid
+      %table.table.no-whitespace
+        %thead
+          %tr
+            %th.mini
+            %th Topics
+            %th.span2.center Author
+            %th.span1.center Posts
+            %th.span1.center Views
+            %th.span3.center Last post
+        %tbody
+          - if @topics.empty?
+            %tr
+              %td.muted{ colspan: 6 } No topics at the moment.
+          - else
+            = render @topics
+  = will_paginate @topics

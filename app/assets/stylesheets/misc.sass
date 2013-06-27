@@ -1,6 +1,12 @@
 @import 'bootstrap/mixins'
 @import 'variables'
 
+.breadcrumb
+  background: $inputBackground
+  border: 1px solid $inputBorder
+  > li
+    text-shadow: none
+
 .well-black
   background: $inputBackground
   border: 1px solid $inputBorder
@@ -20,3 +26,8 @@ a.mark-as-unread
     text-decoration: none
 a.mark-as-read:hover
   text-decoration: none
+  
+table.table
+  tr.forums_board
+    td
+      vertical-align: middle

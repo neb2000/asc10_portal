@@ -1,0 +1,6 @@
+%ul.breadcrumb
+  %li #{link_to_unless_current 'Forums', [:forums, :root]}<span class="divider">&raquo;</span>
+  %li #{link_to board.display_category, board.category}<span class="divider">&raquo;</span>
+  %li #{link_to_unless_current board.display_name, board}<span class="divider">&raquo;</span>
+  %li.active
+    = topic.display_subject

@@ -43,6 +43,8 @@ group :development do
   gem 'rvm-capistrano'
   
   gem 'thin'
+  
+  gem 'annotate'
 end
 
 

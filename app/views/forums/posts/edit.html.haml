@@ -1,0 +1,5 @@
+.content-box.forum-box
+  = render 'forums/topics/head', board: @topic.board, topic: @topic
+  .page-header
+    %h3 Edit post
+  = render 'form'

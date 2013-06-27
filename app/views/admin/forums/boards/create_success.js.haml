@@ -1,0 +1,3 @@
+$('#board-list .no-record').remove();
+$('#board-list').prepend('#{ j render partial: 'board', object: @board, as: :board }');
+$('.modal').modal('hide');

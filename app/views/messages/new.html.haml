@@ -7,9 +7,8 @@
     = f.input :topic, input_html: { class: 'input-block-level' }, label: 'Title'
     = f.input :body, as: :bootsy, input_html: { class: 'input-block-level', rows: 10 }, label: false
     .actions
-      .pull-right
-        = cancel_button(url_for(action: :index))
       = submit_button('Send')
+      = cancel_button(url_for(action: :index))
       
   
 :coffee

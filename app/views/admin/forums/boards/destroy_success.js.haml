@@ -1,0 +1,7 @@
+:plain
+  $('#forums_board_#{@board.id}').fadeOut(200, function(){
+    $(this).remove();
+    if ($('#board-list .forums_board').size() === 0) {
+      $('#board-list').prepend($('<p>').addClass('no-record').html('No records to display'));
+    }
+  })

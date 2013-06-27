@@ -1,0 +1,5 @@
+.content-box.forum-box
+  %ul.breadcrumb
+    %li #{link_to_unless_current 'Forums', [:forums, :root]}<span class="divider">&raquo;</span>
+    %li.active #{link_to_unless_current @category.display_name, @category}
+  = render @category

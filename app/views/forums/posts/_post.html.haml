@@ -1,0 +1,23 @@
+.row-fluid[post.source]
+  .span2.user-info
+    .center
+      %h5.author= post.display_user
+      .gravatar= image_tag post.display_user_gravatar(s: 80)
+    
+  .span10.post-container
+    .post-content
+      .clearfix
+        .btn-group.pull-right
+          - if can? :reply, post
+            = link_to new_forums_topic_post_path(post.topic, reply_to_id: post.id), class: 'btn btn-link' do
+              %i.icon-reply
+            = link_to new_forums_topic_post_path(post.topic, reply_to_id: post.id, quote: true), class: 'btn btn-link' do
+              %i.icon-quote-left
+          - if can? :edit, post
+            = link_to edit_forums_topic_post_path(post.topic, post), class: 'btn btn-link' do
+              %i.icon-pencil
+          - if can? :destroy, post
+            = link_to forums_topic_post_path(post.topic, post), method: :delete, confirm: 'Are you sure you want to delete this post?', class: 'btn btn-link' do
+              %i.icon-trash
+        %small.muted= l post.created_at, format: :full
+      = post.display_text

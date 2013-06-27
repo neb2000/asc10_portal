@@ -1,0 +1,22 @@
+.content-box.forum-box
+  = render 'head', board: @board, topic: @topic
+  = will_paginate(@posts)
+  - tools = capture do
+    - if can? :reply, @topic
+      .btn-group
+        = link_to new_forums_topic_post_path(@topic), class: 'btn btn-inverse' do
+          %i.icon-reply
+          Reply
+    - if can? :delete, @topic
+      .btn-group
+        = link_to @topic, method: :delete, confirm: 'Are you sure you want to delete this topic?', class: 'btn btn-inverse' do
+          %i.icon-trash
+          Delete
+  
+  .btn-toolbar= tools
+  .well.well-black
+    .page-header
+      %h3= @topic.display_subject
+    = render @posts
+  = will_paginate(@posts)
+  .btn-toolbar= tools

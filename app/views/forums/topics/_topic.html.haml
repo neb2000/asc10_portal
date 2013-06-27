@@ -1,0 +1,12 @@
+%tr[topic.source]
+  %td
+  %td
+    = link_to topic.display_subject, forums_board_topic_path(topic.board, topic)
+  %td.center
+    = topic.display_user
+  %td.center
+    = topic.posts_count
+  %td.center
+    = topic.views_count
+  %td.center
+    = topic.display_last_post_link

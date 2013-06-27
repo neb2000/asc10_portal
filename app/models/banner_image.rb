@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: banner_images
+#
+#  id         :integer          not null, primary key
+#  file       :string(255)
+#  active     :boolean
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class BannerImage < ActiveRecord::Base
   attr_accessible :active, :file
   

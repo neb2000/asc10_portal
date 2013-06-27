@@ -1,0 +1,7 @@
+.content-box.forum-box
+  = render 'forums/topics/head', board: @topic.board, topic: @topic
+  .page-header
+    %h3 Reply to #{@topic.display_subject}
+  - if @reply_to && !params[:quote]
+    .well.well-black= render @reply_to.decorate
+  = render 'form'

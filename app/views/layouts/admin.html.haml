@@ -50,6 +50,20 @@
             = link_to [:admin, :pages] do
               %i.icon-copy
               Pages
+        - if can? :manage, :forums
+          %li.with-submenu{ class: ('active' if @current_nav_identifier == :forums )}
+            = link_to '#forums-options', data: { toggle: :collapse } do
+              %i.icon-comments
+              Forums
+            %ul.no-whitespace.nav.nav-pills.nav-stacked.collapse#forums-options
+              %li
+                = link_to [:admin, :forums, :categories] do
+                  %i.icon-list
+                  Categories
+              %li
+                = link_to [:admin, :forums, :boards] do
+                  %i.icon-th
+                  Boards
         - if can? :manage, User
           %li{ class: ('active' if @current_nav_identifier == :users )}
             = link_to [:admin, :users] do

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: permissions
+#
+#  id         :integer          not null, primary key
+#  identifier :string(255)
+#  name       :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Permission < ActiveRecord::Base
   attr_accessible :identifier, :name
   
