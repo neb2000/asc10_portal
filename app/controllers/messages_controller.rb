@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
   end
   
   def new
-    @message = Messages::Compose::Form.new
+    @message = Messages::Compose::Form.new(recipient: params[:recipient])
     respond_with(@message)
   end
   
