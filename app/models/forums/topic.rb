@@ -20,6 +20,7 @@ class Forums::Topic < ActiveRecord::Base
   include Forums::Concerns::Viewable
   
   attr_accessible :board_id, :board, :user, :user_id, :subject, :last_post_at
+  attr_accessible :locked, :pinned, :hidden, as: :admin
   
   extend FriendlyId
   friendly_id :subject, use: :slugged

@@ -24,7 +24,7 @@ class Forums::PostDecorator < Draper::Decorator
   end
   
   def link_to_topic
-    h.forums_board_topic_path(topic.board, topic)
+    h.forums_board_topic_path(topic.board, topic, anchor: "forums_post_#{source.id}", page: topic.last_page)
   end
   
   def self.collection_decorator_class

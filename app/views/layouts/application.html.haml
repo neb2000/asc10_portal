@@ -72,4 +72,5 @@
               &copy; #{Date.today.year}
 :coffee
   $ -> 
-    $('#main-content').css('min-height', $('#content').height())
+    if $('.sidebar').size() > 0
+      $('#main-content').css('min-height', $('#content').height())

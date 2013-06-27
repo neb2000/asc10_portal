@@ -10,10 +10,11 @@ class Forums::CategoryDecorator < Draper::Decorator
     source.description
   end
   
-  def display_public
-    source.public? ? 'Yes' : 'No'
+  def display_availability
+    return 'Public' if source.public?
+    source.user_groups.map(&:name).join(', ')
   end
-
+  
   def self.collection_decorator_class
     PaginatingDecorator
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627121924) do
+ActiveRecord::Schema.define(:version => 20130627195518) do
 
   create_table "banner_images", :force => true do |t|
     t.string   "file"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20130627121924) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  create_table "categories_user_groups", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "user_group_id"
+  end
+
+  add_index "categories_user_groups", ["category_id"], :name => "index_categories_user_groups_on_category_id"
+  add_index "categories_user_groups", ["user_group_id"], :name => "index_categories_user_groups_on_user_group_id"
 
   create_table "forem_categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -134,7 +142,7 @@ ActiveRecord::Schema.define(:version => 20130627121924) do
     t.string   "slug"
     t.text     "description"
     t.integer  "category_id"
-    t.integer  "view_count",  :default => 0
+    t.integer  "views_count", :default => 0
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
@@ -267,6 +275,13 @@ ActiveRecord::Schema.define(:version => 20130627121924) do
 
   add_index "shoutbox_messages", ["user_id"], :name => "index_shoutbox_messages_on_user_id"
 
+  create_table "user_groups", :force => true do |t|
+    t.string   "identifier"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",               :null => false
     t.string   "name"
@@ -287,11 +302,13 @@ ActiveRecord::Schema.define(:version => 20130627121924) do
     t.boolean  "forem_admin",            :default => false
     t.string   "forem_state",            :default => "pending_review"
     t.boolean  "forem_auto_subscribe",   :default => false
+    t.integer  "user_group_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["user_group_id"], :name => "index_users_on_user_group_id"
 
 end

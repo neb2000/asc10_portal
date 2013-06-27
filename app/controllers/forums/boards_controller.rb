@@ -4,12 +4,12 @@ module Forums
     authorize_resource
     
     def index
-      @categories = Category.accessible_by(current_ability).includes(boards: :posts).decorate
+      @categories = Category.accessible_by(current_ability).includes(boards: {posts: [:user, :topic]}).decorate
     end
     
     def show
       @board.register_view_by(current_user)
-      @topics = @board.topics.accessible_by(current_ability).includes(:posts, :user, :board).by_pinned_or_most_recent_post.page(params[:page]).decorate
+      @topics = @board.topics.accessible_by(current_ability).includes(:views, :user, :board, posts: :user).by_pinned_or_most_recent_post.page(params[:page]).decorate
       @board = @board.decorate
     end
     

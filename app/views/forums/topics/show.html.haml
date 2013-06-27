@@ -9,9 +9,20 @@
           Reply
     - if can? :delete, @topic
       .btn-group
-        = link_to @topic, method: :delete, confirm: 'Are you sure you want to delete this topic?', class: 'btn btn-inverse' do
+        = link_to forums_board_topic_path(@board, @topic), method: :delete, confirm: 'Are you sure you want to delete this topic?', class: 'btn btn-inverse' do
           %i.icon-trash
           Delete
+    - if can? :toggle_lock, @topic
+      .btn-group
+        = link_to [:toggle_lock, @topic], method: :put, class: 'btn btn-link btn-link-white' do
+          %i.icon-lock
+          Toggle locked
+    - if can? :toggle_pin, @topic
+      .btn-group
+        = link_to [:toggle_pin, @topic], method: :put, class: 'btn btn-link btn-link-white' do
+          %i.icon-pushpin
+          Toggle pinned
+    
   
   .btn-toolbar= tools
   .well.well-black

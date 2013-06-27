@@ -7,7 +7,7 @@ module Admin
       authorize_resource class: ::Forums::Category
 
       def index
-        @categories = ::Forums::Category.scoped.decorate
+        @categories = ::Forums::Category.includes(:user_groups).decorate
         respond_with(@categories)
       end
       

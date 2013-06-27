@@ -7,6 +7,7 @@
     = f.input :name, autofocus: true
     = f.input :description, input_html: { class: 'input-block-level', rows: 3 }
     = f.input :public, as: :boolean, label: false, inline_label: 'Available to public'
+    = f.association :user_groups, label: 'Available for'
   .modal-footer
     = dismiss_modal_button
     = submit_button

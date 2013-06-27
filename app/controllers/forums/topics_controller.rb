@@ -22,6 +22,25 @@ module Forums
       respond_with(@topic)
     end
     
+    def destroy
+      StandardDestroyer.new(responder).destroy(@topic)
+    end
+    
+    def toggle_hide
+      responder.redirect_path = url_for(@topic.board)
+      StandardUpdater.new(responder).update(@topic, {hidden: !@topic.hidden}, :admin)
+    end
+    
+    def toggle_lock
+      responder.redirect_path = url_for(@topic.board)
+      StandardUpdater.new(responder).update(@topic, {locked: !@topic.locked}, :admin)
+    end
+    
+    def toggle_pin
+      responder.redirect_path = url_for(@topic.board)
+      StandardUpdater.new(responder).update(@topic, {pinned: !@topic.pinned}, :admin)
+    end
+    
     private
       def responder
         @responder ||= StandardResponder.new(self).tap { |responder| responder.redirect_path = url_for(@board) }

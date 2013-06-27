@@ -4,6 +4,7 @@
       &times;
     %h3 Edit User
   .modal-body
+    = f.association :user_group
     = f.association :permissions, as: :check_boxes
   .modal-footer
     = dismiss_modal_button

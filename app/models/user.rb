@@ -33,10 +33,17 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
-  attr_accessible :permission_ids, as: :admin
+  attr_accessible :permission_ids, :user_group_id, as: :admin
   # attr_accessible :title, :body
   
+  belongs_to :user_group
   has_and_belongs_to_many :permissions
+  
+  has_many :topics, class_name: 'Forums::Topic'
+  has_many :posts, class_name: 'Forums::Post'
+  
+  delegate :name, to: :user_group, allow_nil: true, prefix: true
+  delegate :readable_category_ids, to: :user_group, allow_nil: true
   
   acts_as_messageable
   

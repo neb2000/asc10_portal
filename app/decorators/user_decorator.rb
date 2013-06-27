@@ -20,6 +20,10 @@ class UserDecorator < Draper::Decorator
     h.content_tag :ul, source.permissions.map{ |permission| h.content_tag(:li, permission.name)}.join.html_safe, class: 'unstyled'
   end
   
+  def display_user_group
+    source.user_group_name
+  end
+  
   def display_last_signed_in
     return 'Never' unless source.last_sign_in_at
     "#{h.l source.last_sign_in_at, format: :full} - #{source.last_sign_in_ip}"

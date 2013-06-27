@@ -7,7 +7,7 @@ module Admin
       authorize_resource class: ::Forums::Board
 
       def index
-        @boards = ::Forums::Board.scoped.decorate
+        @boards = ::Forums::Board.includes(:category).decorate
         respond_with(@boards)
       end
       

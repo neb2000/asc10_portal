@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-permissions = %w(manage_news_entries manage_pages manage_recruitments manage_messages manage_users manage_settings manage_forums_settings).map do |permission|
+%w(manage_news_entries manage_pages manage_recruitments manage_messages manage_users manage_settings manage_forums_settings).each do |permission|
   Permission.where(identifier: permission).first_or_create(name: permission.humanize)
+end
+
+%w(officer raider trial).each do |user_group|
+  UserGroup.where(identifier: user_group).first_or_create(name: user_group.humanize)
 end

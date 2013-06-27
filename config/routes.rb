@@ -16,7 +16,7 @@ Asc10Portal::Application.routes.draw do
     
     namespace :forums do
       resources :categories
-      resources :boards
+      resources :boards      
     end
     
     root to: 'news_entries#index'
@@ -29,7 +29,12 @@ Asc10Portal::Application.routes.draw do
       resources :topics
     end
     
-    resources :topics, only: [:new, :create, :index, :show, :destroy] do
+    resources :topics, only: [] do
+      member do
+        put :toggle_hide
+        put :toggle_lock
+        put :toggle_pin
+      end
       resources :posts
     end
     root to: 'boards#index'

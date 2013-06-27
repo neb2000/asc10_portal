@@ -1,10 +1,13 @@
 @import 'bootstrap/mixins'
 @import 'variables'
 .forum-box
+  margin-bottom: 0px !important
   > .well-black
     margin: 0
     &.forums_category
       margin-top: 20px
+  .well-black + #new_forums_post
+    margin-top: 10px !important
   .breadcrumb
     margin: 0
   .breadcrumb + .page-header

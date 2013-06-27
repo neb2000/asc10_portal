@@ -7,8 +7,20 @@ class Ability
       self.send permission if self.respond_to?(permission)
     end
     
+    message_permissions
+    forum_permissions
+  end
+  
+  def message_permissions
     can [:read, :mark_read_unread], ActsAsMessageable::Message, received_messageable_id: @user.id, received_messageable_type: 'User'
     can :manage, ActsAsMessageable::Message, sent_messageable_id: @user.id, sent_messageable_type: 'User'
+  end
+  
+  def forum_permissions
+    can :read, Forums::Category, id: @user.readable_category_ids
+    can [:read, :create_topic], Forums::Board, category: { id: @user.readable_category_ids }
+    can [:read, :reply], Forums::Topic, board: { category: { id: @user.readable_category_ids } }
+    can [:read, :reply], Forums::Post,  topic: { board: { category: {id: @user.readable_category_ids } } }
     
     can :read, Forums::Category, public: true
     can [:read, :create_topic], Forums::Board, category: { public: true }
@@ -16,6 +28,8 @@ class Ability
     can [:read, :reply], Forums::Post,  topic: { board: { category: { public: true } } }
     
     can [:update, :destroy], [Forums::Post, Forums::Topic], user_id: @user.id
+    cannot [:update, :destroy, :reply], Forums::Topic, locked: true
+    cannot [:update, :destroy, :reply], Forums::Post, topic: { locked: true }
   end
   
   def manage_forums_settings
@@ -39,7 +53,7 @@ class Ability
   
   def manage_users
     can :manage, User
-    cannot :edit, User, id: @user.id
+    # cannot :edit, User, id: @user.id
   end
   
   def manage_messages

@@ -5,7 +5,7 @@ class CreateForumsBoards < ActiveRecord::Migration
       t.string :slug
       t.text :description
       t.integer :category_id
-      t.integer :view_count, default: 0
+      t.integer :views_count, default: 0
 
       t.timestamps
     end

@@ -1,5 +1,6 @@
 %tr[topic.source]
   %td
+    = topic.display_icon_for(current_user)
   %td
     = link_to topic.display_subject, forums_board_topic_path(topic.board, topic)
   %td.center

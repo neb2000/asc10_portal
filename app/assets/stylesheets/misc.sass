@@ -10,14 +10,14 @@
 .well-black
   background: $inputBackground
   border: 1px solid $inputBorder
-  .btn-link
+.well-black .btn-link, .btn-link.btn-link-white
+  color: #fff
+  &:hover, &:focus
+    background: none
     color: #fff
-    &:hover, &:focus
-      background: none
-      color: #fff
-      text-shadow: 0 0 3px $linkColor, 0 0 10px $linkColor
-      text-decoration: none
-  
+    text-shadow: 0 0 3px $linkColor, 0 0 10px $linkColor
+    text-decoration: none
+
 a.mark-as-unread
   @include opacity(0)
   @include transition(opacity .2s linear)

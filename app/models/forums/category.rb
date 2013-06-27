@@ -12,11 +12,13 @@
 #
 
 class Forums::Category < ActiveRecord::Base
-  attr_accessible :description, :name, :public
+  attr_accessible :description, :name, :public, :user_group_ids
   
   extend FriendlyId
   friendly_id :name, use: :slugged
 
   has_many :boards
   validates :name, presence: true
+  
+  has_and_belongs_to_many :user_groups
 end
