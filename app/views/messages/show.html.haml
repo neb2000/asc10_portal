@@ -7,12 +7,24 @@
           %i.icon-arrow-left
           Back
       = @message.display_topic
-  .well.well-black
+  .well.well-black.well-small
     .pull-right.btn-group
       = link_to reply_message_path(@message), class: 'btn btn-link btn-small' do
-        %i.icon-reply
+        %i.icon-reply        
       = link_to '#', class: 'btn btn-link btn-small' do
         %i.icon-trash
+    %ul.unstyled.muted
+      %li
+        %small
+          %strong
+            From:
+          #{@message.display_sender}
+      %li
+        %small
+          %strong
+            To:
+          #{@message.display_recipient}
+
     = @message.display_body
     -# = simple_form_for @quick_reply, url: [:create_reply, :messages], as: 'message', html: { class: 'no-whitespace' } do |f|
     -#   = f.hidden_field :reply_to, value: @message_object.id
