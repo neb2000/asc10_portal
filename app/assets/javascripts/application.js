@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.remotipart
@@ -22,3 +23,4 @@
 //= require flash_message
 //= require bootstrap-lightbox
 //= require shoutbox
+//= require turbolinks

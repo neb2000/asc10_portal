@@ -49,5 +49,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'epi_js'
 gem 'bootstrap-wysihtml5-rails'
+gem 'jquery-turbolinks'
+gem 'turbolinks'
 
 gem 'unicorn'
