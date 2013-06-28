@@ -9,13 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require twitter_bootstrap
+ *= require flash_message
  *= require font-awesome
  *= require layout
  *= require responsive
  *= require utilities
  *= require font
  *= require bootsy
- *= require modal
  *= require form
  *= require misc
  *= require forums

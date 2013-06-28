@@ -12,6 +12,12 @@
         if $('.sidebar').size() > 0
           $('#main-content').css('min-height', $('#content').height())
   %body
+    .flash-messages
+      - unless flash.blank?
+        - flash.each do |name, msg|
+          .alert.fade{ class: "alert-#{ name == :notice ? 'success' : 'error' }" }
+            %a.close{ data: { dismiss: :alert } } &times;
+            = msg
     #wrapper.container
       .row
         #banner.span12= image_tag current_banner_image
