@@ -23,7 +23,8 @@ class Ability
     can [:read, :reply], Forums::Post,  topic: { board: { category: {id: @user.readable_category_ids } } }
     
     can :read, Forums::Category, public: true
-    can [:read, :create_topic], Forums::Board, category: { public: true }
+    can :read, Forums::Board, category: { public: true }
+    can :create_topic, Forums::Board, category: { public: true } unless @user.id.nil?
     can [:read, :reply], Forums::Topic, board: { category: { public: true } }
     can [:read, :reply], Forums::Post,  topic: { board: { category: { public: true } } }
     
