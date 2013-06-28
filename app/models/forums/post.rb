@@ -24,6 +24,6 @@ class Forums::Post < ActiveRecord::Base
 
   validates :text, presence: true  
   
-  # audited
+  has_paper_trail
   
 end

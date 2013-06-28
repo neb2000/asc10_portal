@@ -8,6 +8,7 @@ gem 'haml-rails'
 gem 'simple_form', github: 'plataformatec/simple_form'
 
 gem 'acts-as-messageable'
+gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
 # gem 'audited-activerecord'
 
 gem 'pg'

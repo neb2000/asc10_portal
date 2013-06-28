@@ -32,7 +32,7 @@ class Forums::Topic < ActiveRecord::Base
   validates :subject, :user, :board, :posts, presence: true
   
   def self.by_pinned_or_most_recent_post
-    order('forums_topics.pinned DESC').order('forums_topics.last_post_at DESC').order('forums_topics.id')
+    order('forums_topics.id').order('forums_topics.last_post_at DESC').order('forums_topics.pinned DESC')
   end
   
 end
