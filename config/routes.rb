@@ -1,8 +1,6 @@
 Asc10Portal::Application.routes.draw do
   devise_for :users
 
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-
   namespace :admin do
     resources :news_entries
     resources :pages

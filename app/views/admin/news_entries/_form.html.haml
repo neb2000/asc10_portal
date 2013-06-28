@@ -3,7 +3,7 @@
     .form-inputs
       = f.input :title, input_html: { class: 'input-block-level', placeholder: 'Title' }, autofocus: true
       = f.input :cover_image
-      = f.input :content, input_html: { class: 'input-block-level', rows: '12' }, as: :bootsy
+      = f.input :content, input_html: { class: 'input-block-level wysihtml5', rows: '12' }, as: :text, required: false
     .form-actions
       = cancel_button(url_for(action: :index))
       .pull-right

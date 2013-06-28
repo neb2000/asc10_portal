@@ -5,7 +5,7 @@
   = simple_form_for @message, url: [:create_reply, :messages], as: 'message', html: { class: 'no-whitespace' } do |f|
     = f.hidden_field :reply_to, value: @message_object.id
     = f.input :topic, input_html: { class: 'input-block-level' }, label: 'Title', autofocus: true
-    = f.input :body, as: :bootsy, input_html: { class: 'input-block-level', rows: 10 }, label: false
+    = f.input :body, as: :text, input_html: { class: 'input-block-level wysihtml5', rows: 10 }, label: false, required: false
     .actions
       = submit_button('Reply')
       = cancel_button(url_for(action: :index))

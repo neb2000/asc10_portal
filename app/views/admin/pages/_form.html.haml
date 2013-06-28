@@ -2,7 +2,7 @@
   = simple_form_for [:admin, @page] do |f|
     .form-inputs
       = f.input :title, input_html: { class: 'input-block-level', placeholder: 'Title' }, autofocus: true
-      = f.input :content, input_html: { class: 'input-block-level', rows: '12' }, as: :bootsy
+      = f.input :content, input_html: { class: 'input-block-level wysihtml5', rows: '12' }, as: :text, required: false
       .row-fluid
         .span4
           = f.input :display_shoutbox, as: :boolean, label: false, inline_label: 'Display shoutbox on the page'

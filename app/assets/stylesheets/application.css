@@ -15,7 +15,7 @@
  *= require responsive
  *= require utilities
  *= require font
- *= require bootsy
+ *= require bootstrap-wysihtml5
  *= require form
  *= require misc
  *= require forums

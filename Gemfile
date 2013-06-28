@@ -30,7 +30,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # 
 # gem 'ckeditor'
-gem 'bootsy-simple_form', github: 'volmer/bootsy-simple_form'
+# gem 'bootsy-simple_form', github: 'volmer/bootsy-simple_form'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'remotipart'
@@ -60,6 +60,8 @@ group :assets do
   gem 'font-awesome-rails'  # Bootstrap's icons rendered as a font
 
   gem 'epi_js'
+  
+  gem 'bootstrap-wysihtml5-rails'
 end
 
 # To use ActiveModel has_secure_password

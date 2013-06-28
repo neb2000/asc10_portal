@@ -4,7 +4,7 @@
     %h3 New topic
   = simple_form_for @topic, url: url_for(forums_board_topics_path(@board)), as: :topic, html: { class: 'no-whitespace', autocomplete: 'off' } do |f|
     = f.input :subject, input_html: { class: 'input-block-level'}, autofocus: true
-    = f.input :text, input_html: { class: 'input-block-level', rows: 10 }, as: :bootsy, label: false
+    = f.input :text, input_html: { class: 'input-block-level wysihtml5', rows: 10 }, as: :text, label: false, required: false
     .actions
       = submit_button('Post')
       = cancel_button(url_for(@board))
