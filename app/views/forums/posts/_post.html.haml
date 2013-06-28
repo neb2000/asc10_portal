@@ -3,7 +3,7 @@
     .center
       %h5.author
         = link_to post.display_user, new_message_path(recipient: post.display_user)
-      .gravatar= image_tag post.display_user_gravatar(s: 80)
+      .gravatar.hidden-phone= image_tag post.display_user_gravatar(s: 80)
     
   .span10.post-container
     .post-content

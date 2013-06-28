@@ -23,4 +23,7 @@ class Forums::Post < ActiveRecord::Base
                      dependent: :nullify
 
   validates :text, presence: true  
+  
+  audited
+  
 end
