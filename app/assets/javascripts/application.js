@@ -13,13 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-
 //= require jquery.remotipart
 //= require bootstrap-wysihtml5/wysihtml5
 //= require bootstrap-wysihtml5-custom
 //= require bootstrap-wysihtml5/locales
 //= require wysihtml5-init
-
 //= require ajax_modal
 //= require flash_message
 //= require bootstrap-lightbox
