@@ -23,7 +23,7 @@ class Forums::Board < ActiveRecord::Base
   belongs_to :category, class_name: 'Forums::Category'
   
   has_many :topics, dependent: :destroy
-  has_many :posts, through: :topics, dependent: :destroy, order: 'forums_posts.created_at'
+  has_many :posts, through: :topics, dependent: :destroy
   
   has_and_belongs_to_many :managers, join_table: 'boards_managers', association_foreign_key: :manager_id, class_name: 'User'
   

@@ -25,7 +25,8 @@ class Forums::BoardDecorator < Draper::Decorator
   
   def display_last_post_link
     return 'None' if posts.blank?
-    "#{h.link_to posts[-1].display_subject, posts[-1].link_to_topic} by #{posts[-1].display_user} #{posts[-1].display_created_at_in_word}".html_safe
+    post_list = posts.sort_by(&:created_at)
+    "#{h.link_to post_list[-1].display_subject, post_list[-1].link_to_topic} by #{post_list[-1].display_user} #{post_list[-1].display_created_at_in_word}".html_safe
   end
 
   def self.collection_decorator_class
