@@ -24,7 +24,7 @@ class Forums::TopicDecorator < Draper::Decorator
     "#{h.time_ago_in_words source.last_post_at} ago"
   end
   
-  def display_icon_for(user)
+  def display_icon_for(user = nil)
     return h.content_tag(:i, '', class: 'icon-pushpin') if source.pinned
     return h.content_tag(:i, '', class: 'icon-lock text-error') if source.locked
     return unless user

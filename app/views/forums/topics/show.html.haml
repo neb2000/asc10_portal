@@ -27,7 +27,9 @@
   .btn-toolbar= tools
   .well.well-black
     .page-header
-      %h3= @topic.display_subject
+      %h3
+        = @topic.display_icon_for
+        = @topic.display_subject
     = render @posts
   = will_paginate(@posts)
   .btn-toolbar= tools
