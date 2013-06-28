@@ -24,9 +24,14 @@ class Ability
     
     can :read, Forums::Category, public: true
     can :read, Forums::Board, category: { public: true }
-    can :create_topic, Forums::Board, category: { public: true } unless @user.id.nil?
-    can [:read, :reply], Forums::Topic, board: { category: { public: true } }
-    can [:read, :reply], Forums::Post,  topic: { board: { category: { public: true } } }
+    can :read, Forums::Topic, board: { category: { public: true } }
+    can :read, Forums::Post,  topic: { board: { category: { public: true } } }
+    
+    unless @user.id.nil?
+      can :create_topic, Forums::Board, category: { public: true } 
+      can :reply, Forums::Topic, board: { category: { public: true } }
+      can :reply, Forums::Post,  topic: { board: { category: { public: true } } }
+    end
     
     can :manage, Forums::Topic, board: { id: @user.managed_board_id_list }
     can :manage, Forums::Post,  topic: { board: { id: @user.managed_board_id_list } }
