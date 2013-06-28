@@ -1,0 +1,9 @@
+%tr[recruitment.source]
+  %td= recruitment.display_class_icon
+  %td.mini.nowrap= recruitment.display_name
+  %td= recruitment.display_spec
+  %td= recruitment.display_active
+  %td.td-actions
+    - if can? :edit, recruitment
+      = link_to [:edit, :admin, recruitment], class: 'btn btn-link ajax-modal' do
+        %i.icon-pencil

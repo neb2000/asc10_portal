@@ -5,6 +5,7 @@
   *= require bootstrap-lightbox
   *= require flash_message
   *= require utilities
+  *= require class_icon
   *= require admin_layout/layout
   *= require admin_layout/banner_images
   *= require admin_layout/ribbon

@@ -1,1 +1,14 @@
-%h3 Recruitment
+%h3
+  Recruitment:
+  %span.recruitment-status= recruitment_status
+.well.well-small.well-black.clearfix#recruitment-list
+  - if open_recruitments.empty?
+    %p.muted.no-whitespace Sorry but we are not recruiting at the moment.
+  - else
+    %ul.unstyled.no-whitespace
+      - open_recruitments.each do |recruitment|
+        %li{ class: recruitment.display_css_class }
+          .class-icon.pull-left
+          .spec= recruitment.display_spec
+    .actions#apply-now
+      = link_to 'Apply', '#', class: 'pull-right'

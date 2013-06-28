@@ -74,10 +74,10 @@
             = link_to [:admin, :settings] do
               %i.icon-cogs
               Settings
-  
-        %li
-          = link_to '#' do
-            %i.icon-bullhorn
-            Recruitment
+        - if can? :manage, Recruitment
+          %li
+            = link_to [:admin, :recruitments] do
+              %i.icon-bullhorn
+              Recruitment
       #main-content
         = yield

@@ -3,6 +3,8 @@ class Admin::UsersController < Admin::ApplicationController
   before_filter { @current_nav_identifier = :users }
   authorize_resource
   
+  respond_to :js, only: [:update]
+  
   def index
     @users = User.includes(:permissions).page(params[:page]).decorate
     respond_with(@users)

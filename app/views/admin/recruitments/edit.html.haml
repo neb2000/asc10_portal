@@ -1,0 +1,11 @@
+= simple_form_for [:admin, @recruitment], remote: true, html: { class: 'no-whitespace' } do |f|
+  .modal-header
+    = link_to '#', class: 'close', data: { dismiss: 'modal' } do
+      &times;
+    %h3 Amend recruitment
+  .modal-body
+    = f.input :spec, input_html: { class: 'input-block-level' }, autofocus: true
+    = f.input :active, as: :boolean, label: false, inline_label: 'Open recruitment?'
+  .modal-footer
+    = dismiss_modal_button
+    = submit_button

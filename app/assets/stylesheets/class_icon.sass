@@ -1,0 +1,69 @@
+@import 'bootstrap/mixins'
+@import 'variables'
+.recruitment-status
+  color: #fff
+#recruitment-list
+  li
+    .spec
+      margin-left: 30px
+    margin-bottom: 9px
+  #apply-now
+    border-top: 1px solid #000
+    padding-top: 5px
+
+.class-deathknight
+  color: #C41F3B
+.class-druid
+  color: #FF7D0A
+.class-hunter
+  color: #ABD473
+.class-mage
+  color: #69CCF0
+.class-monk
+  color: #00FF96
+.class-paladin
+  color: #F58CBA
+.class-priest
+  color: #FFFFFF
+.class-rogue
+  color: #FFF569
+.class-shaman
+  color: #0070DE
+.class-warlock
+  color: #9482C9
+.class-warrior
+  color: #C79C6E
+
+.class-icon
+  @include border-radius(4px)
+  @include ie7-inline-block()
+  display: inline-block
+  background: image-url('class_icons.png') no-repeat top left
+  width: 21px
+  height: 21px
+  line-height: 21px
+  border: 1px solid black
+  vertical-align: middle
+  margin-right: 5px
+  .class-deathknight > &
+    background-position: 0 0
+  .class-druid > &
+    background-position: -22px 0
+  .class-hunter > &
+    background-position: -44px 0
+  .class-mage > &
+    background-position: -66px 0
+  .class-monk > &
+    background-position: -88px 0
+  .class-paladin > &
+    background-position: -110px 0
+  .class-priest > &
+    background-position: -132px 0
+  .class-rogue > &
+    background-position: -154px 0
+  .class-shaman > &
+    background-position: -176px 0
+  .class-warlock > &
+    background-position: -198px 0
+  .class-warrior > &
+    background-position: -220px 0

@@ -52,6 +52,7 @@ class Ability
   end
   
   def manage_recruitments
+    can :manage, Recruitment
   end
   
   def manage_users

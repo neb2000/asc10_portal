@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627233719) do
+ActiveRecord::Schema.define(:version => 20130628011800) do
 
   create_table "banner_images", :force => true do |t|
     t.string   "file"
@@ -273,6 +273,15 @@ ActiveRecord::Schema.define(:version => 20130627233719) do
 
   add_index "permissions_users", ["permission_id"], :name => "index_permissions_users_on_permission_id"
   add_index "permissions_users", ["user_id"], :name => "index_permissions_users_on_user_id"
+
+  create_table "recruitments", :force => true do |t|
+    t.string   "identifier"
+    t.string   "name"
+    t.string   "spec"
+    t.boolean  "active",     :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "shoutbox_messages", :force => true do |t|
     t.integer  "user_id"

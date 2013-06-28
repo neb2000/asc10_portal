@@ -13,3 +13,7 @@ end
 %w(officer raider trial).each do |user_group|
   UserGroup.where(identifier: user_group).first_or_create(name: user_group.humanize)
 end
+
+%w(deathknight druid hunter mage monk paladin priest rogue shaman warlock warrior).each do |class_name|
+  Recruitment.where(identifier: class_name).first_or_create(name: class_name.humanize)
+end
