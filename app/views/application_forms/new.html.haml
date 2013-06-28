@@ -3,7 +3,7 @@
   = simple_form_for @application_form, url: url_for(action: :create), as: 'application_form', html: { class: 'no-whitespace '} do |f|
     %fieldset
       %legend Character information
-      = f.input :character_name
+      = f.input :character_name, autofocus: true
       = f.input :character_class, label: 'Class', collection: Recruitment.pluck(:name)
       = f.input :character_spec, label: 'Main spec'
       = f.input :server_name

@@ -1,0 +1,10 @@
+= simple_form_for [:admin, @system_setting], remote: true, html: { class: 'no-whitespace' } do |f|
+  .modal-header
+    = link_to '#', class: 'close', data: { dismiss: 'modal' } do
+      &times;
+    %h3 Amend system setting
+  .modal-body
+    = f.input :metadata_json, input_html: { class: 'input-block-level', rows: 10 }, as: :text, autofocus: true
+  .modal-footer
+    = dismiss_modal_button
+    = submit_button

@@ -1,0 +1,7 @@
+%tr[system_setting]
+  %td= system_setting.description
+  %td= system_setting.metadata_json
+  %td.td-actions
+    - if can? :edit, system_setting
+      = link_to [:edit, :admin, system_setting], class: 'btn btn-link ajax-modal' do
+        %i.icon-pencil

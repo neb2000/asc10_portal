@@ -10,3 +10,15 @@
     %h2 Banner image
   .row-fluid
     %ul.thumbnails.no-whitespace#banner-images{ data: { toggle: :lightbox } }= render @banner_images
+
+.well.content-box
+  .content-header
+    %h2 System settings
+  .alert.alert-danger
+    WARNING: Do not change the setting unless you know what you are doing!
+  %table.table
+    %thead
+      %tr
+        %th Description
+        %th Metadata
+    %tbody#system-settings= render @system_settings

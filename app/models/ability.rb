@@ -73,6 +73,7 @@ class Ability
   def manage_settings
     can :manage, :settings
     can :manage, BannerImage
+    can [:read, :update], SystemSetting
   end
   
 end

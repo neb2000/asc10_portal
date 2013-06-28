@@ -19,5 +19,5 @@ end
 end
 
 %w(application_template application_board).each do |identifier|
-  SystemSetting.where(identifier: identifier).first_or_create(description: identifier)
+  SystemSetting.where(identifier: identifier).first_or_create(description: identifier.humanize)
 end

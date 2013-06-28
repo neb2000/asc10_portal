@@ -12,6 +12,8 @@ Asc10Portal::Application.routes.draw do
     resources :recruitments, only: [:index, :edit, :update]
     
     resources :settings, only: [:index]
+    
+    resources :system_settings, only: [:edit, :update]
     resources :banner_images, only: [:new, :create, :destroy] do
       put :set_active, on: :member
     end
