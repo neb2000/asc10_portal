@@ -6,7 +6,7 @@ worker_processes  1#(rails_env == 'production' ? 2 : 1)
 working_directory rails_root
 
 listen '/tmp/unicorn.asc10.sock'
-preload_app true # MRI ruby doesn't seem to support CoW GC, so no point preloading the app to master.
+preload_app false # MRI ruby doesn't seem to support CoW GC, so no point preloading the app to master.
 timeout 30
 
 pid rails_root + '/tmp/pids/unicorn.pid'
