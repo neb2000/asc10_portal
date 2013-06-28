@@ -17,3 +17,7 @@ end
 %w(deathknight druid hunter mage monk paladin priest rogue shaman warlock warrior).each do |class_name|
   Recruitment.where(identifier: class_name).first_or_create(name: class_name.humanize)
 end
+
+%w(application_template application_board).each do |identifier|
+  SystemSetting.where(identifier: identifier).first_or_create(description: identifier)
+end

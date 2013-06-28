@@ -51,6 +51,8 @@ Asc10Portal::Application.routes.draw do
     get :ajax_get_users, on: :collection
   end
   
+  resources :application_forms, only: [:new, :create], path: '/apply', path_names: { new: '' }
+  
   resources :messages, except: [:edit, :update] do
     collection do
       get  :sent

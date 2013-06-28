@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130628011800) do
+ActiveRecord::Schema.define(:version => 20130628124022) do
 
   create_table "banner_images", :force => true do |t|
     t.string   "file"
@@ -291,6 +291,16 @@ ActiveRecord::Schema.define(:version => 20130628011800) do
   end
 
   add_index "shoutbox_messages", ["user_id"], :name => "index_shoutbox_messages_on_user_id"
+
+  create_table "system_settings", :force => true do |t|
+    t.string   "identifier",  :null => false
+    t.string   "description"
+    t.text     "metadata"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "system_settings", ["identifier"], :name => "index_system_settings_on_identifier", :unique => true
 
   create_table "user_groups", :force => true do |t|
     t.string   "identifier"

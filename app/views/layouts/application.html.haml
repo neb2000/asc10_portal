@@ -56,7 +56,7 @@
           %ul.nav.nav-pills
             %li{ class: ('active' if @current_nav_identifier == :home) }= link_to 'Home', :root
             %li{ class: ('active' if @current_nav_identifier == :forums) }= link_to 'Forums', [:forums, :root]
-            %li= link_to 'Apply', '#'
+            %li{ class: ('active' if @current_nav_identifier == :apply) }= link_to 'Apply', [:new, :application_form]
             - all_pages.each do |page|
               %li{ class: ('active' if @current_nav_identifier == page.slug) }= link_to page.display_title, page
       .row

@@ -9,6 +9,30 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 .bootsy_text_area
   background-color: #1a1a1a
   
+fieldset
+  margin: 0
+  legend
+    font-weight: 600
+    font-size: 18px
+    line-height: 20px
+    padding-bottom: 3px
+    color: $linkColor
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,.1)
+    border: none
+    position: relative
+    margin-bottom: 0px
+    &:after
+      content: ''
+      position: absolute
+      bottom: -1px
+      height: 1px
+      left: -30px
+      right: -30px
+      @include gradient-horizontal-three-colors(rgba($linkColor,0), rgba($linkColor,1), 50%, rgba($linkColor,0))
+      background-color: transparent
+fieldset + fieldset
+  legend
+    padding-top: 20px
 //.wysihtml5-toolbar
 //  > li > .btn, > li > .btn-group > .btn
 //    @extend .btn-inverse

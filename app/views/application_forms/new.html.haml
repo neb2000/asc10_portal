@@ -1,0 +1,19 @@
+= display_right_sidebar
+.content-box.no-whitespace
+  = simple_form_for @application_form, url: url_for(action: :create), as: 'application_form', html: { class: 'no-whitespace '} do |f|
+    %fieldset
+      %legend Character information
+      = f.input :character_name
+      = f.input :character_class, label: 'Class', collection: Recruitment.pluck(:name)
+      = f.input :character_spec, label: 'Main spec'
+      = f.input :server_name
+      
+    - @template.each_with_index do |section, section_index|
+      %fieldset
+        %legend= section['section_name']
+        - section['questions'].each_with_index do |question, question_index|
+          = f.input :"q_#{section_index}_#{question_index}", as: question['as'], label: question['label'], input_html: (question['input_html'] || {}).symbolize_keys
+    .actions
+      = submit_button('Apply')
+      = cancel_button(root_path)
+      
