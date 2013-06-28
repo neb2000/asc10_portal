@@ -6,7 +6,7 @@ class Admin::RecruitmentsController < Admin::ApplicationController
   respond_to :js, only: [:update]
   
   def index
-    @recruitments = Recruitment.scoped.decorate
+    @recruitments = Recruitment.all.decorate
     respond_with(@recruitments)
   end
   
