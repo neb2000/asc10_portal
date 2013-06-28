@@ -2,6 +2,7 @@ module Forums
   class TopicsController < ApplicationController
     before_filter :find_board, :find_topic
     authorize_resource except: [:new, :create]
+    before_filter :set_header
     
     respond_to :html
     
@@ -42,6 +43,10 @@ module Forums
     end
     
     private
+      def set_header
+        response.headers['X-XSS-Protection'] = "0"
+      end
+      
       def responder
         @responder ||= StandardResponder.new(self).tap { |responder| responder.redirect_path = url_for(@board) }
       end
