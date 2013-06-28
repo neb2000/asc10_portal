@@ -1,22 +1,24 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.13'
+gem 'rails', '~> 4.0.0'
+gem 'protected_attributes'
+gem 'squeel', github: 'ernie/squeel'
 
 gem 'haml-rails'
-gem 'simple_form'
+gem 'simple_form', github: 'plataformatec/simple_form'
 
 gem 'acts-as-messageable'
-gem 'audited-activerecord'
+# gem 'audited-activerecord'
 
 gem 'pg'
 
-gem 'draper'
+gem 'draper', github: 'drapergem/draper'
 gem 'virtus'
 
-gem 'friendly_id'
+gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'rails4'
 gem 'truncate_html'
 
-gem 'devise'
+gem 'devise', github: 'plataformatec/devise'
 gem 'cancan'
 
 gem 'will_paginate'
@@ -38,18 +40,13 @@ group :development do
   gem 'annotate'
 end
 
-group :assets do
-  gem 'jquery-rails'
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  
-  gem 'bootstrap-sass'
-  gem 'font-awesome-rails'
-
-  gem 'epi_js'
-  
-  gem 'bootstrap-wysihtml5-rails'
-end
+gem 'jquery-rails'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem 'epi_js'
+gem 'bootstrap-wysihtml5-rails'
 
 gem 'unicorn'

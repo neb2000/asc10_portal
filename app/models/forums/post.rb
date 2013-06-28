@@ -24,6 +24,6 @@ class Forums::Post < ActiveRecord::Base
 
   validates :text, presence: true  
   
-  audited
+  # audited
   
 end
