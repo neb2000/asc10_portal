@@ -22,7 +22,7 @@ class ApplicationFormsController < ApplicationController
     end
     
     def find_template_and_board
-      @template = SystemSetting.find_by_identifier('application_template').metadata
-      @board    = Forums::Board.find SystemSetting.find_by_identifier('application_board').metadata
+      @template = SystemSetting.get_setting('application_template')
+      @board    = Forums::Board.find SystemSetting.get_setting('application_board')
     end
 end

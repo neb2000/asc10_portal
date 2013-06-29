@@ -1,0 +1,6 @@
+= display_sidebars
+.content-box
+  %h1{ style: 'margin-bottom: 20px' } Roster
+  #roster{ data: { content_url: url_for([:ajax_get_roster, :roster]) } }
+    %i.icon-spinner.icon-spin
+    Reading guild roster...

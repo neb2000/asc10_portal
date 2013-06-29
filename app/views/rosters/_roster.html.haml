@@ -1,0 +1,11 @@
+.row-fluid
+  - %w(TANK HEALING DPS).each do |role|
+    .span4
+      %h3= t("role_description.#{role.downcase}")
+      %ul.unstyled
+        - (roster[role] || []).each do |charcter|
+          - unless charcter.blank?
+            %li{ class: "class-#{charcter[:class]}" }
+              %span.class-icon
+              %span
+                = link_to charcter[:name], url_for(@armory_link % charcter[:name]), target: '_blank'

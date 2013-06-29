@@ -67,5 +67,9 @@ Asc10Portal::Application.routes.draw do
     end
   end
   
+  resource :roster, only: [:show] do
+    get :ajax_get_roster, on: :member
+  end
+  
   root to: 'news_entries#index'
 end

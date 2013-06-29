@@ -5,6 +5,10 @@ en:
   will_paginate:
     previous_label: '<i class="icon-caret-left"></i> Prev'
     next_label: 'Next <i class="icon-caret-right"></i>'
+  role_description:
+    tank: Tanks
+    healing: Healers
+    dps: DPS
   date:
     order:
       - :day
