@@ -1,4 +1,14 @@
 module ApplicationHelper
+  def faye_url
+    @faye_url ||= FAYE_CONFIG['url']
+  end
+      
+  def broadcast(channel, &block)
+    message = {channel: channel, data: capture(&block), ext: { auth_token: FAYE_CONFIG['token'], app_name: FAYE_CONFIG['app_name'] } }
+    uri = URI.parse("#{faye_url}/faye")
+    Net::HTTP.post_form(uri, :message => message.to_json)
+  end
+  
   def main_content_class
     if content_for?(:left_sidebar) && content_for?(:right_sidebar)
       'span6 left-bordered right-bordered'

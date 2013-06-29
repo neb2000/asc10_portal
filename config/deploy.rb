@@ -47,6 +47,7 @@ namespace :deploy do
   desc 'Symlink folders on each release.'
   task :symlink_shared do
     run "ln -nfs #{File.join(shared_path, 'config', 'database.yml')} #{File.join(release_path,'config','database.yml')}"
+    run "ln -nfs #{File.join(shared_path, 'config', 'faye.yml')} #{File.join(release_path,'config','faye.yml')}"
     run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
   end
   
