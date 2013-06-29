@@ -38,8 +38,6 @@ group :development do
   gem 'capistrano'
   gem 'rvm-capistrano'
   
-  gem 'thin'
-  
   gem 'annotate'
 end
 
@@ -54,4 +52,7 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'jquery-turbolinks'
 gem 'turbolinks'
 
+gem 'thin'
 gem 'unicorn'
+
+gem 'faye-rails'

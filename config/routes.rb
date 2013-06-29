@@ -1,4 +1,4 @@
-Asc10Portal::Application.routes.draw do
+Asc10Portal::Application.routes.draw do  
   devise_for :users, controllers: { registrations: 'registrations' }
 
   namespace :admin do
