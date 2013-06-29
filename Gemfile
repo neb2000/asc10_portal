@@ -20,8 +20,8 @@ gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'rails4'
 gem 'truncate_html'
 
 gem 'devise', github: 'plataformatec/devise'
-gem 'devise_security_extension'
-gem 'rails_email_validator'
+# gem 'devise_security_extension'
+# gem 'rails_email_validator'
 gem 'cancan'
 
 gem 'will_paginate'

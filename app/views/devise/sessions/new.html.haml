@@ -8,7 +8,7 @@
           = f.input :email, wrapper: :prepend, label: false do
             %span.add-on
               %i.icon-envelope 
-            = f.input_field :email, :autofocus => true, class: 'span3', placeholder: 'Email address'
+            = f.input_field :email, :autofocus => true, class: 'span3', placeholder: 'Email address', pattern: '^[^@\s]+@([^@\s]+\.)+[^@\s]+$'
           
           = f.input :password, wrapper: :prepend, label: false  do
             %span.add-on
