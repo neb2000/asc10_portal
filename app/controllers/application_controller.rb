@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  before_filter :set_header  
   helper_method :all_pages
   
   def all_pages
@@ -20,4 +21,9 @@ class ApplicationController < ActionController::Base
   def current_resource=(val)
     instance_variable_set(:"@#{resource_name}", val)
   end
+  
+  private
+    def set_header
+      response.headers['X-XSS-Protection'] = "0"
+    end
 end
