@@ -48,7 +48,7 @@
                   - if current_user.permission_identifiers.any?
                     %li.divider
                     %li
-                      = link_to [:admin, :root] do
+                      = link_to [:admin, :root], data: { no_turbolink: true } do
                         %i.icon-cogs
                         Admin
             - else

@@ -20,7 +20,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar           
-          = link_to :root, class: :brand do
+          = link_to :root, class: :brand, data: { no_turbolink: true } do
             Ascendance
           .nav-collapse
             %ul.nav
@@ -31,7 +31,7 @@
                   %span.caret
                 %ul.dropdown-menu.pull-right
                   %li
-                    = link_to edit_user_registration_path do
+                    = link_to edit_user_registration_path, data: { no_turbolink: true } do
                       %i.icon-user
                       Edit profile
                   %li
