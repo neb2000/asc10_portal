@@ -1,1 +1,1 @@
-FAYE_CONFIG = YAML.load_file(File.join(File.dirname(__FILE__), '..', 'faye.yml'))[ENV['RAILS_ENV'] || 'development']
+FAYE_CONFIG = YAML.load_file(File.join(File.dirname(__FILE__), '..', 'faye.yml'))
