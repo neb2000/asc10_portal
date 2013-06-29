@@ -3,7 +3,7 @@
     .span4
       %h3= t("role_description.#{role.downcase}")
       %ul.unstyled
-        - (roster[role] || []).each do |charcter|
+        - (roster[role] || []).sort_by { |character| [character[:class], character[:name]] }.each do |charcter|
           - unless charcter.blank?
             %li{ class: "class-#{charcter[:class]}" }
               %span.class-icon
