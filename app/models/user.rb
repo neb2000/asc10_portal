@@ -47,6 +47,8 @@ class User < ActiveRecord::Base
   delegate :name, to: :user_group, allow_nil: true, prefix: true
   delegate :readable_category_ids, to: :user_group, allow_nil: true
   
+  validates :name, presence: true
+  
   def managed_board_id_list
     @managed_board_id_list ||= managed_board_ids
   end
