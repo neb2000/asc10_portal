@@ -1,5 +1,5 @@
 - if can? :read, board
-  %tr[board.source]
+  %tr{ class: board.display_class_for(current_user) }[board.source]
     %td
       %h5= link_to board.display_name, board
       %p.muted= board.display_description

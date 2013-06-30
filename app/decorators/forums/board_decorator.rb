@@ -25,11 +25,21 @@ class Forums::BoardDecorator < Draper::Decorator
   
   def display_last_post_link
     return 'None' if posts.blank?
-    post_list = posts.sort_by(&:created_at)
-    "#{h.link_to post_list[-1].display_subject, post_list[-1].link_to_topic} by #{post_list[-1].display_user} #{post_list[-1].display_created_at_in_word}".html_safe
+    "#{h.link_to latest_post.display_subject, latest_post.link_to_topic} by #{latest_post.display_user} #{latest_post.display_created_at_in_word}".html_safe
+  end
+  
+  def display_class_for(user = nil)
+    return unless user && latest_post
+    last_viewed = source.views.find{ |view| view.user_id == user.id}.try(:updated_at)
+    'has-new-posts' if last_viewed.blank? || last_viewed < latest_post.created_at
   end
 
   def self.collection_decorator_class
     PaginatingDecorator
   end
+  
+  private
+    def latest_post
+      @post_list ||= posts.sort_by(&:created_at)[-1]
+    end
 end
