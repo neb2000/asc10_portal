@@ -46,6 +46,6 @@ class ApplicationController < ActionController::Base
       online_users = Rails.cache.fetch('online_users') do
         {}
       end
-      User.where(id: online_users.select{ |_, timestamp| timestamp > 5.minutes.ago }.keys).decorate
+      User.where(id: online_users.select{ |_, timestamp| timestamp > 5.minutes.ago }.keys).order(:name).decorate
     end
 end
