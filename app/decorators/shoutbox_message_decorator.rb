@@ -10,7 +10,7 @@ class ShoutboxMessageDecorator < Draper::Decorator
   end
   
   def display_created_at
-    h.l source.created_at, format: :date_only
+    h.l source.created_at, format: :date_and_time
   end
   
   def self.collection_decorator_class
