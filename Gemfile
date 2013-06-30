@@ -9,7 +9,6 @@ gem 'simple_form', github: 'plataformatec/simple_form'
 
 gem 'acts-as-messageable'
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
-# gem 'audited-activerecord'
 
 gem 'pg'
 
@@ -20,8 +19,7 @@ gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'rails4'
 gem 'truncate_html'
 
 gem 'devise', github: 'plataformatec/devise'
-# gem 'devise_security_extension'
-# gem 'rails_email_validator'
+
 gem 'cancan'
 
 gem 'will_paginate'
@@ -52,5 +50,7 @@ gem 'epi_js'
 gem 'bootstrap-wysihtml5-rails'
 gem 'jquery-turbolinks'
 gem 'turbolinks'
+
+gem 'google-analytics-rails'
 
 gem 'unicorn'
