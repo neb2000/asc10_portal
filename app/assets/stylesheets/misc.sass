@@ -1,6 +1,61 @@
 @import 'bootstrap/mixins'
 @import 'variables'
 
+#existing-messages
+  margin-bottom: 20px
+  
+#progression-list
+  //vertical-align: middle
+  small
+    line-height: 20px
+    color: #fff
+  .raid-name
+    line-height: 20px
+    color: $linkColor
+    padding-bottom: 9px
+    border-bottom: 1px solid #000
+    margin-bottom: 6px
+  li
+    @include opacity(30)
+    color: #ddd
+    &.normal-killed
+      @include opacity(50)
+    &.heroic-killed  
+      @include opacity(100)
+      text-shadow: 0 0 3px $linkColor, 0 0 10px $linkColor
+      
+    .boss-name
+      margin-left: 30px
+    margin-bottom: 9px
+    &:last-child
+      margin-bottom: 3px
+    .boss-image
+      @include border-radius(4px)
+      overflow: hidden
+      line-height: 0
+      border: 1px solid black
+      vertical-align: middle
+      margin-right: 5px
+      position: relative
+      padding: 0
+      margin: 0
+      img
+        width: 21px
+        height: 21px
+      &:after
+        @include border-radius(4px)
+        position: absolute
+        content: ''
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+        background-image: -moz-linear-gradient(45deg, rgba(#fff,0), rgba(#fff,0), rgba(#fff,0.4))
+        background-image: -webkit-linear-gradient(45deg, rgba(#fff,0), rgba(#fff,0), rgba(#fff,0.4))
+        background-image: -o-linear-gradient(45deg, rgba(#fff,0), rgba(#fff,0), rgba(#fff,0.4))
+        background-image: linear-gradient(45deg, rgba(#fff,0), rgba(#fff,0), rgba(#fff,0.4))
+  
+  
 .breadcrumb
   background: $inputBackground
   border: 1px solid $inputBorder

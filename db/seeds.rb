@@ -18,6 +18,6 @@ end
   Recruitment.where(identifier: class_name).first_or_create(name: class_name.humanize)
 end
 
-%w(application_template application_board roster_api_url roster_raider_ranks roster_armory_link roster_cache_expire).each do |identifier|
+%w(application_template application_board roster_api_url roster_raider_ranks roster_armory_link roster_cache_expire progress_reference_url progress_raids progress_cache_expire npc_image_url).each do |identifier|
   SystemSetting.where(identifier: identifier).first_or_create(description: identifier.humanize)
 end

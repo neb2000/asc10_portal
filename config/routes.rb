@@ -71,5 +71,9 @@ Asc10Portal::Application.routes.draw do
     get :ajax_get_roster, on: :member
   end
   
+  resource :progression, only: [] do
+    get :ajax_get_progression, on: :member
+  end
+  
   root to: 'news_entries#index'
 end
