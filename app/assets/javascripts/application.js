@@ -24,4 +24,5 @@
 //= require bootstrap-lightbox
 //= require shoutbox
 //= require endless_page
+//= require websocket_client
 //= require turbolinks

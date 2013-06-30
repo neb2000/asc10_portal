@@ -4,6 +4,7 @@
     %title Ascendance - EU Alonsus
     = stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,400italic"
     = stylesheet_link_tag    "application", :media => "all", data: { turbolinks_track: true }
+    = javascript_include_tag "#{faye_url}/faye.js"
     = javascript_include_tag "application", data: { turbolinks_track: true }
     = favicon_link_tag '/favicon.png'
     = csrf_meta_tags
@@ -12,7 +13,7 @@
       $ -> 
         if $('.sidebar').size() > 0
           $('#main-content').css('min-height', $('#content').height())
-  %body
+  %body{ data: { stream_url: "#{faye_url}/faye"} }
     .flash-messages
       - unless flash.blank?
         - flash.each do |name, msg|
