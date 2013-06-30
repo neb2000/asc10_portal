@@ -1,3 +1,4 @@
 - broadcast('/asc10/messages') do
-  $('#existing-messages').prepend('#{j render @shoutbox_message}');
+  if($('#existing-messages #shoutbox_message_#{@shoutbox_message.id}').size() === 0)
+    $('#existing-messages').prepend('#{j render @shoutbox_message}');
 $('#shoutbox_message_message').val('');

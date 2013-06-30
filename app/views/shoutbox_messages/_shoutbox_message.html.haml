@@ -1,7 +1,4 @@
 %li.shoutbox-message[shoutbox_message.source]
-  - if can? :destroy, shoutbox_message
-    = link_to [:admin, shoutbox_message], method: :delete, remote: true do
-      %span.text-error &times;
   %span.user-name
     #{shoutbox_message.display_user_name}:
   = shoutbox_message.display_message
