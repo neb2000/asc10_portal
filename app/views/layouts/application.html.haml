@@ -78,8 +78,10 @@
           #footer
             .pull-left
               Powered by 
-              = link_to 'Ruby on Rails', 'http://rubyonrails.org/', target: '_blank'
+              = link_to "Ruby on Rails #{Rails.version}", 'http://rubyonrails.org/', target: '_blank'
               (Ruby #{RUBY_VERSION}).
+              %i.icon-html5
+              %i.icon-css3
             .pull-right
               &copy; #{Date.today.year}
               = link_to 'Azuresong', 'http://www.azuresong.co.uk', target: '_blank'
