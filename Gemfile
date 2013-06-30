@@ -51,6 +51,8 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'jquery-turbolinks'
 gem 'turbolinks'
 
+gem 'gemoji'
+
 gem 'google-analytics-rails', github: 'bgarret/google-analytics-rails'
 
 gem 'unicorn'
