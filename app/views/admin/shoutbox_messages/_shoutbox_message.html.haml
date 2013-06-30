@@ -1,0 +1,11 @@
+%tr[shoutbox_message.source]
+  %td
+    = shoutbox_message.display_user_name
+  %td
+    = shoutbox_message.display_message
+  %td
+    = shoutbox_message.display_created_at
+  %td.td-actions
+    - if can? :destroy, shoutbox_message
+      = link_to [:admin, shoutbox_message], remote: true, method: :delete, class: 'btn btn-link' do
+        %i.icon-trash.text-error

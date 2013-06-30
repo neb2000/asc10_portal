@@ -5,7 +5,7 @@ Asc10Portal::Application.routes.draw do
     resources :news_entries
     resources :pages
     resources :users, except: [:new, :create]
-    resources :shoutbox_messages, only: [:destroy]
+    resources :shoutbox_messages, only: [:index, :destroy]
     
     resources :recruitments, only: [:index, :edit, :update]
     

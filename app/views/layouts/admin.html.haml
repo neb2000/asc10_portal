@@ -65,6 +65,11 @@
                 = link_to [:admin, :forums, :boards] do
                   %i.icon-th
                   Boards
+        - if can? :manage, ShoutboxMessage
+          %li
+            = link_to [:admin, :shoutbox_messages] do
+              %i.icon-bullhorn
+              Shoutbox
         - if can? :manage, User
           %li{ class: ('active' if @current_nav_identifier == :users )}
             = link_to [:admin, :users] do
@@ -78,7 +83,7 @@
         - if can? :manage, Recruitment
           %li
             = link_to [:admin, :recruitments] do
-              %i.icon-bullhorn
+              %i.icon-bell
               Recruitment
       #main-content
         = yield

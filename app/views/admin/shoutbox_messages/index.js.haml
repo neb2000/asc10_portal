@@ -1,0 +1,5 @@
+$('#shoutbox-messages').append('#{j render @shoutbox_messages}');
+- if @shoutbox_messages.next_page
+  $('.pagination').replaceWith('#{j will_paginate(@shoutbox_messages)}');
+- else
+  $('.pagination').remove();

@@ -1,0 +1,17 @@
+.endless-page 
+  .page-header
+    %h1 Shoutbox messages
+  - if @shoutbox_messages.empty?
+    %p.no-record
+      No records to display
+  - else
+    .content-box.well
+      %table.table.table-condensed.no-whitespace
+        %thead
+          %tr
+            %th Author
+            %th Message
+            %th Date
+            %th
+        %tbody#shoutbox-messages= render @shoutbox_messages
+    = will_paginate

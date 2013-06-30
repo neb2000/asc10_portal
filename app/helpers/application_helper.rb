@@ -35,7 +35,7 @@ module ApplicationHelper
   end
   
   def latest_shoutbox_messages
-    @latest_shoutbox_messages ||= ShoutboxMessage.ordered.page(params[:page]).decorate
+    @latest_shoutbox_messages ||= ShoutboxMessage.includes(:user).ordered.page(params[:page]).decorate
   end
   
   def latest_forum_topics

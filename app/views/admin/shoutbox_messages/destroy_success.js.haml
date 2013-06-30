@@ -1,2 +1,4 @@
 - broadcast('/asc10/messages') do
   $('#shoutbox_message_#{@shoutbox_message.id}').fadeOut(200, function(){ $(this).remove() });
+$('#shoutbox-messages #shoutbox_message_#{@shoutbox_message.id}').fadeOut(200, function(){ $(this).remove() });
+$(window).trigger('position-changed');
