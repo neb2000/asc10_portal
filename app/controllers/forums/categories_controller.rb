@@ -11,7 +11,7 @@ module Forums
     
     private
       def find_category
-        @category = Category.includes(boards: [:viewable, :posts]).find(params[:id]) if params[:id]
+        @category = Category.includes(boards: [:views, :posts]).find(params[:id]) if params[:id]
       end
   end
 end
