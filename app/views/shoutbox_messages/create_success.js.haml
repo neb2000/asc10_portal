@@ -1,3 +1,3 @@
--# - broadcast('/asc10/messages') do
-$('#existing-messages').prepend('#{j render @shoutbox_message}');
+- broadcast('/asc10/messages') do
+  $('#existing-messages').prepend('#{j render @shoutbox_message}');
 $('#shoutbox_message_message').val('');

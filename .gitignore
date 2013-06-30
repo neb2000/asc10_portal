@@ -16,3 +16,4 @@
 public/uploads
 .sass-cache/
 config/database.yml
+config/faye.yml
