@@ -24,4 +24,5 @@
 //= require shoutbox
 //= require endless_page
 //= require websocket_client
+//= require spotlight
 //= require turbolinks

@@ -11,6 +11,7 @@ gem 'acts-as-messageable'
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
 
 gem 'pg'
+gem 'pg_search'
 
 gem 'draper', github: 'drapergem/draper'
 gem 'virtus'

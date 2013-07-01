@@ -176,6 +176,10 @@ GEM
       net-ssh (>= 2.6.5)
     orm_adapter (0.4.0)
     pg (0.15.1)
+    pg_search (0.6.4)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyamorous (0.6.3)
       activerecord (>= 3.0)
     polyglot (0.3.3)
@@ -275,6 +279,7 @@ DEPENDENCIES
   mini_magick
   paper_trail!
   pg
+  pg_search
   protected_attributes
   rails (~> 4.0.0)
   remotipart
