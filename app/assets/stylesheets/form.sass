@@ -1,13 +1,29 @@
 @import 'bootstrap/mixins'
 @import 'variables'
-//@import 'bootstrap/buttons'
+
+#shoutbox form
+  position: relative
+  &.sending
+    input
+      -webkit-filter: blur(3px)
+      @include opacity(20)
+  .sending-message
+    color: #fff
+    position: absolute
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    padding: 4px
+    text-align: center
+    background-color: rgba(#000,.75)
+    @include border-radius(4px)
 
 .control-group.error 
   color: $errorText
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input
   color: #eee
-  //@include box-shadow(0 5px 10px rgba(#000,.1))
   
 textarea.wysihtml5
   background-color: #1a1a1a
@@ -36,8 +52,3 @@ fieldset
 fieldset + fieldset
   legend
     padding-top: 20px
-//.wysihtml5-toolbar
-//  > li > .btn, > li > .btn-group > .btn
-//    @extend .btn-inverse
-//    .caret
-//      border-top-color: white

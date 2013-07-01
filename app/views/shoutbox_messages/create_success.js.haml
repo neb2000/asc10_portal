@@ -1,3 +1,5 @@
 - broadcast('/asc10/messages') do
   if($('#existing-messages #shoutbox_message_#{@shoutbox_message.id}').size() === 0) $('#existing-messages').prepend('#{j render @shoutbox_message}');
-$('#shoutbox_message_message').val('');
+$('#shoutbox_message_message').val('').focus();
+$('#shoutbox form .sending-message').remove();
+$('#shoutbox form').removeClass('sending');
