@@ -9,12 +9,12 @@ class SearchesController < ApplicationController
   end
   
   def ajax_get_results
-    @posts = if params[:keyword].to_s.length > 2
-      Forums::Post.accessible_by(current_ability).search_by_text(params[:keyword]).preload(topic: :board).limit(10).decorate
+    @topics = if params[:keyword].to_s.length > 2
+      Forums::Topic.accessible_by(current_ability).where("EXISTS (#{Forums::Post.search_by_text(params[:keyword]).where('forums_posts.topic_id = forums_topics.id').to_sql})").preload(:board).limit(10).decorate
     else
-      Forums::Post.none
+      Forums::Topic.none
     end
     @keyword = params[:keyword]
-    respond_with(@posts)
+    respond_with(@topics)
   end  
 end

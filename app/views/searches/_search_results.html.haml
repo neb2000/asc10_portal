@@ -2,11 +2,11 @@
 %li#show-all-results
   = link_to 'Show all results...', searches_path(q: {keyword: keyword})
 %li.divider
-- posts.group_by(&:display_board).each do |board_name, posts|
-  - posts.each_with_index do |post, index|
+- topics.group_by(&:display_board).each do |board_name, topic_list|
+  - topic_list.each_with_index do |topic, index|
     %li    
-      = link_to post.link_to_topic_without_anchor do
+      = link_to forums_board_topic_path(topic.board, topic) do
         - if index == 0
           %span.post-board-name
             %em= board_name
-        .post-topic-name= post.display_subject
+        .post-topic-name= topic.display_subject
