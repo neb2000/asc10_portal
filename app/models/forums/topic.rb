@@ -31,6 +31,10 @@ class Forums::Topic < ActiveRecord::Base
   
   validates :subject, :user, :board, :posts, presence: true
   
+  def self.search_by_keyword(keyword)
+    where("EXISTS (#{Forums::Post.select('NULL').search_by_text(keyword).where('forums_posts.topic_id = forums_topics.id').to_sql})")
+  end
+  
   def self.by_pinned_or_most_recent_post
     order('forums_topics.id').order('forums_topics.last_post_at DESC').order('forums_topics.pinned DESC')
   end
