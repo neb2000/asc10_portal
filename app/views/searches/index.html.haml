@@ -16,7 +16,7 @@
     %p.muted No result.
   - else
     = render collection: @posts, partial: 'searches/post'
-
+  = will_paginate @posts
 :coffee
   $ ->
     $('[data-typeahead-url]').each ->
