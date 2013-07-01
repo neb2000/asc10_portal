@@ -12,6 +12,9 @@
 #
 
 class Forums::Post < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_text, against: :text, using: { tsearch: { dictionary: 'english', tsvector_column: 'tsv' } }
+  
   attr_accessible :reply_to_id, :reply_to, :text, :topic_id, :topic, :user_id, :user
   
   belongs_to :topic, autosave: true, class_name: 'Forums::Topic'

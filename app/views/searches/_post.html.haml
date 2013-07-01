@@ -1,0 +1,19 @@
+.well.well-black.search-result
+  .row-fluid[post.source]
+    .span2.user-info
+      .center
+        %h5.author
+          = link_to post.display_user, new_message_path(recipient: post.display_user)
+        .gravatar.hidden-phone= image_tag post.display_user_gravatar(s: 80)
+    
+    .span10.post-container
+      .post-content
+        = link_to post.link_to_topic_without_anchor do
+          %h5 #{post.display_board} - #{post.display_subject}
+        .clearfix
+          %small.muted
+            = l post.created_at, format: :full
+          - if post.reply_to
+            %p.muted
+              %em Reply to #{post.display_reply_to_user}
+        = post.display_text

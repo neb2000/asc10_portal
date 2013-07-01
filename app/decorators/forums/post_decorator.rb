@@ -8,6 +8,10 @@ class Forums::PostDecorator < Draper::Decorator
     topic.display_subject
   end
   
+  def display_board
+    topic.display_board
+  end
+  
   def display_text
     h.sanitize source.text
   end
@@ -30,6 +34,10 @@ class Forums::PostDecorator < Draper::Decorator
   
   def link_to_topic
     h.forums_board_topic_path(topic.board, topic, anchor: "forums_post_#{source.id}", page: topic.last_page)
+  end
+  
+  def link_to_topic_without_anchor
+    h.forums_board_topic_path(topic.board, topic)
   end
   
   def self.collection_decorator_class

@@ -1,0 +1,15 @@
+%li.dropdown#spotlight-box{ class: (:active if @current_nav_identifier == :search)}
+  = link_to '#', class: 'dropdown-toggle', data: {toggle: :dropdown} do
+    %i.icon-search
+  %ul.dropdown-menu.pull-right
+    %li
+      = simple_form_for 'spotlight', url: url_for([:ajax_get_results, :searches]), method: :get, remote: true, html: { id: 'spotlight-form', class: 'no-whitespace form-horizontal', autocomplete: 'off' } do |f|
+        = f.input :keyword, input_html: {name: 'keyword',id: 'spotlight-search', placeholder: 'Search by subject or content...'}, as: :search, wrapper_html: { class: 'no-whitespace' }, required: false, label: 'Search'
+:coffee
+  $ ->
+    $('#spotlight-search').keyup ->
+      return unless $(this).val().length > 2
+      unless $(this).data('old-value')? and $(this).data('old-value') is $(this).val()
+        clearTimeout($(this).data('timeout'))
+        $(this).data('timeout', setTimeout("$('#spotlight-form').submit()", 200))
+      $(this).data('old-data', $(this).val())

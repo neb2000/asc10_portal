@@ -8,6 +8,10 @@ class Forums::TopicDecorator < Draper::Decorator
     user.display_name
   end
   
+  def display_board
+    board.display_name
+  end
+  
   def display_subject
     source.subject
   end

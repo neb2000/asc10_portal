@@ -54,16 +54,7 @@
                       = link_to [:admin, :root], data: { no_turbolink: true } do
                         %i.icon-cogs
                         Admin
-                %li.dropdown#spotlight-box
-                  = link_to '#', class: 'dropdown-toggle', data: {toggle: :dropdown} do
-                    %i.icon-search
-                  %ul.dropdown-menu.pull-right
-                    %li
-                      = simple_form_for 'spotlight', html: { class: 'no-whitespace form-horizontal' } do |f|
-                        = f.input :keyword, input_html: {id: 'spotlight-search'}, as: :search, wrapper_html: { class: 'no-whitespace' }, required: false
-                    %li.divider
-                    %li#show-all-results
-                      = link_to 'Show all results...', '#'
+                = render 'spotlight_box'
                     
             - else
               %li= link_to 'Login', new_user_session_path

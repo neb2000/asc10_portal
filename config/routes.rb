@@ -52,7 +52,6 @@ Asc10Portal::Application.routes.draw do
   end
   
   resources :application_forms, only: [:new, :create], path: '/apply', path_names: { new: '' }
-  
   resources :messages, except: [:edit, :update] do
     collection do
       get  :sent
@@ -65,6 +64,10 @@ Asc10Portal::Application.routes.draw do
       put :mark_as_unread, action: 'mark_read_unread', read: false
       get :reply
     end
+  end
+  
+  resources :searches, path: '/search', only: [:index] do
+    get :ajax_get_results, on: :collection
   end
   
   resource :roster, only: [:show] do

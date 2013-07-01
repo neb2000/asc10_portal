@@ -13,6 +13,8 @@ gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
 gem 'pg'
 gem 'pg_search'
 
+gem 'ransack', github: 'ernie/ransack', branch: 'rails-4'
+
 gem 'draper', github: 'drapergem/draper'
 gem 'virtus'
 

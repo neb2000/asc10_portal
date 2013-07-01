@@ -1,0 +1,29 @@
+.content-box.forum-box
+  .page-header
+    %h3 Search for posts
+  = simple_form_for @search, url: url_for(action: :index), method: :get, as: :q, defaults: { required: false } do |f|
+    .row-fluid
+      .span4= f.input_field :keyword, class: 'input-block-level', placeholder: 'By subject or content...'
+      .span3= f.input_field :user_name, class: 'input-block-level', placeholder: 'By author...', autocomplete: 'off', data: { typeahead_url: ajax_get_users_users_path(format: :json) }
+      .span3= f.input_field :board_id, class: 'input-block-level', collection: @categories, as: :grouped_select, group_method: :boards, include_blank: '- Any forum -'
+      .span2
+        %button.btn.btn-inverse.btn-block{ type: :submit }
+          %i.icon-search
+          Search
+  .page-header
+    %h3 Result
+  - if @posts.empty?
+    %p.muted No result.
+  - else
+    = render collection: @posts, partial: 'searches/post'
+
+:coffee
+  $ ->
+    $('[data-typeahead-url]').each ->
+      $this = $(this)
+      $(this).typeahead(
+        source: (query, process) ->
+          $.get($this.data('typeahead-url'), { query: query }, (data) ->
+            process data
+          , 'json')
+      )
