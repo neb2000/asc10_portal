@@ -104,6 +104,7 @@ body
           input
             margin: 0
           #existing-messages
+            overflow-x: hidden
             overflow-y: auto
             max-height: 400px
             background: rgba(0,0,0,.5)
@@ -113,6 +114,7 @@ body
             @include border-radius(4px)
             @include box-shadow(0 5px 10px rgba(#000,.1))
             .shoutbox-message
+              word-wrap: break-word
               & + .shoutbox-message
                 margin-top: 3px
               .timestamp
