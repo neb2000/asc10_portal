@@ -25,4 +25,5 @@
 //= require endless_page
 //= require websocket_client
 //= require spotlight
+//= require page_load_indicator
 //= require turbolinks

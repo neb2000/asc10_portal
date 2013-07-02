@@ -4,6 +4,14 @@
 body
   background: #000 image-url('slash_it.png') top left
   padding-bottom: 10px
+  #wrapper
+    #page-load-spinner
+      position: fixed
+      top: 0px
+      @include opacity(50)
+      z-index: 2000
+      padding: 6px 20px
+      font-size: 12px
   #banner
     max-height: 250px
     overflow: hidden
