@@ -1,3 +1,4 @@
 $('#spotlight-box .dropdown-menu li:has(form)').nextAll().remove();
+$('#search-spinner').remove();
 - unless @topics.empty?
   $('#spotlight-box .dropdown-menu li:has(form)').after('#{j render 'search_results', topics: @topics, keyword: @keyword}');
