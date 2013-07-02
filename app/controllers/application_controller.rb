@@ -3,10 +3,14 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_header  
   before_filter :set_current_online_users
-  helper_method :all_pages, :current_online_users
+  helper_method :all_pages, :all_accessible_categories, :current_online_users
   
   def all_pages
     @all_pages ||= Page.ordered.decorate
+  end
+  
+  def all_accessible_categories
+    @all_accessible_categories ||= Forums::Category.accessible_by(current_ability).includes(:boards).to_a
   end
   
   ## The following are used by our Responder service classes so we can access

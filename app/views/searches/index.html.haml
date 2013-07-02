@@ -5,7 +5,7 @@
     .row-fluid
       .span4= f.input_field :keyword, class: 'input-block-level', placeholder: 'By subject or content...'
       .span3= f.input_field :user_name, class: 'input-block-level', placeholder: 'By author...', autocomplete: 'off', data: { typeahead_url: ajax_get_users_users_path(format: :json) }
-      .span3= f.input_field :board_id, class: 'input-block-level', collection: @categories, as: :grouped_select, group_method: :boards, include_blank: '- Any forum -'
+      .span3= f.input_field :board_id, class: 'input-block-level', collection: all_accessible_categories, as: :grouped_select, group_method: :boards, include_blank: '- Any forum -'
       .span2
         %button.btn.btn-inverse.btn-block{ type: :submit }
           %i.icon-search

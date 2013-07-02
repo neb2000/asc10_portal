@@ -3,12 +3,12 @@ class Ability
 
   def initialize(user)
     @user = user || User.new
-    @user.permission_identifiers.each do |permission|
-      self.send permission if self.respond_to?(permission)
-    end
     
     message_permissions
     forum_permissions
+    @user.permission_identifiers.each do |permission|
+      self.send permission if self.respond_to?(permission)
+    end
   end
   
   def message_permissions
@@ -16,21 +16,21 @@ class Ability
     can :manage, ActsAsMessageable::Message, sent_messageable_id: @user.id, sent_messageable_type: 'User'
   end
   
-  def forum_permissions
+  def forum_permissions    
     can :read, Forums::Category, id: @user.readable_category_ids
     can [:read, :create_topic], Forums::Board, category: { id: @user.readable_category_ids }
-    can [:read, :reply], Forums::Topic, board: { category: { id: @user.readable_category_ids } }
-    can [:read, :reply], Forums::Post,  topic: { board: { category: {id: @user.readable_category_ids } } }
+    can [:read, :reply], Forums::Topic, board: { category: { id: @user.readable_category_ids } }, hidden: false
+    can [:read, :reply], Forums::Post,  topic: { board: { category: {id: @user.readable_category_ids } }, hidden: false }
     
     can :read, Forums::Category, public: true
     can :read, Forums::Board, category: { public: true }
-    can :read, Forums::Topic, board: { category: { public: true } }
-    can :read, Forums::Post,  topic: { board: { category: { public: true } } }
+    can :read, Forums::Topic, board: { category: { public: true } }, hidden: false
+    can :read, Forums::Post,  topic: { board: { category: { public: true } }, hidden: false }
     
     unless @user.id.nil?
       can :create_topic, Forums::Board, category: { public: true } 
-      can :reply, Forums::Topic, board: { category: { public: true } }
-      can :reply, Forums::Post,  topic: { board: { category: { public: true } } }
+      can :reply, Forums::Topic, board: { category: { public: true } }, hidden: false
+      can :reply, Forums::Post,  topic: { board: { category: { public: true } }, hidden: false }
     end
     
     can :manage, Forums::Topic, board: { id: @user.managed_board_id_list }
@@ -38,7 +38,7 @@ class Ability
     
     can [:update, :destroy], [Forums::Post, Forums::Topic], user_id: @user.id
     cannot [:update, :destroy, :reply], Forums::Topic, locked: true
-    cannot [:update, :destroy, :reply], Forums::Post, topic: { locked: true }
+    cannot [:update, :destroy, :reply], Forums::Post,  topic: { locked: true }    
   end
   
   def manage_forums_settings

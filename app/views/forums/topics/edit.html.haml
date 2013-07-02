@@ -1,0 +1,12 @@
+= simple_form_for @topic, url: forums_board_topic_path(@board, @topic), html: { class: 'no-whitespace' } do |f|
+  .modal-header
+    = link_to '#', class: 'close', data: { dismiss: 'modal' } do
+      &times;
+    %h3 Edit topic
+  .modal-body
+    = f.input :subject, input_html: { class: 'input-block-level' }, autofocus: true
+    - if can?(:move_topic, @topic)
+      = f.input :board_id, class: 'input-block-level', collection: all_accessible_categories, as: :grouped_select, group_method: :boards, include_blank: false
+  .modal-footer
+    = submit_button
+    = dismiss_modal_button

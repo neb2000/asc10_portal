@@ -14,6 +14,21 @@ module Forums
       StandardUpdater.new(responder).update(Topics::Create::Form.new(board: @board, user: current_user), params[:topic])
     end
     
+    def edit
+      respond_with(@topic) do |format|
+        format.html { render layout: !request.xhr? }
+      end
+    end
+    
+    def update
+      topic_params = if can?(:move_topic, @topic)
+        params.require(:forums_topic).permit(:subject, :board_id)
+      else
+        params.require(:forums_topic).permit(:subject)
+      end
+      StandardUpdater.new(TopicPostTsvUpdater.new(responder)).update(@topic, topic_params)
+    end
+    
     def show
       @topic.register_view_by(current_user)
       @board.register_view_by(current_user)
@@ -28,17 +43,17 @@ module Forums
     
     def toggle_hide
       responder.redirect_path = url_for(@topic.board)
-      StandardUpdater.new(responder).update(@topic, {hidden: !@topic.hidden}, :admin)
+      StandardUpdater.new(responder).update(@topic, { hidden: !@topic.hidden })
     end
     
     def toggle_lock
       responder.redirect_path = url_for(@topic.board)
-      StandardUpdater.new(responder).update(@topic, {locked: !@topic.locked}, :admin)
+      StandardUpdater.new(responder).update(@topic, { locked: !@topic.locked })
     end
     
     def toggle_pin
       responder.redirect_path = url_for(@topic.board)
-      StandardUpdater.new(responder).update(@topic, {pinned: !@topic.pinned}, :admin)
+      StandardUpdater.new(responder).update(@topic, { pinned: !@topic.pinned })
     end
     
     private      

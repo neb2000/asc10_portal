@@ -36,6 +36,7 @@ Asc10Portal::Application.routes.draw do
         put :toggle_hide
         put :toggle_lock
         put :toggle_pin
+        put :toggle_archive
       end
       resources :posts
     end

@@ -12,17 +12,19 @@
         = link_to forums_board_topic_path(@board, @topic), method: :delete, confirm: 'Are you sure you want to delete this topic?', class: 'btn btn-inverse' do
           %i.icon-trash
           Delete
-    - if can? :toggle_lock, @topic
-      .btn-group
-        = link_to [:toggle_lock, @topic], method: :put, class: 'btn btn-link btn-link-white' do
-          %i.icon-lock
-          Toggle locked
-    - if can? :toggle_pin, @topic
-      .btn-group
-        = link_to [:toggle_pin, @topic], method: :put, class: 'btn btn-link btn-link-white' do
-          %i.icon-pushpin
-          Toggle pinned
-    
+    - manage_actions = capture do
+      - if can? :update, @topic
+        = link_to edit_forums_board_topic_path(@board, @topic), class: 'btn btn-link btn-link-white ajax-modal' do
+          %i.icon-pencil
+          Edit
+      - if can? :toggle_lock, @topic
+        = link_to @topic.display_lock_action, [:toggle_lock, @topic], method: :put, class: 'btn btn-link btn-link-white'
+      - if can? :toggle_hide, @topic
+        = link_to @topic.display_hide_action, [:toggle_hide, @topic], method: :put, class: 'btn btn-link btn-link-white'
+      - if can? :toggle_pin, @topic
+        = link_to @topic.display_pin_action, [:toggle_pin, @topic], method: :put, class: 'btn btn-link btn-link-white'
+    - unless manage_actions.blank?
+      .btn-group= manage_actions
   
   .btn-toolbar= tools
   .well.well-black
