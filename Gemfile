@@ -20,6 +20,7 @@ gem 'virtus'
 
 gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'rails4'
 gem 'truncate_html'
+gem 'rails_autolink'
 
 gem 'devise', github: 'plataformatec/devise'
 

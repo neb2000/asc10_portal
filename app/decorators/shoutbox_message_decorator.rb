@@ -6,7 +6,7 @@ class ShoutboxMessageDecorator < Draper::Decorator
   end
   
   def display_message
-    h.emojify(h.sanitize source.message)
+    h.emojify(h.auto_link(h.sanitize source.message))
   end
   
   def display_created_at
