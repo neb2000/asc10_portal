@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require ajax_setup
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.remotipart

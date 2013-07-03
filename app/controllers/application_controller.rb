@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_online_users
   helper_method :all_pages, :all_accessible_categories, :current_online_users
   
+  rescue_from CanCan::AccessDenied do
+    render template: 'errors/forbidden'#, status: 403
+  end
+  
   def all_pages
     @all_pages ||= Page.ordered.decorate
   end
