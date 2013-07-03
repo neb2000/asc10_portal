@@ -12,6 +12,12 @@
     :coffee
       $.fn.wysihtml5.defaultOptions.size = 'inverse'
       $ -> 
+        $('#menu').affix(
+          offset: {
+            top: ->
+              Math.ceil($('#banner').height())
+          }
+        )
         if $('.sidebar').size() > 0
           $('#main-content').css('min-height', $('#content').height())
   %body{ data: { stream_url: "#{faye_url}/faye"} }
@@ -24,7 +30,7 @@
     #wrapper.container
       .row
         #banner.span12= image_tag current_banner_image
-      .row
+      .row#menu-row{ style: 'height: 42px' }
         #menu.span12
           %ul.nav.nav-pills.pull-right
             - if user_signed_in?
