@@ -27,7 +27,7 @@
       .btn-group= manage_actions
   
   .btn-toolbar= tools
-  .well.well-black
+  .well.well-black{ data: { highlight: params[:highlight] } }
     .page-header
       %h3
         = @topic.display_icon_for

@@ -27,4 +27,6 @@
 //= require websocket_client
 //= require spotlight
 //= require page_load_indicator
+//= require highlight
+//= require highlight_init
 //= require turbolinks

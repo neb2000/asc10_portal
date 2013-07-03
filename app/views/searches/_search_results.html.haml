@@ -5,7 +5,7 @@
 - topics.group_by(&:display_board).each do |board_name, topic_list|
   - topic_list.each_with_index do |topic, index|
     %li    
-      = link_to forums_board_topic_path(topic.board, topic) do
+      = link_to forums_board_topic_path(topic.board, topic, highlight: keyword) do
         - if index == 0
           %span.post-board-name
             %em= board_name
