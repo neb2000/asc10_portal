@@ -6,10 +6,12 @@ class ApplicationFormsController < ApplicationController
   before_filter { @current_nav_identifier = :apply }
   
   def new
+    authorize! :create, :application_form
     @application_form = ApplicationForms::Form.new_from_template @template
   end
   
   def create
+    authorize! :create, :application_form
     @application_form = ApplicationForms::Form.new_from_template(@template)
     @application_form.user = current_user
     @application_form.board = @board

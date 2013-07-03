@@ -6,6 +6,9 @@ class Ability
     
     message_permissions
     forum_permissions
+    
+    can :create, :application_form if @user.user_group_id.blank?
+    
     @user.permission_identifiers.each do |permission|
       self.send permission if self.respond_to?(permission)
     end
@@ -58,6 +61,7 @@ class Ability
   end
   
   def manage_recruitments
+    can :manage, :application_form
     can :manage, Recruitment
   end
   
