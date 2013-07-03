@@ -66,7 +66,7 @@
                   %i.icon-th
                   Boards
         - if can? :manage, ShoutboxMessage
-          %li
+          %li{ class: ('active' if @current_nav_identifier == :shoutbox_messages )}
             = link_to [:admin, :shoutbox_messages] do
               %i.icon-bullhorn
               Shoutbox
@@ -81,7 +81,7 @@
               %i.icon-cogs
               Settings
         - if can? :manage, Recruitment
-          %li
+          %li{ class: ('active' if @current_nav_identifier == :recruitment )}
             = link_to [:admin, :recruitments] do
               %i.icon-bell
               Recruitment

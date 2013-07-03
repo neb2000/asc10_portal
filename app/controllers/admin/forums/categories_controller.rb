@@ -2,7 +2,7 @@ module Admin
   module Forums
     class CategoriesController < Admin::ApplicationController
       respond_to :js, only: [:create, :update, :destroy]
-      
+      before_filter { @current_nav_identifier = :forums }
       before_filter :find_category
       authorize_resource class: ::Forums::Category
 
