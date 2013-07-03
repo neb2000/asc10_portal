@@ -6,7 +6,7 @@ class ShoutboxMessageDecorator < Draper::Decorator
   end
   
   def display_message
-    h.emojify(h.auto_link(h.sanitize source.message))
+    h.emojify(h.auto_link(h.sanitize(source.message), html: { target: '_blank'}))
   end
   
   def display_created_at
