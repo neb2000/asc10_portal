@@ -17,7 +17,7 @@ class Admin::RecruitmentsController < Admin::ApplicationController
   end
   
   def update
-    StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(@recruitment, params[:recruitment])
+    StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(@recruitment, params.require(:recruitment).permit!)
   end
     
   private

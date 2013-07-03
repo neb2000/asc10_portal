@@ -14,7 +14,7 @@ class Admin::PagesController < Admin::ApplicationController
   end
     
   def create
-    StandardUpdater.new(StandardResponder.new(self)).update(Page.new, params[:page])
+    StandardUpdater.new(StandardResponder.new(self)).update(Page.new, page_params)
   end
   
   def edit
@@ -22,7 +22,7 @@ class Admin::PagesController < Admin::ApplicationController
   end
   
   def update
-    StandardUpdater.new(StandardResponder.new(self)).update(@page, params[:page])
+    StandardUpdater.new(StandardResponder.new(self)).update(@page, page_params)
   end
   
   def destroy
@@ -30,6 +30,10 @@ class Admin::PagesController < Admin::ApplicationController
   end
   
   private
+    def page_params
+      params.require(:page).permit!
+    end
+  
     def find_page
       @page = Page.find(params[:id]) if params[:id]
     end

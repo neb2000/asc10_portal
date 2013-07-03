@@ -1,5 +1,4 @@
 class Recruitment < ActiveRecord::Base
-  attr_accessible :active, :identifier, :name, :spec
   default_scope ->{ order('recruitments.name') }
   
   validates :spec, presence: true, if: :active?

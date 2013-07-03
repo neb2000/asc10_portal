@@ -11,7 +11,7 @@ class Admin::SystemSettingsController < Admin::ApplicationController
   end
   
   def update
-    StandardUpdater.new(StandardAjaxResponder.new(self)).update(@system_setting, params[:system_setting])
+    StandardUpdater.new(StandardAjaxResponder.new(self)).update(@system_setting, params.require(:system_setting).permit!)
   end
     
   private

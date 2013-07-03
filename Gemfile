@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.0.0'
-gem 'protected_attributes'
+# gem 'protected_attributes'
 gem 'squeel', github: 'ernie/squeel'
 
 gem 'haml-rails'
 gem 'simple_form', github: 'plataformatec/simple_form'
 
-gem 'acts-as-messageable'
+gem 'acts-as-messageable', github: 'neb2000/acts-as-messageable'
+gem 'ancestry', github: 'stefankroes/ancestry'
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
 
 gem 'pg'

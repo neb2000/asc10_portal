@@ -19,7 +19,7 @@ module Admin
       end
       
       def create
-        StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(::Forums::Category.new, params[:forums_category])
+        StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(::Forums::Category.new, forums_category_params)
       end
       
       def edit
@@ -29,7 +29,7 @@ module Admin
       end
       
       def update
-        StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(@category, params[:forums_category])
+        StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(@category, forums_category_params)
       end
       
       def destroy
@@ -37,6 +37,10 @@ module Admin
       end
 
       private
+        def forums_category_params
+          params.require(:forums_category).permit!
+        end
+        
         def find_category
           @category = ::Forums::Category.find(params[:id]) if params[:id]
         end

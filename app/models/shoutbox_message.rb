@@ -12,9 +12,7 @@
 class ShoutboxMessage < ActiveRecord::Base
   self.per_page = 100
   
-  belongs_to :user
-  
-  attr_accessible :message, :user_id, :user
+  belongs_to :user  
   validates :message, presence: true
   
   delegate :name, to: :user, allow_nil: true, prefix: true

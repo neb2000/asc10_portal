@@ -1,6 +1,4 @@
 class SystemSetting < ActiveRecord::Base
-  attr_accessible :identifier, :description, :metadata, :metadata_json
-  
   serialize :metadata
   
   def self.get_setting(identifier)

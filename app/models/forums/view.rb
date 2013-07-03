@@ -14,5 +14,4 @@
 #
 
 class Forums::View < ActiveRecord::Base
-  attr_accessible :count, :current_viewed_at, :past_viewed_at, :user_id, :viewable_id, :viewable_type
 end

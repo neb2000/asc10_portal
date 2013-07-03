@@ -21,15 +21,12 @@ class Forums::Topic < ActiveRecord::Base
   
   include ActiveModel::ForbiddenAttributesProtection
   
-  # attr_accessible :board_id, :board, :user, :user_id, :subject, :last_post_at
-  # attr_accessible :locked, :pinned, :hidden, as: :admin
-  
   extend FriendlyId
   friendly_id :subject, use: :slugged
   
   belongs_to :board, class_name: 'Forums::Board'
   belongs_to :user
-  has_many :posts, dependent: :destroy, order: 'forums_posts.created_at'
+  has_many :posts, dependent: :destroy
   
   validates :subject, :user, :board, :posts, presence: true
   

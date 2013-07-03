@@ -10,7 +10,8 @@ class Admin::BannerImagesController < Admin::ApplicationController
   end
   
   def create
-    StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(BannerImage.new, params[:banner_image])
+    banner_image_params = params.require(:banner_image).permit!
+    StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(BannerImage.new, banner_image_params)
   end
   
   def destroy

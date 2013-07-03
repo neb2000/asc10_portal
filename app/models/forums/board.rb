@@ -17,9 +17,7 @@ class Forums::Board < ActiveRecord::Base
   
   extend FriendlyId
   friendly_id :name, use: :slugged
-  
-  attr_accessible :category_id, :description, :name, :manager_ids
-  
+    
   belongs_to :category, class_name: 'Forums::Category'
   
   has_many :topics, dependent: :destroy

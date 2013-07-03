@@ -12,8 +12,6 @@
 #
 
 class Forums::Category < ActiveRecord::Base
-  attr_accessible :description, :name, :public, :user_group_ids
-  
   extend FriendlyId
   friendly_id :name, use: :slugged
 

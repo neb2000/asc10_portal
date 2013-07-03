@@ -1,6 +1,6 @@
 class StandardUpdater < Struct.new(:listener)
-  def update(record, params, as = :default)
-    record.assign_attributes params, as: as
+  def update(record, params)
+    record.assign_attributes params
     if record.save
       listener.success(record)
     else

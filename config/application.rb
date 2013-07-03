@@ -20,7 +20,7 @@ module Asc10Portal
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'London'
     
-    config.active_record.whitelist_attributes = false
+    # config.active_record.whitelist_attributes = false
     config.active_record.schema_format = :sql
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.

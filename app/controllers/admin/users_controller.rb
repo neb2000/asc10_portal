@@ -17,7 +17,8 @@ class Admin::UsersController < Admin::ApplicationController
   end
   
   def update
-    StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(@user, params[:user], :admin)
+    user_params = params.require(:user).permit(:permission_ids, :user_group_id)
+    StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(@user, user_params)
   end
   
   def destroy

@@ -14,7 +14,7 @@ module Forums
     
     def create
       @topic = @topic.decorate
-      StandardUpdater.new(TopicPostTimeSetter.new(responder)).update(@topic.posts.build(user: current_user), params[:forums_post])
+      StandardUpdater.new(TopicPostTimeSetter.new(responder)).update(@topic.posts.build(user: current_user), forums_post_params)
     end
     
     def edit
@@ -24,7 +24,7 @@ module Forums
     
     def update
       @topic = @topic.decorate
-      StandardUpdater.new(responder).update(@post, params[:forums_post])
+      StandardUpdater.new(responder).update(@post, forums_post_params)
     end
     
     def destroy
@@ -37,6 +37,10 @@ module Forums
     end
     
     private
+      def forums_post_params
+        params.require(:forums_post).permit(:text, :reply_to_id)
+      end
+    
       def responder
         @responder ||= StandardResponder.new(self).tap { |responder| responder.redirect_path = forums_board_topic_path(@topic.board, @topic) }
       end

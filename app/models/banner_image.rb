@@ -10,8 +10,6 @@
 #
 
 class BannerImage < ActiveRecord::Base
-  attr_accessible :active, :file
-  
   mount_uploader :file, BannerImageUploader
   validates :file, presence: true
   

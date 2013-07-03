@@ -13,9 +13,6 @@
 #
 
 class Page < ActiveRecord::Base
-  attr_accessible :title, :content, :display_shoutbox, :display_recruitment
-  
-
   extend FriendlyId
   friendly_id :title, use: :slugged
   

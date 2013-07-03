@@ -19,7 +19,7 @@ module Admin
       end
       
       def create
-        StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(::Forums::Board.new, params[:forums_board])
+        StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(::Forums::Board.new, forums_board_params)
       end
       
       def edit
@@ -29,7 +29,7 @@ module Admin
       end
       
       def update
-        StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(@board, params[:forums_board])
+        StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(@board, forums_board_params)
       end
       
       def destroy
@@ -37,6 +37,10 @@ module Admin
       end
 
       private
+        def forums_board_params
+          params.require(:forums_board).permit!
+        end
+      
         def find_board
           @board = ::Forums::Board.find(params[:id]) if params[:id]
         end

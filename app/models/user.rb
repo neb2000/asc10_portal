@@ -25,16 +25,9 @@
 #
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
-  attr_accessible :permission_ids, :user_group_id, as: :admin
-  # attr_accessible :title, :body
+  include ActiveModel::ForbiddenAttributesProtection
   
   belongs_to :user_group
   
@@ -47,7 +40,7 @@ class User < ActiveRecord::Base
   delegate :name, to: :user_group, allow_nil: true, prefix: true
   delegate :readable_category_ids, to: :user_group, allow_nil: true
   
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   
   def managed_board_id_list
     @managed_board_id_list ||= managed_board_ids

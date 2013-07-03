@@ -14,7 +14,7 @@ class Admin::NewsEntriesController < Admin::ApplicationController
   end
     
   def create
-    StandardUpdater.new(StandardResponder.new(self)).update(NewsEntry.new, params[:news_entry])
+    StandardUpdater.new(StandardResponder.new(self)).update(NewsEntry.new, news_entry_params)
   end
   
   def edit
@@ -22,7 +22,7 @@ class Admin::NewsEntriesController < Admin::ApplicationController
   end
   
   def update
-    StandardUpdater.new(StandardResponder.new(self)).update(@news_entry, params[:news_entry])
+    StandardUpdater.new(StandardResponder.new(self)).update(@news_entry, news_entry_params)
   end
   
   def destroy
@@ -30,6 +30,10 @@ class Admin::NewsEntriesController < Admin::ApplicationController
   end
   
   private
+    def news_entry_params
+      params.require(:news_entry).permit!
+    end
+  
     def find_news_entry
       @news_entry = NewsEntry.find(params[:id]) if params[:id]
     end
