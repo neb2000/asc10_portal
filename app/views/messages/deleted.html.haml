@@ -27,6 +27,6 @@
                 .btn-group
                   = link_to restore_message_path(message), method: :put, remote: true, title: 'Put this message back', class: 'btn btn-link btn-small' do
                     %i.icon-undo
-                  = link_to message_path(message), method: :delete, remote: true, title: 'Permanently delete this message', confirm: 'Are you sure you want to delete this message?', class: 'btn btn-link btn-small' do
+                  = link_to message_path(message), method: :delete, remote: true, title: 'Permanently delete this message', data: { confirm: 'Are you sure you want to delete this message?' }, class: 'btn btn-link btn-small' do
                     %i.icon-trash
             

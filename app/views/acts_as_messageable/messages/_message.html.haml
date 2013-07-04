@@ -7,5 +7,5 @@
     .btn-group
       = link_to reply_message_path(message), class: 'btn btn-link btn-small', title: 'Reply to this message' do
         %i.icon-reply
-      = link_to message_path(message), method: :delete, remote: true, confirm: 'Are you sure you want to delete this message?', title: 'Delete this message', class: 'btn btn-link btn-small' do
+      = link_to message_path(message), method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete this message?' }, title: 'Delete this message', class: 'btn btn-link btn-small' do
         %i.icon-trash

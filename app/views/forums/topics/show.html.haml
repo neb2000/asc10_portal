@@ -9,7 +9,7 @@
           Reply
     - if can? :delete, @topic
       .btn-group
-        = link_to forums_board_topic_path(@board, @topic), method: :delete, confirm: 'Are you sure you want to delete this topic?', class: 'btn btn-inverse' do
+        = link_to forums_board_topic_path(@board, @topic), method: :delete, data: { confirm: 'Are you sure you want to delete this topic?' }, class: 'btn btn-inverse' do
           %i.icon-trash
           Delete
     - manage_actions = capture do
