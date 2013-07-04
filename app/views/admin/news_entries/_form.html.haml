@@ -1,10 +1,28 @@
 .well.well-form
   = simple_form_for [:admin, @news_entry] do |f|
     .form-inputs
+      - cover_image_buttons = capture do
+        %span.btn.btn-file.btn-mini{ style: 'margin-left: 10px' }
+          %span.fileupload-new
+            %i.icon-picture
+            Select
+          %span.fileupload-exists
+            %i.icon-picture
+            Change
+          = f.input_field :cover_image, as: :file
+        = link_to '#', data:{dismiss: :fileupload}, class: 'btn btn-mini fileupload-exists' do
+          %i.icon-trash.text-error
+      .fileupload.fileupload-new{data: {provides: :fileupload}}
+        = f.input :cover_image, label: "Cover image#{cover_image_buttons}".html_safe do
+          .fileupload-new.thumbnail{style: "width: 324px; height: 162px;"}
+            = @news_entry.decorate.display_cover_image
+          .fileupload-preview.fileupload-exists.thumbnail{style: "width: 324px; height: 162px;"}
       = f.input :title, input_html: { class: 'input-block-level', placeholder: 'Title' }, autofocus: true
-      = f.input :cover_image
       = f.input :content, input_html: { class: 'input-block-level wysihtml5', rows: '12' }, as: :text, required: false
     .form-actions
       = cancel_button(url_for(action: :index))
       .pull-right
         = submit_button
+        
+        
+        

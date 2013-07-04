@@ -9,17 +9,6 @@
     = analytics_init if Rails.env.production?
     = favicon_link_tag '/favicon.png'
     = csrf_meta_tags
-    :coffee
-      $.fn.wysihtml5.defaultOptions.size = 'inverse'
-      $ -> 
-        $('#menu').affix(
-          offset: {
-            top: ->
-              Math.ceil($('#banner').height())
-          }
-        )
-        if $('.sidebar').size() > 0
-          $('#main-content').css('min-height', $('#content').height())
   %body{ data: { stream_url: "#{faye_url}/faye"} }
     .flash-messages
       - unless flash.blank?

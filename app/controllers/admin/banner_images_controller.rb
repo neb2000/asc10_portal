@@ -1,6 +1,6 @@
 class Admin::BannerImagesController < Admin::ApplicationController
   before_filter :find_banner_image
-  respond_to :js, only: [:create, :destroy, :set_active]
+  respond_to :js, only: [:destroy, :set_active]
   
   def new
     @banner_image = BannerImage.new
@@ -11,7 +11,7 @@ class Admin::BannerImagesController < Admin::ApplicationController
   
   def create
     banner_image_params = params.require(:banner_image).permit!
-    StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(BannerImage.new, banner_image_params)
+    StandardUpdater.new(responder).update(BannerImage.new, banner_image_params)
   end
   
   def destroy
@@ -24,6 +24,11 @@ class Admin::BannerImagesController < Admin::ApplicationController
   end
   
   private
+    def responder
+      @responder ||= StandardResponder.new(self).tap { |responder| responder.redirect_path = url_for([:admin, :settings]) }
+    end
+    
+  
     def find_banner_image
       @banner_image = BannerImage.find(params[:id]) if params[:id]
     end

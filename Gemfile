@@ -35,7 +35,6 @@ gem 'bootstrap-will_paginate'
 
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'remotipart'
 
 gem 'dalli'
 

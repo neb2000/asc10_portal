@@ -17,14 +17,11 @@
 //= require bootstrap
 //= require bootstrap-wysihtml5/wysihtml5
 //= require bootstrap-wysihtml5-custom
-//= require frontend_specific
 //= require wysihtml5-init
+//= require bootstrap-fileupload
 //= require ajax_modal
 //= require flash_message
-//= require shoutbox
-//= require websocket_client
-//= require spotlight
+//= require bootstrap-lightbox
+//= require endless_page
 //= require page_load_indicator
-//= require highlight
-//= require highlight_init
 //= require turbolinks
