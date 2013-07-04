@@ -18,6 +18,8 @@ class Forums::Post < ActiveRecord::Base
   belongs_to :topic, autosave: true, class_name: 'Forums::Topic'
   belongs_to :user
   belongs_to :reply_to, class_name: "Forums::Post"
+  
+  acts_as_list scope: :topic
 
   has_many :replies, class_name: "Forums::Post",
                      foreign_key: "reply_to_id",

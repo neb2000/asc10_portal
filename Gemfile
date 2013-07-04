@@ -19,6 +19,8 @@ gem 'devise',                 github: 'plataformatec/devise'
 
 gem 'google-analytics-rails', github: 'bgarret/google-analytics-rails'
 
+gem 'acts_as_list'
+
 gem 'pg'
 gem 'pg_search'
 

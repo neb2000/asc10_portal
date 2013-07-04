@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
   before_filter { @current_nav_identifier = :search }
   def index    
     @search = Searches::Form.new(params[:q])
-    @posts = @search.result(Forums::Post.accessible_by(current_ability)).page(params[:page]).decorate
+    @posts = @search.result(Forums::Post.accessible_by(current_ability).preload({topic: :board}, {reply_to: [topic: :board]}, :user)).page(params[:page]).decorate
   end
   
   def ajax_get_results

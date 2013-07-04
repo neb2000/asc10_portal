@@ -472,7 +472,8 @@ CREATE TABLE forums_posts (
     text text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    tsv tsvector
+    tsv tsvector,
+    "position" integer
 );
 
 
@@ -1779,3 +1780,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130628224156');
 INSERT INTO schema_migrations (version) VALUES ('20130628224221');
 
 INSERT INTO schema_migrations (version) VALUES ('20130701205928');
+
+INSERT INTO schema_migrations (version) VALUES ('20130704192303');

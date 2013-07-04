@@ -32,7 +32,7 @@ module Forums
     def show
       @topic.register_view_by(current_user)
       @board.register_view_by(current_user)
-      @posts = @topic.posts.accessible_by(current_ability).page(params[:page]).decorate
+      @posts = @topic.posts.accessible_by(current_ability).preload(:user, :topic, reply_to: :user).page(params[:page]).decorate
       @topic = @topic.decorate
       respond_with(@topic)
     end

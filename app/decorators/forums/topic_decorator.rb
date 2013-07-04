@@ -52,11 +52,16 @@ class Forums::TopicDecorator < Draper::Decorator
   end
   
   def display_last_post_link
-    return 'None' if posts.blank?
-    "#{h.link_to posts[-1].display_created_at_in_word, h.forums_board_topic_path(board, source, anchor: "forums_post_#{posts[-1].id}", page: last_page)} by #{posts[-1].display_user}".html_safe
+    return 'None' unless latest_post
+    "#{h.link_to latest_post.display_created_at_in_word, h.forums_board_topic_path(board, source, anchor: "post-#{latest_post.id}", page: latest_post.page_number)} by #{latest_post.display_user}".html_safe
   end
   
   def self.collection_decorator_class
     PaginatingDecorator
   end
+  
+  private
+    def latest_post
+      @post_list ||= posts.sort_by(&:created_at)[-1]
+    end
 end

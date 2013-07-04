@@ -24,7 +24,7 @@ class Forums::BoardDecorator < Draper::Decorator
   end
   
   def display_last_post_link
-    return 'None' if posts.blank?
+    return 'None' unless latest_post
     "#{h.link_to latest_post.display_subject, latest_post.link_to_topic} by #{latest_post.display_user} #{latest_post.display_created_at_in_word}".html_safe
   end
   

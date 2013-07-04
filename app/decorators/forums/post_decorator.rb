@@ -32,8 +32,24 @@ class Forums::PostDecorator < Draper::Decorator
     "#{h.time_ago_in_words source.created_at} ago"
   end
   
-  def link_to_topic
-    h.forums_board_topic_path(topic.board, topic, anchor: "forums_post_#{source.id}", page: topic.last_page)
+  def page_number(topic_class = Forums::Post)
+    (source.position.to_f / topic_class.per_page).ceil
+  end
+  
+  def anchor_params
+    {anchor: "post-#{source.id}", page: page_number}
+  end
+  
+  def reply_to_link
+    reply_to.link_to_topic
+  end
+  
+  def reply_to_anchor
+    reply_to.anchor_params
+  end
+  
+  def link_to_topic(options = {})
+    h.forums_board_topic_path(topic.board, topic, options.merge(anchor_params))
   end
   
   def link_to_topic_without_anchor

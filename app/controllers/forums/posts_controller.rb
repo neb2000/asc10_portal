@@ -28,7 +28,7 @@ module Forums
     end
     
     def destroy
-      if @topic.posts.size == 1
+      if @post.position == 1
         responder.redirect_path = url_for(@topic.board)
         StandardDestroyer.new(responder).destroy(@topic)
       else

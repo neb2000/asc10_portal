@@ -8,12 +8,12 @@
     
     .span10.post-container
       .post-content
-        = link_to post.link_to_topic_without_anchor do
+        = link_to post.link_to_topic do
           %h5 #{post.display_board} - #{post.display_subject}
         .clearfix
           %small.muted
             = l post.created_at, format: :full
           - if post.reply_to
             %p.muted
-              %em Reply to #{post.display_reply_to_user}
+              %em Reply to #{link_to post.display_reply_to_user, post.reply_to_link}
         = post.display_text

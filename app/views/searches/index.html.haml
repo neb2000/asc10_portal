@@ -15,7 +15,7 @@
   - if @posts.empty?
     %p.muted No result.
   - else
-    = render collection: @posts, partial: 'searches/post'
+    #search-results{ data: { highlight: params[:q][:keyword] }}= render collection: @posts, partial: 'searches/post'
   = will_paginate @posts
 :coffee
   $ ->
