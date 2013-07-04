@@ -51,6 +51,24 @@ class Forums::TopicDecorator < Draper::Decorator
     end
   end
   
+  def display_go_to_page_link(klass = Forums::Post)
+    return unless posts.size > klass.per_page
+    page_list = (1..(posts.size.to_f / klass.per_page).ceil).to_a
+    links = if page_list.size < 6
+      to_page_link(page_list)
+    else
+      "#{to_page_link(page_list[0,  2])} &hellip; #{to_page_link(page_list[-3, 3])}".html_safe
+    end    
+    h.content_tag :p, h.content_tag(:small, "Go to page: #{links}".html_safe), class: 'no-whitespace muted'
+  end
+  
+  def to_page_link(pages)
+    return if pages.blank?
+    pages.map do |page_number|
+      h.link_to(page_number, h.forums_board_topic_path(source.board, source, page: page_number))
+    end.join(', ').html_safe
+  end
+  
   def display_last_post_link
     return 'None' unless latest_post
     "#{h.link_to latest_post.display_created_at_in_word, h.forums_board_topic_path(board, source, latest_post.anchor_params)} by #{latest_post.display_user}".html_safe
