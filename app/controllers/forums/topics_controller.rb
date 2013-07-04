@@ -32,8 +32,6 @@ module Forums
     def show
       @topic.register_view_by(current_user)
       @board.register_view_by(current_user)
-      fresh_when last_modified: @topic.last_post_at.utc, etag: @topic
-      
       @posts = @topic.posts.accessible_by(current_ability).page(params[:page]).decorate
       @topic = @topic.decorate
       respond_with(@topic)
