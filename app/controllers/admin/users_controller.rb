@@ -17,7 +17,11 @@ class Admin::UsersController < Admin::ApplicationController
   end
   
   def update
-    user_params = params.require(:user).permit(:permission_ids, :user_group_id)
+    user_params = if can? :manage, Permission
+      params.require(:user).permit(:permission_ids, :user_group_id)
+    else
+      params.require(:user).permit(:user_group_id)
+    end
     StandardUpdater.new(StandardResourceDecorator.new(StandardAjaxResponder.new(self))).update(@user, user_params)
   end
   
