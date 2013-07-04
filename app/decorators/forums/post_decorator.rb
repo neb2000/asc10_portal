@@ -33,11 +33,11 @@ class Forums::PostDecorator < Draper::Decorator
   end
   
   def page_number(topic_class = Forums::Post)
-    (source.position.to_f / topic_class.per_page).ceil
+    @page_number ||= (source.position.to_f / topic_class.per_page).ceil
   end
   
   def anchor_params
-    {anchor: "post-#{source.id}", page: page_number}
+    {anchor: "post-#{source.id}", page: (page_number if page_number > 1)}
   end
   
   def reply_to_link
