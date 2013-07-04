@@ -225,7 +225,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.11.0)
     rake (10.1.0)
-    remotipart (1.0.5)
     request_store (1.0.5)
     rvm-capistrano (1.3.4)
       capistrano (>= 2.0.0)
@@ -307,7 +306,6 @@ DEPENDENCIES
   rails (~> 4.0.0)
   rails_autolink
   ransack!
-  remotipart
   rvm-capistrano
   sass-rails
   simple_form!
