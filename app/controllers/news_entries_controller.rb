@@ -10,6 +10,6 @@ class NewsEntriesController < ApplicationController
   
   def show
     @news_entry = NewsEntry.friendly.find(params[:id]).decorate
-    respond_with(@news_entry)
+    respond_with(@news_entry) if stale? @news_entry
   end
 end

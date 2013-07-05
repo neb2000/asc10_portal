@@ -33,10 +33,8 @@ module Forums
       @topic.register_view_by(current_user)
       @board.register_view_by(current_user)
       @posts = @topic.posts.accessible_by(current_ability).preload(:user, :topic, reply_to: :user).page(params[:page]).decorate
-      if stale? @topic
-        @topic = @topic.decorate
-        respond_with(@topic)
-      end
+      @topic = @topic.decorate
+      respond_with(@topic)
     end
     
     def destroy
