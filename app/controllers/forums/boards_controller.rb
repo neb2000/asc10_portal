@@ -15,7 +15,7 @@ module Forums
     
     private
       def find_board
-        @board = Board.find(params[:id]) if params[:id]
+        @board = Board.friendly.find(params[:id]) if params[:id]
       end
   end
 end

@@ -46,15 +46,15 @@ module Forums
       end
       
       def find_post
-        @post ||= Post.find(params[:id]) if params[:id]
+        @post ||= Post.friendly.find(params[:id]) if params[:id]
       end
     
       def find_reply_to
-        @reply_to ||= Post.find(params[:reply_to_id]) if params[:reply_to_id]
+        @reply_to ||= Post.friendly.find(params[:reply_to_id]) if params[:reply_to_id]
       end
       
       def find_topic
-        @topic = Topic.find(params[:topic_id]) if params[:topic_id]
+        @topic = Topic.friendly.find(params[:topic_id]) if params[:topic_id]
       end
   end
 end

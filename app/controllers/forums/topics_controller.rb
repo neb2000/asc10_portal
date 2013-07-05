@@ -62,11 +62,11 @@ module Forums
       end
     
       def find_board
-        @board = Board.find(params[:board_id]).decorate if params[:board_id]
+        @board = Board.friendly.find(params[:board_id]).decorate if params[:board_id]
       end
       
       def find_topic
-        @topic = Topic.find(params[:id]) if params[:id]
+        @topic = Topic.friendly.find(params[:id]) if params[:id]
       end 
   end
 end

@@ -28,6 +28,8 @@ class Forums::Topic < ActiveRecord::Base
   belongs_to :user
   has_many :posts, dependent: :destroy
   
+  delegate :name, to: :user, prefix: true
+  
   validates :subject, :user, :board, :posts, presence: true
   
   def self.search_by_keyword(keyword)
@@ -36,6 +38,5 @@ class Forums::Topic < ActiveRecord::Base
   
   def self.by_pinned_or_most_recent_post
     order('forums_topics.id').order('forums_topics.last_post_at DESC').order('forums_topics.pinned DESC')
-  end
-  
+  end  
 end

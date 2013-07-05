@@ -5,7 +5,7 @@ gem 'rails', '~> 4.0.0'
 gem 'squeel',                 github: 'ernie/squeel'
 gem 'ransack',                github: 'ernie/ransack',          branch: 'rails-4'
 gem 'paper_trail',            github: 'airblade/paper_trail',   branch: 'rails4'
-gem 'friendly_id',            github: 'FriendlyId/friendly_id', branch: 'rails4'
+gem 'friendly_id',            github: 'FriendlyId/friendly_id'#, branch: 'rails4'
                               
 gem 'haml-rails'              
 gem 'simple_form',            github: 'plataformatec/simple_form'

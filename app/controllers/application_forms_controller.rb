@@ -25,6 +25,6 @@ class ApplicationFormsController < ApplicationController
     
     def find_template_and_board
       @template = SystemSetting.get_setting('application_template')
-      @board    = Forums::Board.find SystemSetting.get_setting('application_board')
+      @board    = Forums::Board.friendly.find SystemSetting.get_setting('application_board')
     end
 end

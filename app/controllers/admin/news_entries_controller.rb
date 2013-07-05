@@ -35,6 +35,6 @@ class Admin::NewsEntriesController < Admin::ApplicationController
     end
   
     def find_news_entry
-      @news_entry = NewsEntry.find(params[:id]) if params[:id]
+      @news_entry = NewsEntry.friendly.find(params[:id]) if params[:id]
     end
 end

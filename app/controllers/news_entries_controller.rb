@@ -9,7 +9,7 @@ class NewsEntriesController < ApplicationController
   end
   
   def show
-    @news_entry = NewsEntry.find(params[:id]).decorate
+    @news_entry = NewsEntry.friendly.find(params[:id]).decorate
     respond_with(@news_entry)
   end
 end

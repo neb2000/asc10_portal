@@ -42,7 +42,7 @@ module Admin
         end
         
         def find_category
-          @category = ::Forums::Category.find(params[:id]) if params[:id]
+          @category = ::Forums::Category.friendly.find(params[:id]) if params[:id]
         end
     end
   end

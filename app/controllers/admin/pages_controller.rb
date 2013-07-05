@@ -35,6 +35,6 @@ class Admin::PagesController < Admin::ApplicationController
     end
   
     def find_page
-      @page = Page.find(params[:id]) if params[:id]
+      @page = Page.friendly.find(params[:id]) if params[:id]
     end
 end

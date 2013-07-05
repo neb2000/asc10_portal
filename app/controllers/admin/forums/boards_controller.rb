@@ -42,7 +42,7 @@ module Admin
         end
       
         def find_board
-          @board = ::Forums::Board.find(params[:id]) if params[:id]
+          @board = ::Forums::Board.friendly.find(params[:id]) if params[:id]
         end
     end
   end
