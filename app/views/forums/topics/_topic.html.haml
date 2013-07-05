@@ -5,7 +5,7 @@
     = link_to topic.display_subject, forums_board_topic_path(topic.board, topic)
     = topic.display_go_to_page_link
   %td.center
-    = topic.display_user
+    = link_to topic.display_user, topic.user, class: 'ajax-modal'
   %td.center
     = topic.posts_count
   %td.center

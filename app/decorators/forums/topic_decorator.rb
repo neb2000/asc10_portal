@@ -71,7 +71,7 @@ class Forums::TopicDecorator < Draper::Decorator
   
   def display_last_post_link
     return 'None' unless latest_post
-    "#{h.link_to latest_post.display_created_at_in_word, h.forums_board_topic_path(board, source, latest_post.anchor_params)} by #{latest_post.display_user}".html_safe
+    "#{h.link_to latest_post.display_created_at_in_word, h.forums_board_topic_path(board, source, latest_post.anchor_params)}<br>by #{latest_post.display_user}".html_safe
   end
   
   def self.collection_decorator_class

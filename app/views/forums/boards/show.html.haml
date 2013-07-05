@@ -18,7 +18,7 @@
             %th.span1.center Posts
             %th.span1.center Views
             %th.span3.center Last post
-        %tbody
+        %tbody#topic-list.table-condensed
           - if @topics.empty?
             %tr
               %td.muted{ colspan: 6 } No topics at the moment.
