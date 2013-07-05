@@ -6,6 +6,7 @@
   .modal-body
     = f.input :name, autofocus: true
     = f.association :category
+    = f.input :read_only, as: :boolean, label: false, inline_label: 'Read only?'
     = f.input :description, input_html: { class: 'input-block-level', rows: 3 }
     = f.association :managers, input_html: { class: 'input-block-level' }
   .modal-footer

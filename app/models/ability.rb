@@ -3,15 +3,15 @@ class Ability
 
   def initialize(user)
     @user = user || User.new
+        
+    @user.permission_identifiers.each do |permission|
+      self.send permission if self.respond_to?(permission)
+    end
     
     message_permissions
     forum_permissions
     
     can :create, :application_form if @user.user_group_id.blank?
-    
-    @user.permission_identifiers.each do |permission|
-      self.send permission if self.respond_to?(permission)
-    end
   end
   
   def message_permissions
@@ -42,6 +42,8 @@ class Ability
     can [:update, :destroy], [Forums::Post, Forums::Topic], user_id: @user.id
     cannot [:update, :destroy, :reply], Forums::Topic, locked: true
     cannot [:update, :destroy, :reply], Forums::Post,  topic: { locked: true }    
+    
+    cannot :create_topic, Forums::Board, read_only: true
   end
   
   def manage_forums_settings

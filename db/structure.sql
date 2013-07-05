@@ -403,7 +403,8 @@ CREATE TABLE forums_boards (
     category_id integer,
     views_count integer DEFAULT 0,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    read_only boolean DEFAULT false
 );
 
 
@@ -1782,3 +1783,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130628224221');
 INSERT INTO schema_migrations (version) VALUES ('20130701205928');
 
 INSERT INTO schema_migrations (version) VALUES ('20130704192303');
+
+INSERT INTO schema_migrations (version) VALUES ('20130704235401');

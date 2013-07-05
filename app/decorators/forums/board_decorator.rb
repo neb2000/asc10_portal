@@ -23,6 +23,10 @@ class Forums::BoardDecorator < Draper::Decorator
     category.display_name
   end
   
+  def display_read_only
+    h.content_tag(:i, '', class: 'icon-lock text-error', title: 'Read only') if source.read_only?
+  end
+  
   def display_last_post_link
     return 'None' unless latest_post
     "#{h.link_to latest_post.display_subject, latest_post.link_to_topic} by #{latest_post.display_user} #{latest_post.display_created_at_in_word}".html_safe
