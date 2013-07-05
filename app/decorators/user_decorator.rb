@@ -21,7 +21,7 @@ class UserDecorator < Draper::Decorator
   end
   
   def display_user_group
-    source.user_group_name
+    source.user_group_name || "-"
   end
   
   def display_joined_at
