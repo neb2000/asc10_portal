@@ -48,7 +48,7 @@ Asc10Portal::Application.routes.draw do
   
   resources :pages, only: [:show]
   
-  resources :users, only: [] do
+  resources :users, only: [:show] do
     get :ajax_get_users, on: :collection
   end
   

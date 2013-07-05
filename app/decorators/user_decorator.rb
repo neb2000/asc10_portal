@@ -24,9 +24,18 @@ class UserDecorator < Draper::Decorator
     source.user_group_name
   end
   
+  def display_joined_at
+    h.l source.created_at, format: :full
+  end
+  
   def display_last_signed_in
     return 'Never' unless source.last_sign_in_at
-    "#{h.l source.last_sign_in_at, format: :full} - #{source.last_sign_in_ip}"
+    "#{display_last_signed_in_time} - #{source.last_sign_in_ip}"
+  end
+  
+  def display_last_signed_in_time
+    return 'Never' unless source.last_sign_in_at
+    h.l source.last_sign_in_at, format: :full
   end
   
   def self.collection_decorator_class

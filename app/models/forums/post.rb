@@ -16,7 +16,7 @@ class Forums::Post < ActiveRecord::Base
   pg_search_scope :search_by_text, against: :text, using: { tsearch: { dictionary: 'english', tsvector_column: 'tsv' } }
   
   belongs_to :topic, autosave: true, class_name: 'Forums::Topic'
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   belongs_to :reply_to, class_name: "Forums::Post"
   
   acts_as_list scope: :topic

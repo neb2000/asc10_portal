@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_header  
   before_filter :set_current_online_users
-  helper_method :all_pages, :all_accessible_categories, :current_online_users
+  helper_method :all_pages, :all_accessible_categories, :current_online_users, :current_online_user_ids
   
   rescue_from CanCan::AccessDenied do
     render template: 'errors/forbidden'#, status: 403
@@ -35,6 +35,12 @@ class ApplicationController < ActionController::Base
     @current_online_users ||= get_current_online_users
   end
   
+  
+  def current_online_user_ids
+    @current_online_user_ids ||= Rails.cache.fetch('online_users') do
+      {}
+    end.select{ |_, timestamp| timestamp > 5.minutes.ago }.keys
+  end
   
   private
     def set_header

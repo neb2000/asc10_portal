@@ -1,4 +1,8 @@
 $.fn.wysihtml5.defaultOptions.size = 'inverse'
+wowhead_tooltips =
+  colorlinks: true
+  iconizelinks: true
+  renamelinks: true
 $ -> 
   $('#menu').affix(
     offset: {

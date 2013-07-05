@@ -4,7 +4,29 @@
 *.highlight
   background: #ffd700 !important
   color: #333 !important
-  
+
+.gravatar
+  img
+    @include border-radius(4px)
+    overflow: hidden
+  margin-bottom: 5px
+
+.profile-box
+  dl.dl-horizontal
+    margin: 0
+    dt
+      width: 80px
+      text-align: left
+      line-height: 20px
+      margin-top: 0
+      margin-bottom: 1px
+    dd
+      margin-left: 90px
+      line-height: 20px
+      margin-top: 0
+      margin-bottom: 1px
+      
+
 #existing-messages
   margin-bottom: 20px
 #whoson

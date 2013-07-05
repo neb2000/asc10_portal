@@ -890,7 +890,8 @@ CREATE TABLE users (
     forem_admin boolean DEFAULT false,
     forem_state character varying(255) DEFAULT 'pending_review'::character varying,
     forem_auto_subscribe boolean DEFAULT false,
-    user_group_id integer
+    user_group_id integer,
+    posts_count integer DEFAULT 0
 );
 
 
@@ -1785,3 +1786,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130701205928');
 INSERT INTO schema_migrations (version) VALUES ('20130704192303');
 
 INSERT INTO schema_migrations (version) VALUES ('20130704235401');
+
+INSERT INTO schema_migrations (version) VALUES ('20130705000643');

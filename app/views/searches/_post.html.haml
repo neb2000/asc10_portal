@@ -3,7 +3,7 @@
     .span2.user-info
       .center
         %h5.author
-          = link_to post.display_user, new_message_path(recipient: post.display_user)
+          = link_to post.display_user, post.user, class: 'ajax-modal'
         .gravatar.hidden-phone= image_tag post.display_user_gravatar(s: 80)
     
     .span10.post-container

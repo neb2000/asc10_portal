@@ -19,6 +19,6 @@
   %h3 Who&rsquo;s online
   .well.well-black.well-small
     - current_online_users.each do |user|
-      #{link_to user.display_name, new_message_path(recipient: user.display_name), class: 'online-user'} 
+      #{link_to user.display_name, user, class: 'ajax-modal online-user'} 
     %p.muted.no-whitespace
       %small (Users active over the past 5mins)
