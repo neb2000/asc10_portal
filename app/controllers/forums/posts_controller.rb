@@ -50,7 +50,7 @@ module Forums
       end
     
       def find_reply_to
-        @reply_to ||= Post.friendly.find(params[:reply_to_id]) if params[:reply_to_id]
+        @reply_to ||= Post.find(params[:reply_to_id]) if params[:reply_to_id]
       end
       
       def find_topic
