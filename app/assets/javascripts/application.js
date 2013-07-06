@@ -22,6 +22,7 @@
 //= require ajax_modal
 //= require flash_message
 //= require shoutbox
+//= require faye
 //= require websocket_client
 //= require spotlight
 //= require page_load_indicator
