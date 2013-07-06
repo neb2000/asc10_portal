@@ -8,6 +8,7 @@
     = javascript_include_tag "application", data: { turbolinks_track: true }
     = analytics_init if Rails.env.production?
     = favicon_link_tag '/favicon.png'
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     = csrf_meta_tags
   %body{ data: { stream_url: "#{faye_url}/faye"} }
     .flash-messages
@@ -26,8 +27,12 @@
               %li.dropdown
                 = link_to '#', class: 'dropdown-toggle', data: {toggle: :dropdown} do
                   %span.user-badge{data: { count: 'unread_messages' }}= unread_message_badge
-                  = current_user.name
-                  %span.caret
+                  %span.visible-phone
+                    %i.icon-user
+                    %b.caret
+                  %span.hidden-phone
+                    = current_user.name
+                    %b.caret
                 %ul.dropdown-menu.pull-right
                   %li
                     = link_to :messages do
@@ -54,9 +59,24 @@
             - else
               %li= link_to 'Login', new_user_session_path
           %ul.nav.nav-pills
-            %li{ class: ('active' if @current_nav_identifier == :home) }= link_to 'Home', :root
-            %li{ class: ('active' if @current_nav_identifier == :forums) }= link_to 'Forums', [:forums, :root]
-            %li{ class: ('active' if @current_nav_identifier == :roster) }= link_to 'Roster', :roster
+            %li{ class: ('active' if @current_nav_identifier == :home) }
+              = link_to :root do
+                %span.visible-phone
+                  %i.icon-home
+                %span.hidden-phone Home
+                
+            %li{ class: ('active' if @current_nav_identifier == :forums) }
+              = link_to [:forums, :root] do
+                %span.visible-phone
+                  %i.icon-comments
+                %span.hidden-phone
+                  Forums
+            %li{ class: ('active' if @current_nav_identifier == :roster) }
+              = link_to :roster do
+                %span.visible-phone
+                  %i.icon-group
+                %span.hidden-phone
+                  Roster
             - if can? :create, :application_form
               %li{ class: ('active' if @current_nav_identifier == :apply) }= link_to 'Apply', [:new, :application_form]
             - all_pages.each do |page|

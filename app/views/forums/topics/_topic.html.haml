@@ -1,9 +1,9 @@
 %tr[topic.source]
   %td
-    = topic.display_icon_for(current_user)
-  %td
-    = link_to topic.display_subject, forums_board_topic_path(topic.board, topic)
-    = topic.display_go_to_page_link
+    .topic-status.pull-left= topic.display_icon_for(current_user)
+    .topic-subject
+      = link_to topic.display_subject, forums_board_topic_path(topic.board, topic)
+      = topic.display_go_to_page_link
   %td.center
     = link_to topic.display_user, topic.user, class: 'ajax-modal'
   %td.center

@@ -8,3 +8,51 @@
         .news-entry, .content-box
           padding-left: 30px
           padding-right: 30px
+
+@media (max-width: 767px)
+  #menu.affix
+    left: 0
+    right: 0
+  .user-info .center
+    text-align: left !important
+  .content-box
+    padding: 10px  !important
+    
+    
+  table.table-responsive  
+    &, thead, tbody, th, td, tr
+      display: block
+    td
+      border: none
+    thead
+      position: absolute
+      top: -9999px
+      left: -9999px
+      border: none
+      tr
+        border: none
+        th
+          border: none
+    tr
+      border-bottom: 1px solid #000
+      &:last-child
+        border: none
+        td:last-child
+          border: none
+      td
+        text-align: left !important
+        .topic-status
+          margin-right: 5px
+        br
+          display: none
+        &:before
+          text-align: left !important
+          padding-right: 6px
+          content: attr(data-label)
+          //color: #ddd
+          float: left
+          width: 25%
+          font-size: 14px
+          font-weight: normal
+          white-space: nowrap
+          //text-shadow: 1px 1px 1px #ddd

@@ -12,3 +12,7 @@ $ ->
   )
   if $('.sidebar').size() > 0
     $('#main-content').css('min-height', $('#content').height())
+    
+  $('table.table-responsive thead th').each (index) ->
+    label = if $(this).data('label')? then $(this).data('label') else $(this).text()
+    $("tr td:nth-child(#{index + 1})", $(this).closest('thead').next('tbody')).attr('data-label', label)
