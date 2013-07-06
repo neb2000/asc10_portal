@@ -15,6 +15,6 @@
         = link_to 'Apply', [:new, :application_form], class: 'pull-right'
 .sidebar-widget
   %h3 Progression
-  #progression-list{ data: { content_url: url_for([:ajax_get_progression, :progression]) }}
+  #progression-list{ data: { content_url: ajax_get_progression_progression_path(format: :js) }}
     %i.icon-spinner.icon-spin
     Reading guild progression...

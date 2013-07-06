@@ -8,6 +8,7 @@ class ProgressionsController < ApplicationController
     end
     @progression = YAML.load(progression_yaml)
     @npc_image_url = SystemSetting.get_setting('npc_image_url')
+    
     respond_with(@progression)
   end
 end
