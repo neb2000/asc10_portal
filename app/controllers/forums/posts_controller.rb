@@ -46,7 +46,7 @@ module Forums
       end
       
       def find_post
-        @post ||= Post.friendly.find(params[:id]) if params[:id]
+        @post ||= Post.find(params[:id]) if params[:id]
       end
     
       def find_reply_to
