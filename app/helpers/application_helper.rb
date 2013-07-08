@@ -39,7 +39,7 @@ module ApplicationHelper
   end
   
   def latest_forum_topics
-    @latest_forum_topics ||= Forums::Topic.accessible_by(current_ability).order('forums_topics.last_post_at DESC').includes(:board).limit(5).decorate
+    @latest_forum_topics ||= Forums::Topic.accessible_by(current_ability).order('forums_topics.last_post_at DESC').includes(:board, :posts).limit(5).decorate
   end
   
   def open_recruitments
