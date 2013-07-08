@@ -20,5 +20,5 @@ class Forums::Category < ActiveRecord::Base
   
   has_and_belongs_to_many :user_groups, join_table: 'categories_user_groups'
   
-  # has_and_belongs_to_many :object, : => "table_name", :foreign_key => "object_id"
+  default_scope ->{ order('forums_categories.name') }
 end
