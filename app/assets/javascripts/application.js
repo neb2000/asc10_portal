@@ -28,4 +28,5 @@
 //= require page_load_indicator
 //= require highlight
 //= require highlight_init
+//= require typeahead_init
 //= require turbolinks

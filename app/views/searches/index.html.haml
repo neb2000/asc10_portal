@@ -18,13 +18,3 @@
     #search-results{ data: { highlight: params[:q][:keyword] }}
       = render collection: @posts, partial: 'searches/post'
       = will_paginate @posts
-:coffee
-  $ ->
-    $('[data-typeahead-url]').each ->
-      $this = $(this)
-      $(this).typeahead(
-        source: (query, process) ->
-          $.get($this.data('typeahead-url'), { query: query }, (data) ->
-            process data
-          , 'json')
-      )
