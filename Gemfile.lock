@@ -111,6 +111,10 @@ GEM
       tzinfo (~> 0.3.37)
     acts_as_list (0.2.0)
       activerecord (>= 3.0)
+    airbrake (3.1.12)
+      activesupport
+      builder
+      json
     annotate (2.5.0)
       rake
     arel (4.0.0)
@@ -179,6 +183,7 @@ GEM
     jquery-turbolinks (1.0.0)
       railties (>= 3.1.0)
       turbolinks
+    json (1.8.0)
     kgio (2.8.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -277,6 +282,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-messageable!
   acts_as_list
+  airbrake
   ancestry!
   annotate
   bootstrap-sass

@@ -38,6 +38,8 @@ gem 'mini_magick'
 
 gem 'dalli'
 
+gem 'airbrake'
+
 group :development do
   gem 'debugger'
   gem 'capistrano'
