@@ -1,35 +1,31 @@
-require "bundler/capistrano"
-# $:.unshift(File.expand_path("~/.rvm/lib"))
+require 'bundler/capistrano'
+require 'airbrake/capistrano'
 require 'rvm/capistrano'
 
 # ssh_options[:forward_agent] = true
 set :application, 'asc10'
 set :rvm_ruby_string, "2.0.0@#{application}"
-# set :rvm_type, :user
-
 set :scm, :git
 set :deploy_via, :remote_cache
-
 set :repository, "git@github.com:neb2000/asc10_portal.git"
-
 set :deploy_to, "/srv/websites/#{application}"
-
 set :use_sudo, false
 set :user, 'rails'
+set :keep_releases, 2
 
 server '31.222.164.148', :app, :web, :db, :primary => true
 
 namespace :deploy do
-  namespace :assets do
-      task :precompile, :roles => :web, :except => { :no_release => true } do
-        from = source.next_revision(current_revision)
-        if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
-          run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile"
-        else
-          logger.info "Skipping asset pre-compilation because there were no asset changes"
-        end
-      end
-    end
+  # namespace :assets do
+  #     task :precompile, :roles => :web, :except => { :no_release => true } do
+  #       from = source.next_revision(current_revision)
+  #       if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+  #         run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile"
+  #       else
+  #         logger.info "Skipping asset pre-compilation because there were no asset changes"
+  #       end
+  #     end
+  #   end
     
   task :start, :roles => :app do
     run "cd #{current_release}; script/server start"
