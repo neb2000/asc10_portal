@@ -9,6 +9,11 @@
     = analytics_init if Rails.env.production?
     = favicon_link_tag '/favicon.png'
     = csrf_meta_tags
+    %meta{ name: 'description', content: 'Ascendance Guild - EU Alonsus' }
+    %meta{ name: 'keywords',    content: 'Ascendance, Alonsus, World of Warcraft, WoW, 10man' }
+    %meta{ name: 'language',    content: 'English' }
+    %meta{ name: 'author',      content: 'Shuo Chen' }
+    %meta{ name: 'copyright',   content: "#{Date.today.year} Azuresong" }
   %body{ data: { stream_url: "#{faye_url}/faye"} }
     .flash-messages
       - unless flash.blank?
@@ -18,7 +23,7 @@
             = msg
     #wrapper.container
       .row
-        #banner.span12= image_tag current_banner_image, width: '1170', height: '250'
+        #banner.span12= image_tag current_banner_image, width: '1170', height: '250', alt: 'Ascendance - EU Alonsus', title: 'Ascendance - EU Alonsus'
       .row#menu-row{ style: 'height: 42px' }
         #menu.span12
           %ul.nav.nav-pills.pull-right
@@ -54,11 +59,11 @@
             - else
               %li= link_to 'Login', new_user_session_path
           %ul.nav.nav-pills
-            %li{ class: ('active' if @current_nav_identifier == :home) }= link_to 'Home', :root
-            %li{ class: ('active' if @current_nav_identifier == :forums) }= link_to 'Forums', [:forums, :root]
-            %li{ class: ('active' if @current_nav_identifier == :roster) }= link_to 'Roster', :roster
+            %li{ class: ('active' if @current_nav_identifier == :home) }= link_to 'Home', :root, title: 'Ascendance - EU Alonsus'
+            %li{ class: ('active' if @current_nav_identifier == :forums) }= link_to 'Forums', [:forums, :root], title: 'Go to the forums'
+            %li{ class: ('active' if @current_nav_identifier == :roster) }= link_to 'Roster', :roster, title: 'The raiding team roster'
             - if can? :create, :application_form
-              %li{ class: ('active' if @current_nav_identifier == :apply) }= link_to 'Apply', [:new, :application_form]
+              %li{ class: ('active' if @current_nav_identifier == :apply) }= link_to 'Apply', [:new, :application_form], title: 'Apply now!'
             - all_pages.each do |page|
               %li{ class: ('active' if @current_nav_identifier == page.slug) }= link_to page.display_title, page
       .row
@@ -83,4 +88,6 @@
               %i.icon-css3{ title: 'CSS3' }
             .pull-right
               &copy; #{Date.today.year}
+              Ascendance - EU Alonsus.
+              Site by
               = link_to 'Azuresong', 'http://www.azuresong.co.uk', target: '_blank'
