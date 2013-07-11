@@ -24,3 +24,4 @@ en:
       date_only: "%d/%m/%Y"
       time_24: "%H:%M"
       date_and_time: "%d/%m/%Y %H:%M"
+      microdata: '%Y-%m-%dT%H:%m'
