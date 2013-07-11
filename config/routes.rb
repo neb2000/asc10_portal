@@ -79,5 +79,7 @@ Asc10Portal::Application.routes.draw do
     get :ajax_get_progression, on: :member
   end
   
+  resource :sitemap, only: [:show]
+  
   root to: 'news_entries#index'
 end
