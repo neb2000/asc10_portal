@@ -3,6 +3,7 @@ class Forums::TopicDecorator < Draper::Decorator
   decorates_association :user
   decorates_association :board
   decorates_association :posts
+  decorates_association :latest_post, with: Forums::PostDecorator
   
   def display_user
     user.display_name
@@ -17,7 +18,7 @@ class Forums::TopicDecorator < Draper::Decorator
   end
   
   def posts_count
-    posts.size
+    source.posts.size
   end
   
   def last_page
@@ -52,8 +53,8 @@ class Forums::TopicDecorator < Draper::Decorator
   end
   
   def display_go_to_page_link(klass = Forums::Post)
-    return unless posts.size > klass.per_page
-    page_list = (1..(posts.size.to_f / klass.per_page).ceil).to_a
+    return unless source.posts.size > klass.per_page
+    page_list = (1..(source.posts.size.to_f / klass.per_page).ceil).to_a
     links = if page_list.size < 6
       to_page_link(page_list)
     else
@@ -65,7 +66,7 @@ class Forums::TopicDecorator < Draper::Decorator
   def to_page_link(pages)
     return if pages.blank?
     pages.map do |page_number|
-      h.link_to(page_number, h.forums_board_topic_path(source.board, source, page: page_number))
+      h.link_to(page_number, h.forums_board_topic_path(source.board_id, source, page: page_number))
     end.join(', ').html_safe
   end
   
@@ -75,15 +76,15 @@ class Forums::TopicDecorator < Draper::Decorator
   end
   
   def display_recent_post_link
-    h.forums_board_topic_path(board, source, latest_post.anchor_params)
+    h.forums_board_topic_path(source.board_id, source, latest_post.anchor_params)
   end
   
   def self.collection_decorator_class
     PaginatingDecorator
   end
   
-  private
-    def latest_post
-      @post_list ||= posts.sort_by(&:created_at)[-1]
-    end
+  # private
+  #   def latest_post
+  #     @post_list ||= posts.sort_by(&:created_at)[-1]
+  #   end
 end

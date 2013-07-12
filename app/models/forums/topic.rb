@@ -28,6 +28,8 @@ class Forums::Topic < ActiveRecord::Base
   belongs_to :user
   has_many :posts, dependent: :destroy, autosave: true
   
+  belongs_to :latest_post, class_name: 'Forums::Post'
+  
   delegate :name, to: :user, prefix: true
   
   validates :subject, :user, :board, :posts, presence: true

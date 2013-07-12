@@ -48,7 +48,11 @@ CREATE FUNCTION latest_post_trigger_after() RETURNS trigger
     AS $$
         BEGIN
           UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = old.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
-            WHERE forums_boards.id = old.board_id;
+          WHERE forums_boards.id = old.board_id;
+            
+          UPDATE forums_topics SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.topic_id = old.topic_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+          WHERE forums_topics.id = old.topic_id;
+            
           return old;
         END
       $$;
@@ -64,7 +68,26 @@ CREATE FUNCTION latest_post_trigger_before() RETURNS trigger
         BEGIN
           UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = new.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
           WHERE forums_boards.id = new.board_id;
+          
+          UPDATE forums_topics SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.topic_id = new.topic_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+          WHERE forums_topics.id = new.topic_id;
+          
           return new;
+        END
+      $$;
+
+
+--
+-- Name: latest_post_trigger_for_board(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION latest_post_trigger_for_board() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+        BEGIN
+          UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = old.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+          WHERE forums_boards.id = old.board_id;
+          return old;
         END
       $$;
 
@@ -95,6 +118,36 @@ CREATE FUNCTION latest_post_trigger_for_insert() RETURNS trigger
           UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = new.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
           WHERE forums_boards.id = new.board_id;
           return new;
+        END
+      $$;
+
+
+--
+-- Name: latest_post_trigger_for_topic(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION latest_post_trigger_for_topic() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+        BEGIN
+          UPDATE forums_topics SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.topic_id = old.topic_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+          WHERE forums_topics.id = old.topic_id;
+          return old;
+        END
+      $$;
+
+
+--
+-- Name: latest_post_trigger_for_topics(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION latest_post_trigger_for_topics() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+        BEGIN
+          UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = old.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+            WHERE forums_boards.id = old.board_id;
+          return old;
         END
       $$;
 
@@ -607,7 +660,9 @@ CREATE TABLE forums_topics (
     last_post_at timestamp without time zone,
     views_count integer DEFAULT 0,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    latest_post_id integer,
+    posts_count integer DEFAULT 0
 );
 
 
@@ -1625,6 +1680,13 @@ CREATE INDEX index_forums_topics_on_board_id ON forums_topics USING btree (board
 
 
 --
+-- Name: index_forums_topics_on_latest_post_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forums_topics_on_latest_post_id ON forums_topics USING btree (latest_post_id);
+
+
+--
 -- Name: index_forums_topics_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1768,7 +1830,7 @@ CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON forums_posts FOR EACH R
 -- Name: updateboard_delete; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER updateboard_delete AFTER DELETE ON forums_posts FOR EACH ROW EXECUTE PROCEDURE latest_post_trigger_after();
+CREATE TRIGGER updateboard_delete AFTER DELETE ON forums_posts FOR EACH ROW EXECUTE PROCEDURE latest_post_trigger_for_board();
 
 
 --
@@ -1782,7 +1844,21 @@ CREATE TRIGGER updateboard_insert AFTER INSERT ON forums_posts FOR EACH ROW EXEC
 -- Name: updateboard_update; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER updateboard_update AFTER UPDATE ON forums_posts FOR EACH ROW EXECUTE PROCEDURE latest_post_trigger_after();
+CREATE TRIGGER updateboard_update AFTER UPDATE ON forums_topics FOR EACH ROW EXECUTE PROCEDURE latest_post_trigger_for_topics();
+
+
+--
+-- Name: updateboard_update; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER updateboard_update AFTER UPDATE ON forums_posts FOR EACH ROW EXECUTE PROCEDURE latest_post_trigger_for_board();
+
+
+--
+-- Name: updatetopic_delete; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER updatetopic_delete AFTER DELETE ON forums_posts FOR EACH ROW EXECUTE PROCEDURE latest_post_trigger_for_topic();
 
 
 --
@@ -1860,3 +1936,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130712033108');
 INSERT INTO schema_migrations (version) VALUES ('20130712035459');
 
 INSERT INTO schema_migrations (version) VALUES ('20130712043026');
+
+INSERT INTO schema_migrations (version) VALUES ('20130712232003');
+
+INSERT INTO schema_migrations (version) VALUES ('20130712235442');

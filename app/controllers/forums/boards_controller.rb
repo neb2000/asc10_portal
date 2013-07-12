@@ -9,7 +9,7 @@ module Forums
     
     def show
       @board.register_view_by(current_user)
-      @topics = @board.topics.accessible_by(current_ability).includes(:views, :user, :board, posts: :user).by_pinned_or_most_recent_post.page(params[:page]).decorate
+      @topics = @board.topics.accessible_by(current_ability).includes(:views, :user, latest_post: [:topic, :user]).by_pinned_or_most_recent_post.page(params[:page]).decorate
       @board = @board.decorate
     end
     

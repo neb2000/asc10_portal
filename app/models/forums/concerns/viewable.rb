@@ -13,22 +13,24 @@ module Forums
 
       # Track when users last viewed topics
       def register_view_by(user)
-        return unless user
+        ActiveRecord::Base.transaction do
+          return unless user
 
-        view = views.where(user_id: user.id).first_or_create
-        view.increment!("count")
-        increment!(:views_count)
+          view = views.where(user_id: user.id).first_or_create
+          view.increment!("count")
+          increment!(:views_count)
 
-        # update current_viewed_at if more than 15 minutes ago
-        if view.current_viewed_at.nil?
-          view.past_viewed_at = view.current_viewed_at = Time.now
-        end
+          # update current_viewed_at if more than 15 minutes ago
+          if view.current_viewed_at.nil?
+            view.past_viewed_at = view.current_viewed_at = Time.now
+          end
 
-        # Update the current_viewed_at if it is BEFORE 15 minutes ago.
-        if view.current_viewed_at < 15.minutes.ago
-          view.past_viewed_at    = view.current_viewed_at
-          view.current_viewed_at = Time.now
-          view.save
+          # Update the current_viewed_at if it is BEFORE 15 minutes ago.
+          if view.current_viewed_at < 15.minutes.ago
+            view.past_viewed_at    = view.current_viewed_at
+            view.current_viewed_at = Time.now
+            view.save
+          end
         end
       end
     end
