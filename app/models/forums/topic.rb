@@ -24,9 +24,9 @@ class Forums::Topic < ActiveRecord::Base
   extend FriendlyId
   friendly_id :subject, use: :slugged
   
-  belongs_to :board, class_name: 'Forums::Board'
+  belongs_to :board, class_name: 'Forums::Board', counter_cache: true
   belongs_to :user
-  has_many :posts, dependent: :destroy
+  has_many :posts, dependent: :destroy, autosave: true
   
   delegate :name, to: :user, prefix: true
   

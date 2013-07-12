@@ -25,6 +25,96 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET search_path = public, pg_catalog;
 
 --
+-- Name: latest_post_trigger(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION latest_post_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+        BEGIN
+          UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = new.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+          WHERE forums_boards.id = new.board_id;
+          return new;
+        END
+      $$;
+
+
+--
+-- Name: latest_post_trigger_after(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION latest_post_trigger_after() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+        BEGIN
+          UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = old.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+            WHERE forums_boards.id = old.board_id;
+          return old;
+        END
+      $$;
+
+
+--
+-- Name: latest_post_trigger_before(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION latest_post_trigger_before() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+        BEGIN
+          UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = new.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+          WHERE forums_boards.id = new.board_id;
+          return new;
+        END
+      $$;
+
+
+--
+-- Name: latest_post_trigger_for_delete(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION latest_post_trigger_for_delete() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+        BEGIN
+          UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = old.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+            WHERE forums_boards.id = old.board_id;
+          return old;
+        END
+      $$;
+
+
+--
+-- Name: latest_post_trigger_for_insert(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION latest_post_trigger_for_insert() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+        BEGIN
+          UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = new.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+          WHERE forums_boards.id = new.board_id;
+          return new;
+        END
+      $$;
+
+
+--
+-- Name: latest_post_trigger_for_update(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION latest_post_trigger_for_update() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+        BEGIN
+          UPDATE forums_boards SET latest_post_id = (SELECT forums_posts.id FROM forums_posts WHERE forums_posts.board_id = old.board_id ORDER BY forums_posts.created_at DESC LIMIT 1)
+            WHERE forums_boards.id = old.board_id;
+          return old;
+        END
+      $$;
+
+
+--
 -- Name: post_tsv_trigger(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -404,7 +494,10 @@ CREATE TABLE forums_boards (
     views_count integer DEFAULT 0,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    read_only boolean DEFAULT false
+    read_only boolean DEFAULT false,
+    topics_count integer DEFAULT 0,
+    latest_post_id integer,
+    posts_count integer DEFAULT 0
 );
 
 
@@ -474,7 +567,8 @@ CREATE TABLE forums_posts (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     tsv tsvector,
-    "position" integer
+    "position" integer,
+    board_id integer
 );
 
 
@@ -887,9 +981,6 @@ CREATE TABLE users (
     confirmed_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    forem_admin boolean DEFAULT false,
-    forem_state character varying(255) DEFAULT 'pending_review'::character varying,
-    forem_auto_subscribe boolean DEFAULT false,
     user_group_id integer,
     posts_count integer DEFAULT 0
 );
@@ -1478,6 +1569,13 @@ CREATE INDEX index_forums_boards_on_category_id ON forums_boards USING btree (ca
 
 
 --
+-- Name: index_forums_boards_on_latest_post_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forums_boards_on_latest_post_id ON forums_boards USING btree (latest_post_id);
+
+
+--
 -- Name: index_forums_boards_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1489,6 +1587,13 @@ CREATE UNIQUE INDEX index_forums_boards_on_slug ON forums_boards USING btree (sl
 --
 
 CREATE UNIQUE INDEX index_forums_categories_on_slug ON forums_categories USING btree (slug);
+
+
+--
+-- Name: index_forums_posts_on_board_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forums_posts_on_board_id ON forums_posts USING btree (board_id);
 
 
 --
@@ -1660,6 +1765,27 @@ CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON forums_posts FOR EACH R
 
 
 --
+-- Name: updateboard_delete; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER updateboard_delete AFTER DELETE ON forums_posts FOR EACH ROW EXECUTE PROCEDURE latest_post_trigger_after();
+
+
+--
+-- Name: updateboard_insert; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER updateboard_insert AFTER INSERT ON forums_posts FOR EACH ROW EXECUTE PROCEDURE latest_post_trigger_before();
+
+
+--
+-- Name: updateboard_update; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER updateboard_update AFTER UPDATE ON forums_posts FOR EACH ROW EXECUTE PROCEDURE latest_post_trigger_after();
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -1690,66 +1816,6 @@ INSERT INTO schema_migrations (version) VALUES ('20130626170548');
 INSERT INTO schema_migrations (version) VALUES ('20130626233603');
 
 INSERT INTO schema_migrations (version) VALUES ('20130626233604');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115543');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115544');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115545');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115546');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115547');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115548');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115549');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115550');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115551');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115552');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115553');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115554');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115555');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115556');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115557');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115558');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115559');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115560');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115561');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115562');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115563');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115564');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115565');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115566');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115567');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115568');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115569');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115570');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115571');
-
-INSERT INTO schema_migrations (version) VALUES ('20130627115572');
 
 INSERT INTO schema_migrations (version) VALUES ('20130627120040');
 
@@ -1788,3 +1854,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130704192303');
 INSERT INTO schema_migrations (version) VALUES ('20130704235401');
 
 INSERT INTO schema_migrations (version) VALUES ('20130705000643');
+
+INSERT INTO schema_migrations (version) VALUES ('20130712033108');
+
+INSERT INTO schema_migrations (version) VALUES ('20130712035459');
+
+INSERT INTO schema_migrations (version) VALUES ('20130712043026');

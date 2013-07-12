@@ -2,13 +2,14 @@ class Forums::BoardDecorator < Draper::Decorator
   delegate_all
   decorates_association :category
   decorates_association :posts
-
+  decorates_association :latest_post, with: Forums::PostDecorator
+  
   def topics_count
-    topics.size
+    source.topics.size
   end
   
   def posts_count
-    posts.size
+    source.posts.size
   end
 
   def display_name
@@ -29,7 +30,8 @@ class Forums::BoardDecorator < Draper::Decorator
   
   def display_last_post_link
     return 'None' unless latest_post
-    "#{h.link_to latest_post.display_subject, latest_post.link_to_topic} by #{latest_post.display_user} #{latest_post.display_created_at_in_word}".html_safe
+    link = h.forums_board_topic_path(source, latest_post.topic, latest_post.anchor_params)
+    "#{h.link_to latest_post.display_subject, link} by #{latest_post.display_user} #{latest_post.display_created_at_in_word}".html_safe
   end
   
   def display_class_for(user = nil)
@@ -41,9 +43,4 @@ class Forums::BoardDecorator < Draper::Decorator
   def self.collection_decorator_class
     PaginatingDecorator
   end
-  
-  private
-    def latest_post
-      @post_list ||= posts.sort_by(&:created_at)[-1]
-    end
 end

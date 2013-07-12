@@ -8,7 +8,7 @@ module Topics
       end
             
       def build_first_post
-        topic.posts.build(user: user, text: text)
+        topic.posts.build(user: user, text: text, board: board)
       end      
       
       def topic(klass = Forums::Topic, datetime_class = Time)

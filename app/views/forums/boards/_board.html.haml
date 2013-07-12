@@ -1,10 +1,9 @@
-- if can? :read, board
-  %tr{ class: board.display_class_for(current_user) }[board.source]
-    %td
-      %h5= link_to board.display_name, board
-      %p.muted= board.display_description
-      %small
-        Last Post: #{board.display_last_post_link}
-    %td.center= board.topics_count
-    %td.center= board.posts_count
-    %td.center= board.views_count
+%tr{ class: board.display_class_for(current_user) }[board.source]
+  %td
+    %h5= link_to board.display_name, board
+    %p.muted= board.display_description
+    %small
+      Last Post: #{board.display_last_post_link}
+  %td.center= board.topics_count
+  %td.center= board.posts_count
+  %td.center= board.views_count

@@ -4,7 +4,7 @@ module Forums
     authorize_resource
     
     def index
-      @categories = Category.accessible_by(current_ability).includes(boards: [:views, {posts: [:user, :topic]}]).decorate
+      @categories = Category.accessible_by(current_ability).includes(boards: [:views, {latest_post: [:topic, :user]}]).decorate
     end
     
     def show

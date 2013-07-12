@@ -19,6 +19,8 @@ class Forums::Post < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   belongs_to :reply_to, class_name: "Forums::Post"
   
+  belongs_to :board, class_name: 'Forums::Board', counter_cache: true
+  
   acts_as_list scope: :topic
 
   has_many :replies, class_name: "Forums::Post",

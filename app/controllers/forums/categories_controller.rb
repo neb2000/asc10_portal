@@ -11,7 +11,7 @@ module Forums
     
     private
       def find_category
-        @category = Category.includes(boards: [:views, :posts]).friendly.find(params[:id]) if params[:id]
+        @category = Category.accessible_by(current_ability).includes(boards: [:views, {latest_post: [:topic, :user]}]).friendly.find(params[:id]) if params[:id]
       end
   end
 end

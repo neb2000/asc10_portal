@@ -21,12 +21,12 @@ module Forums
     end
     
     def update
-      topic_params = if can?(:move_topic, @topic)
-        params.require(:forums_topic).permit(:subject, :board_id)
-      else
-        params.require(:forums_topic).permit(:subject)
+      if can?(:move_topic, @topic)
+        board = Forums::Board.find(params[:forums_topic][:board_id])
+        @topic.board = board
+        @topic.posts.each { |post| post.board = board }
       end
-      StandardUpdater.new(TopicPostTsvUpdater.new(responder)).update(@topic, topic_params)
+      StandardUpdater.new(TopicPostTsvUpdater.new(responder)).update(@topic, params.require(:forums_topic).permit(:subject))
     end
     
     def show
