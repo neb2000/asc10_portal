@@ -4,8 +4,7 @@ class AddLatestPostIdToForumsTopics < ActiveRecord::Migration
     add_index :forums_topics, :latest_post_id
     
     Forums::Topic.find_each do |topic|
-      topic.latest_post = topic.posts.last
-      topic.save(validate: false)
+      Forums::Topic.where(id: topic.id).update_all(latest_post_id: topic.posts.last.id)
     end
     
     execute <<-SQL
