@@ -49,11 +49,11 @@ class Forums::PostDecorator < Draper::Decorator
   end
   
   def link_to_topic(options = {})
-    h.forums_board_topic_path(topic.board, topic, options.merge(anchor_params))
+    h.forums_board_topic_path(source.board_id, source.topic_id, options.merge(anchor_params))
   end
   
   def link_to_topic_without_anchor
-    h.forums_board_topic_path(topic.board, topic)
+    h.forums_board_topic_path(source.board_id, source.topic_id)
   end
   
   def self.collection_decorator_class

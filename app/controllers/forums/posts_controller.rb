@@ -14,7 +14,13 @@ module Forums
     
     def create
       @topic = @topic.decorate
-      StandardUpdater.new(TopicPostTimeSetter.new(responder)).update(@topic.posts.build(user: current_user, board: @topic.board), forums_post_params)
+      StandardUpdater.new(
+        TopicPostTimeSetter.new(
+          StandardResourceDecorator.new(
+            PostsResponder.new(self)
+          )
+        )
+      ).update(@topic.posts.build(user: current_user, board: @topic.board), forums_post_params)
     end
     
     def edit
@@ -24,7 +30,7 @@ module Forums
     
     def update
       @topic = @topic.decorate
-      StandardUpdater.new(responder).update(@post, forums_post_params)
+      StandardUpdater.new(StandardResourceDecorator.new(PostsResponder.new(self))).update(@post, forums_post_params)
     end
     
     def destroy
