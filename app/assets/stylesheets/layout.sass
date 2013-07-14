@@ -160,7 +160,7 @@ body
         &.older-news
           h1
             font-size: 18px
-          p.datetime-stamp
+          .datetime-stamp
             margin: 0
         .cover-image
           border: 1px solid black
@@ -178,6 +178,9 @@ body
         //  padding-top: 10px
         &.latest
           position: relative
+          .datetime-stamp
+            display: block
+            margin-bottom: 10px
           &:after
             content: ''
             position: absolute

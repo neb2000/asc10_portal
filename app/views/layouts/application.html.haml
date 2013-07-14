@@ -23,9 +23,9 @@
             = msg
     #wrapper.container
       .row
-        #banner.span12= image_tag current_banner_image, width: '1170', height: '250', alt: 'Ascendance - EU Alonsus', title: 'Ascendance - EU Alonsus'
+        %header#banner.span12= image_tag current_banner_image, width: '1170', height: '250', alt: 'Ascendance - EU Alonsus', title: 'Ascendance - EU Alonsus'
       .row#menu-row{ style: 'height: 42px' }
-        #menu.span12
+        %nav#menu.span12
           %ul.nav.nav-pills.pull-right
             - if user_signed_in?
               %li.dropdown
@@ -72,12 +72,12 @@
           .row
             - if content_for?(:left_sidebar)
               .span3
-                #left-sidebar.sidebar= yield :left_sidebar
+                %aside#left-sidebar.sidebar= yield :left_sidebar
             #main-content{ class: main_content_class }
               = yield
             - if content_for?(:right_sidebar)
               .span3
-                #right-sidebar.sidebar= yield :right_sidebar
+                %aside#right-sidebar.sidebar= yield :right_sidebar
       .row
         .span12
           #footer
