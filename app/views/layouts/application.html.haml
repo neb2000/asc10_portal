@@ -25,7 +25,16 @@
       .row
         %header#banner.span12= image_tag current_banner_image, width: '1170', height: '250', alt: 'Ascendance - EU Alonsus', title: 'Ascendance - EU Alonsus'
       .row#menu-row{ style: 'height: 42px' }
-        %nav#menu.span12
+        %nav#menu.span12.clearfix
+          %ul.nav.nav-pills.pull-left
+            %li{ class: ('active' if @current_nav_identifier == :home) }= link_to 'Home', :root, title: 'Ascendance - EU Alonsus'
+            %li{ class: ('active' if @current_nav_identifier == :forums) }= link_to 'Forums', [:forums, :root], title: 'Go to the forums'
+            %li{ class: ('active' if @current_nav_identifier == :roster) }= link_to 'Roster', :roster, title: 'The raiding team roster'
+            - if can? :create, :application_form
+              %li{ class: ('active' if @current_nav_identifier == :apply) }= link_to 'Apply', [:new, :application_form], title: 'Apply now!'
+            - cache 'all_pages' do
+              - all_pages.each do |page|
+                %li{ class: ('active' if @current_nav_identifier == page.slug) }= link_to page.display_title, page
           %ul.nav.nav-pills.pull-right
             - if user_signed_in?
               %li.dropdown
@@ -55,18 +64,8 @@
                         %i.icon-cogs
                         Admin
                 = render 'spotlight_box'
-                    
             - else
               %li= link_to 'Login', new_user_session_path
-          %ul.nav.nav-pills
-            %li{ class: ('active' if @current_nav_identifier == :home) }= link_to 'Home', :root, title: 'Ascendance - EU Alonsus'
-            %li{ class: ('active' if @current_nav_identifier == :forums) }= link_to 'Forums', [:forums, :root], title: 'Go to the forums'
-            %li{ class: ('active' if @current_nav_identifier == :roster) }= link_to 'Roster', :roster, title: 'The raiding team roster'
-            - if can? :create, :application_form
-              %li{ class: ('active' if @current_nav_identifier == :apply) }= link_to 'Apply', [:new, :application_form], title: 'Apply now!'
-            - cache 'all_pages' do
-              - all_pages.each do |page|
-                %li{ class: ('active' if @current_nav_identifier == page.slug) }= link_to page.display_title, page
       .row
         #content.span12
           .row
