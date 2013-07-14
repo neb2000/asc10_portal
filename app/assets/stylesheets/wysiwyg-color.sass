@@ -1,0 +1,85 @@
+.wysiwyg-color-black
+  color: black
+
+.wysiwyg-color-silver
+  color: silver
+
+.wysiwyg-color-gray
+  color: gray
+
+.wysiwyg-color-white
+  color: white
+
+.wysiwyg-color-maroon
+  color: maroon
+
+.wysiwyg-color-red
+  color: red
+
+.wysiwyg-color-purple
+  color: purple
+
+.wysiwyg-color-fuchsia
+  color: fuchsia
+
+.wysiwyg-color-green
+  color: green
+
+.wysiwyg-color-lime
+  color: lime
+
+.wysiwyg-color-olive
+  color: olive
+
+.wysiwyg-color-yellow
+  color: yellow
+
+.wysiwyg-color-navy
+  color: navy
+
+.wysiwyg-color-blue
+  color: blue
+
+.wysiwyg-color-teal
+  color: teal
+
+.wysiwyg-color-aqua
+  color: aqua
+
+.wysiwyg-float-left
+  float: left
+  margin: 0 8px 8px 0
+
+.wysiwyg-float-right
+  float: right
+  margin: 0 0 8px 8px
+
+blockquote
+  background: rgba(255, 255, 255, 0.1)
+  border-left: 5px solid rgba(255, 255, 255, 0.1)
+  margin: 0 0 20px
+  padding: 10px 10px 10px 15px
+  small:before
+    content: '\2014 \00A0'
+  &.pull-right
+    float: right
+    padding-right: 15px
+    padding-left: 0
+    border-right: 5px solid rgba(255, 255, 255, 0.1)
+    border-left: 0
+    p
+      text-align: right
+    small
+      text-align: right
+      &:before
+        content: ''
+      &:after
+        content: '\00A0 \2014'
+
+q
+  &:before, &:after
+    content: ""
+
+blockquote
+  &:before, &:after
+    content: ""
