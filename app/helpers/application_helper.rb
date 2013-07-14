@@ -39,7 +39,7 @@ module ApplicationHelper
   end
   
   def latest_forum_topics
-    @latest_forum_topics ||= Forums::Topic.accessible_by(current_ability).order('forums_topics.last_post_at DESC').includes(:board, :posts).limit(5).decorate
+    @latest_forum_topics ||= Forums::Topic.accessible_by(current_ability).order('forums_topics.last_post_at DESC').includes(:latest_post).limit(5).decorate
   end
   
   def open_recruitments
@@ -56,8 +56,9 @@ module ApplicationHelper
   end
   
   def current_banner_image
-    @banner_image ||= BannerImage.where(active: true).decorate.first
-    @banner_image.try(:display_large_image) || 'banner_green.png'
+    @banner_image ||= Rails.cache.fetch('banner_image') do
+      BannerImage.where(active: true).decorate.first.try(:display_large_image) || 'banner_green.png'
+    end
   end
   
   def unread_message_count

@@ -15,11 +15,13 @@ class Admin::BannerImagesController < Admin::ApplicationController
   end
   
   def destroy
+    Rails.cache.delete('banner_image')
     StandardDestroyer.new(StandardAjaxResponder.new(self)).destroy(@banner_image)
   end
   
   def set_active
     BannerImage.update_all(["active = (id = ?)", @banner_image.id])
+    Rails.cache.delete('banner_image')
     @banner_image = @banner_image.reload.decorate
   end
   
@@ -28,7 +30,6 @@ class Admin::BannerImagesController < Admin::ApplicationController
       @responder ||= StandardResponder.new(self).tap { |responder| responder.redirect_path = url_for([:admin, :settings]) }
     end
     
-  
     def find_banner_image
       @banner_image = BannerImage.find(params[:id]) if params[:id]
     end

@@ -64,8 +64,9 @@
             %li{ class: ('active' if @current_nav_identifier == :roster) }= link_to 'Roster', :roster, title: 'The raiding team roster'
             - if can? :create, :application_form
               %li{ class: ('active' if @current_nav_identifier == :apply) }= link_to 'Apply', [:new, :application_form], title: 'Apply now!'
-            - all_pages.each do |page|
-              %li{ class: ('active' if @current_nav_identifier == page.slug) }= link_to page.display_title, page
+            - cache 'all_pages' do
+              - all_pages.each do |page|
+                %li{ class: ('active' if @current_nav_identifier == page.slug) }= link_to page.display_title, page
       .row
         #content.span12
           .row

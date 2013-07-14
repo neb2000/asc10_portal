@@ -1,6 +1,7 @@
 class Admin::PagesController < Admin::ApplicationController
   before_filter :find_page  
   before_filter { @current_nav_identifier = :pages }
+  before_filter :expire_cache, only: [:create, :update, :destroy]
   authorize_resource
   
   def index
@@ -36,5 +37,9 @@ class Admin::PagesController < Admin::ApplicationController
   
     def find_page
       @page = Page.friendly.find(params[:id]) if params[:id]
+    end
+    
+    def expire_cache
+      expire_fragment /all_pages\/*/
     end
 end
