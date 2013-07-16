@@ -44,7 +44,9 @@ Asc10Portal::Application.routes.draw do
   end
   
   resources :news_entries, only: [:index, :show], path: '/news'
-  resources :shoutbox_messages, only: [:create]
+  resources :shoutbox_messages, only: [:create] do
+    get :ajax_get_messages, on: :collection
+  end
   
   resources :pages, only: [:show]
   

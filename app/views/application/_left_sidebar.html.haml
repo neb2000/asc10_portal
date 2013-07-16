@@ -5,7 +5,10 @@
       = f.input :message, label: false, input_html: { class: 'input-block-level', placeholder: 'Your message...' }, as: :string, required: true
       = f.button :submit, 'Send', style: 'position: absolute; top: -9999px; left: -9999px', tabindex: '-1'
   %p.faye-warning-box.text-error
-  %ul.unstyled#existing-messages= render latest_shoutbox_messages
+  %ul.unstyled#existing-messages{ data: {content_url: ajax_get_messages_shoutbox_messages_path(format: :js)} }
+    %li
+      %i.icon-spinner.icon-spin
+      Reading Shoutbox messages...
 
 .sidebar-widget
   %h3 Recent posts

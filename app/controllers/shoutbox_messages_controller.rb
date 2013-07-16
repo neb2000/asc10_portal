@@ -1,5 +1,10 @@
 class ShoutboxMessagesController < ApplicationController
-  respond_to :js, only: [:create]
+  respond_to :js, only: [:create, :ajax_get_messages]
+  
+  def ajax_get_messages
+    @shoutbox_messages = ShoutboxMessage.includes(:user).ordered.limit(50).decorate
+    respond_with(@shoutbox_messages)
+  end
   
   def create
     message = ShoutboxMessage.new(user: current_user)
