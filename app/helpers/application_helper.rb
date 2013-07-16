@@ -33,7 +33,15 @@ module ApplicationHelper
   def display_right_sidebar
     content_for(:right_sidebar, render('right_sidebar')) 
   end
-    
+  
+  def latest_shoutbox_messages
+    @latest_shoutbox_messages ||= if request.env['HTTP_USER_AGENT'].downcase =~ /bot/
+      ShoutboxMessage.none
+    else
+      ShoutboxMessage.includes(:user).ordered.limit(50).decorate
+    end
+  end
+  
   def latest_forum_topics
     @latest_forum_topics ||= Forums::Topic.accessible_by(current_ability).order('forums_topics.last_post_at DESC').includes(:latest_post).limit(5).decorate
   end

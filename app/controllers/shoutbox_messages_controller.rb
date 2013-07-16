@@ -2,7 +2,11 @@ class ShoutboxMessagesController < ApplicationController
   respond_to :js, only: [:create, :ajax_get_messages]
   
   def ajax_get_messages
-    @shoutbox_messages = ShoutboxMessage.includes(:user).ordered.limit(50).decorate
+    @shoutbox_messages = if request.env['HTTP_USER_AGENT'].downcase =~ /bot/
+      ShoutboxMessage.none
+    else
+      ShoutboxMessage.includes(:user).ordered.limit(50).decorate
+    end
     respond_with(@shoutbox_messages)
   end
   
