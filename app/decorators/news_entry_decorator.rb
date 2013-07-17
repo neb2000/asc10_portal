@@ -17,9 +17,9 @@ class NewsEntryDecorator < Draper::Decorator
     h.l source.created_at, format: :full
   end
   
-  def display_cover_image(version = :small)
+  def display_cover_image(version = :small, options = { width: 234, height: 117 })
     return if source.cover_image.blank? || source.cover_image.file.blank?
-    h.content_tag :div, h.image_tag(source.cover_image.url(version), itemprop: 'image'), class: 'cover-image'
+    h.content_tag :div, h.image_tag(source.cover_image.url(version), options.merge(itemprop: 'image')), class: 'cover-image'
   end
   
   def display_date_published
