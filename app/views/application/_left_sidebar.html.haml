@@ -1,7 +1,7 @@
 .sidebar-widget#shoutbox  
   %h3 Shoutbox
   - if user_signed_in?
-    = simple_form_for ShoutboxMessage.new, remote: true, html: { class: 'no-whitespace', autocomplete: 'off' } do |f|
+    = simple_form_for ShoutboxMessage.new, url: shoutbox_messages_path(format: :js), remote: true, html: { class: 'no-whitespace', autocomplete: 'off' } do |f|
       = f.input :message, label: false, input_html: { class: 'input-block-level', placeholder: 'Your message...' }, as: :string, required: true
       = f.button :submit, 'Send', style: 'position: absolute; top: -9999px; left: -9999px', tabindex: '-1'
   %p.faye-warning-box.text-error
