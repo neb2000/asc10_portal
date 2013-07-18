@@ -17,6 +17,10 @@ class Forums::TopicDecorator < Draper::Decorator
     source.subject
   end
   
+  def display_truncated_subject
+    h.truncate source.subject, length: 50
+  end
+  
   def posts_count
     source.posts.size
   end
