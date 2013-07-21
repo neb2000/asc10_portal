@@ -4,7 +4,7 @@
   .alert.alert-info
     %i.icon-info-sign
     All applications are private and only viewable by the raid team.
-  = simple_form_for @application_form, url: url_for(action: :create), as: 'application_form', html: { class: 'no-whitespace '} do |f|
+  = simple_form_for @application_form, url: url_for(action: :create), as: 'application_form', html: { class: 'no-whitespace ' }, defaults: { required: true } do |f|
     %fieldset
       %legend Character information
       = f.input :character_name, autofocus: true

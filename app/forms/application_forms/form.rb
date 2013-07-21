@@ -22,7 +22,7 @@ module ApplicationForms
               structure[section['section_name']][field_name] = question['label']
               singleton_class.class_eval do
                 attr_accessor field_name
-                validates field_name, presence: true
+                # validates field_name, presence: true
               end
             end
           end
@@ -39,7 +39,8 @@ module ApplicationForms
     end    
 
     def save
-      valid? && topic.save
+      return false unless valid?
+      topic.save
     end
     
     def topic(klass = Topics::Create::Form)
