@@ -14,9 +14,9 @@
           %i.icon-trash.text-error
       .fileupload.fileupload-new{data: {provides: :fileupload}}
         = f.input :cover_image, label: "Cover image#{cover_image_buttons}".html_safe do
-          .fileupload-new.thumbnail{style: "width: 234px; height: 117px;"}
+          .fileupload-new.thumbnail{style: "width: 236px; height: 119px;"}
             = @news_entry.decorate.display_cover_image
-          .fileupload-preview.fileupload-exists.thumbnail{style: "width: 234px; height: 117px;"}
+          .fileupload-preview.fileupload-exists.thumbnail{style: "width: 236px; height: 119px;"}
       = f.input :title, input_html: { class: 'input-block-level', placeholder: 'Title' }, autofocus: true
       = f.input :content, input_html: { class: 'input-block-level wysihtml5', rows: '12' }, as: :text, required: false
     .form-actions
