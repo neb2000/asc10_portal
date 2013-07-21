@@ -11,7 +11,7 @@
   %ul.unstyled.well.well-black.well-small
     - latest_forum_topics.each do |topic|
       %li
-        %h5= link_to topic.display_subject, topic.display_recent_post_link
+        %h5= link_to topic.display_truncated_subject, topic.display_recent_post_link
         %small.muted= topic.display_last_post_at_in_word
         
 .sidebar-widget#whoson
