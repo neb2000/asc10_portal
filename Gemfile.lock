@@ -1,12 +1,12 @@
 GIT
   remote: git://github.com/FriendlyId/friendly_id.git
-  revision: a25368945623c14798920e3316117bc5bd359e10
+  revision: cc5ce00077b168523a95b195d9911e5576e6489f
   specs:
     friendly_id (5.0.0.alpha1)
 
 GIT
   remote: git://github.com/airblade/paper_trail.git
-  revision: 1baead241804bbe476a8fa89b24ab4bdcb6d0c95
+  revision: c441a5de2d61042126bb042c3c18012fca3af32b
   branch: rails4
   specs:
     paper_trail (2.7.2)
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/drapergem/draper.git
-  revision: 68dd3b978a703911e4e3d55d7a11352396eaa41f
+  revision: 2aaf95bd82b13cb09124e14107ecdc134f1cdf89
   specs:
     draper (1.2.1)
       actionpack (>= 3.0)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: git://github.com/ernie/ransack.git
-  revision: 43fff052ca7a850103c2ac122c99541cd34cf48d
+  revision: 3299f3aeaf5ce0a264f194daa0bec86919dfad82
   branch: rails-4
   specs:
     ransack (0.7.3)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: git://github.com/ernie/squeel.git
-  revision: dfbdd68d10bf6f3750d860f9ed41f0cc16858ac1
+  revision: 23281d5d65f0039c4774fea9dfb687537044a947
   specs:
     squeel (1.1.0)
       activerecord (>= 3.0)
@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: b46b7e37360413e6a9faf43df76ffc6f6e749058
+  revision: b8ed2f31608eccb6df6d5bb2e66238d6dfc4bcfc
   specs:
     devise (3.0.0)
       bcrypt-ruby (~> 3.0)
@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/simple_form.git
-  revision: 3ea3226e2f5eb83c6723639fc10480a721347f7e
+  revision: 87323fd625802f3aea7fd7d8a2fd64016b18cdaa
   specs:
     simple_form (3.0.0.rc)
       actionpack (>= 4.0.0, < 4.1)
@@ -121,11 +121,11 @@ GEM
     atomic (1.1.10)
     backports (3.3.3)
     bcrypt-ruby (3.1.1)
-    bootstrap-sass (2.3.2.0)
+    bootstrap-sass (2.3.2.1)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
-    bootstrap-wysihtml5-rails (0.3.1.20)
+    bootstrap-wysihtml5-rails (0.3.1.21)
       railties (>= 3.0)
     builder (3.1.4)
     cancan (1.6.10)
@@ -202,7 +202,7 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     orm_adapter (0.4.0)
-    pg (0.15.1)
+    pg (0.16.0)
     pg_search (0.7.0)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
@@ -253,7 +253,7 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thor (0.18.1)
-    thread_safe (0.1.0)
+    thread_safe (0.1.2)
       atomic
     tilt (1.4.1)
     treetop (1.4.14)
