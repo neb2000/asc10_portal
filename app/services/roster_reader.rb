@@ -26,7 +26,7 @@ class RosterReader
     member_list = Hash.new { |hash, key| hash[key] = [] }
     roster_list.each do |character|
       character_info = character['character']
-      if (ranks.member? character['rank'].to_i) && (character_info['level'].to_i >= min_level)
+      if (ranks.member? character['rank'].to_i) && (character_info['level'].to_i >= min_level) && (character_info['spec'])
         member_list[character_info['spec']['role']] << { name: character_info['name'], class: WOW_CLASS[character_info['class']] }
       end
     end
