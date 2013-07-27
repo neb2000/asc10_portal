@@ -15,6 +15,6 @@
   - if @posts.empty?
     %p.muted No result.
   - else
-    #search-results{ data: { highlight: params[:q][:keyword] }}
+    #search-results{ data: { highlight: (params[:q][:keyword] unless params[:q][:keyword].blank?) }}
       = render collection: @posts, partial: 'searches/post'
       = will_paginate @posts
