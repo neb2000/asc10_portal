@@ -81,5 +81,4 @@ Asc10Portal::Application.configure do
   
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'www.asc10.eu' }
-  config.action_mailer.smtp_settings = (MAIL_CONFIG || {})
 end
