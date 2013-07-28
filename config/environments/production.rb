@@ -79,10 +79,7 @@ Asc10Portal::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
   GA.tracker = 'UA-42121422-1'
   
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'www.asc10.eu' }
-  config.action_mailer.sendmail_settings = { 
-    location:  '/usr/sbin/sendmail', 
-    arguments: '-i -t -f no-reply@asc10.eu'
-  }
+  config.action_mailer.smtp_settings = (MAIL_CONFIG || {})
 end
