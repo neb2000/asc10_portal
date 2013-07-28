@@ -51,9 +51,8 @@ class ApplicationController < ActionController::Base
     end
   
     def ssl_allowed_action?
-      (params[:controller] == 'users/sessions' && ['new', 'create'].include?(params[:action])) ||
-        (params[:controller] == 'users/registrations' && ['new', 'create', 'edit', 'update'].include?(params[:action])) ||
-        (params[:controller] == 'users/omniauth_callbacks')
+      (params[:controller] == 'sessions' && ['new', 'create'].include?(params[:action])) ||
+        (params[:controller] == 'registrations' && ['new', 'create', 'edit', 'update'].include?(params[:action])) ||
     end
 
     def ensure_proper_protocol
