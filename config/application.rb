@@ -22,7 +22,6 @@ module Asc10Portal
     
     # config.active_record.whitelist_attributes = false
     config.active_record.schema_format = :sql
-    config.action_controller.default_url_options = { protocol: 'http' }
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]

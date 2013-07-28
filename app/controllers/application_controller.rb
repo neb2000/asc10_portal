@@ -50,19 +50,19 @@ class ApplicationController < ActionController::Base
       Rails.env.production?
     end
 
-    # def ensure_proper_protocol
-    #   if request.ssl? && !devise_controller?
-    #     redirect_to "http://" + request.host + request.fullpath
-    #   end
-    # end
+    def ensure_proper_protocol
+      if request.ssl? && !devise_controller?
+        redirect_to protocol: 'http://', status: :moved_permanently
+      end
+    end
 
-    # def after_sign_in_path_for(resource_or_scope)
-    #   root_url(:protocol => 'http')
-    # end
-    # 
-    # def after_sign_out_path_for(resource_or_scope)
-    #   root_url(:protocol => 'http')
-    # end
+    def after_sign_in_path_for(resource_or_scope)
+      root_url(protocol: 'http')
+    end
+    
+    def after_sign_out_path_for(resource_or_scope)
+      root_url(protocol: 'http')
+    end
   
   private
     def set_header
