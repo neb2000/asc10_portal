@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_header  
   before_filter :set_current_online_users
-  # before_filter :ensure_proper_protocol
+  before_filter :ensure_proper_protocol
   
   helper_method :all_pages, :all_accessible_categories, :current_online_users, :current_online_user_ids
   
