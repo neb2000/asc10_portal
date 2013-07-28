@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_header  
   before_filter :set_current_online_users
-  before_filter :ensure_proper_protocol
+  # before_filter :ensure_proper_protocol
   
   helper_method :all_pages, :all_accessible_categories, :current_online_users, :current_online_user_ids
   
@@ -49,24 +49,20 @@ class ApplicationController < ActionController::Base
     def ssl_configured?
       Rails.env.production?
     end
-  
-    def ssl_allowed_action?
-      (params[:controller] == 'sessions' && ['new', 'create'].include?(params[:action])) || (params[:controller] == 'registrations' && ['new', 'create', 'edit', 'update'].include?(params[:action]))
-    end
 
-    def ensure_proper_protocol
-      if request.ssl? && !ssl_allowed_action?
-        redirect_to "http://" + request.host + request.fullpath
-      end
-    end
+    # def ensure_proper_protocol
+    #   if request.ssl? && !devise_controller?
+    #     redirect_to "http://" + request.host + request.fullpath
+    #   end
+    # end
 
-    def after_sign_in_path_for(resource_or_scope)
-      root_url(:protocol => 'http')
-    end
-
-    def after_sign_out_path_for(resource_or_scope)
-      root_url(:protocol => 'http')
-    end
+    # def after_sign_in_path_for(resource_or_scope)
+    #   root_url(:protocol => 'http')
+    # end
+    # 
+    # def after_sign_out_path_for(resource_or_scope)
+    #   root_url(:protocol => 'http')
+    # end
   
   private
     def set_header
