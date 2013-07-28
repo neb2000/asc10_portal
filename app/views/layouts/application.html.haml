@@ -50,7 +50,7 @@
                       Messages
                   %li.divider
                   %li
-                    = link_to edit_user_registration_path(protocol: 'https://') do
+                    = link_to edit_user_registration_path(protocol: 'https://'), data: { no_turbolink: true } do
                       %i.icon-user
                       Edit profile
                   %li
@@ -65,7 +65,7 @@
                         Admin
                 = render 'spotlight_box'
             - else
-              %li= link_to 'Login', new_user_session_path(protocol: 'https://')
+              %li= link_to 'Login', new_user_session_path(protocol: 'https://'), data: { no_turbolink: true }
       .row
         #content.span12
           .row
