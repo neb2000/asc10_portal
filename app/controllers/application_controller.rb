@@ -51,8 +51,7 @@ class ApplicationController < ActionController::Base
     end
   
     def ssl_allowed_action?
-      (params[:controller] == 'sessions' && ['new', 'create'].include?(params[:action])) ||
-        (params[:controller] == 'registrations' && ['new', 'create', 'edit', 'update'].include?(params[:action])) ||
+      (params[:controller] == 'sessions' && ['new', 'create'].include?(params[:action])) || (params[:controller] == 'registrations' && ['new', 'create', 'edit', 'update'].include?(params[:action]))
     end
 
     def ensure_proper_protocol
