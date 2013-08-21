@@ -23,5 +23,6 @@
 //= require flash_message
 //= require bootstrap-lightbox
 //= require endless_page
+//= require nprogress
 //= require page_load_indicator
 //= require turbolinks

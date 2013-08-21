@@ -12,4 +12,5 @@
   *= require admin_layout/banner_images
   *= require admin_layout/ribbon
   *= require admin_layout/misc
+  *= require nprogress
 */

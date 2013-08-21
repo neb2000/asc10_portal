@@ -29,4 +29,5 @@
 //= require highlight
 //= require highlight_init
 //= require typeahead_init
+//= require nprogress
 //= require turbolinks
