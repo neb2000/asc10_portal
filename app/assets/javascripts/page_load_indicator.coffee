@@ -1,6 +1,6 @@
 $ ->
   $(document).one('page:fetch', ->
     NProgress.start()
-  ).one('page:load', ->
+  ).one('page:receive', ->
     NProgress.done()
   )
