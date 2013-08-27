@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::ApplicationController
   respond_to :js, only: [:update]
   
   def index
-    @users = User.includes(:permissions).page(params[:page]).decorate
+    @users = User.includes(:permissions, :user_group).page(params[:page]).decorate
     respond_with(@users)
   end
   
@@ -17,8 +17,8 @@ class Admin::UsersController < Admin::ApplicationController
   end
   
   def update
-    user_params = if can? :manage, Permission
-      params.require(:user).permit(:permission_ids, :user_group_id)
+    user_params = if can?(:manage, Permission)
+      params.require(:user).permit(:user_group_id, permission_ids: [])
     else
       params.require(:user).permit(:user_group_id)
     end
