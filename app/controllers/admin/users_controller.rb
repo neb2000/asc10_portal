@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::ApplicationController
   respond_to :js, only: [:update]
   
   def index
-    @users = User.includes(:permissions, :user_group).page(params[:page]).decorate
+    @users = User.includes(:permissions, :user_group).order(:id).page(params[:page]).decorate
     respond_with(@users)
   end
   
