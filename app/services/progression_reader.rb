@@ -32,7 +32,7 @@ class ProgressionReader
         end
         details << detail
       end
-      progress = if heroic_total == 0
+      progress = if heroic_killed == 0
         "#{normal_killed}/#{normal_total}(N)"
       else
         "#{heroic_killed}/#{heroic_total}(H)"
