@@ -36,6 +36,7 @@ class Ability
       can :reply, Forums::Post,  topic: { board: { category: { public: true } }, hidden: false }
     end
     
+    can :manage, Forums::Board, id: @user.managed_board_id_list
     can :manage, Forums::Topic, board: { id: @user.managed_board_id_list }
     can :manage, Forums::Post,  topic: { board: { id: @user.managed_board_id_list } }
     
