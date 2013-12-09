@@ -4,7 +4,7 @@ class NewsEntriesController < ApplicationController
   before_filter { @current_nav_identifier = :home }
   
   def index
-    @news_entries = NewsEntry.ordered.decorate
+    @news_entries = NewsEntry.paginate(per_page: 7, page: params[:page]).ordered.decorate
     respond_with(@news_entries)
   end
   
