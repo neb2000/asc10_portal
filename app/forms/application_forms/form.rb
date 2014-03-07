@@ -10,6 +10,7 @@ module ApplicationForms
     attribute :character_class, String
     attribute :character_spec,  String
     attribute :server_name,     String
+    attribute :team_name,       String
     
     validates :character_name, :character_class, :character_spec, :server_name, presence: true
     
