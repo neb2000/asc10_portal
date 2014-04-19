@@ -1,1 +1,1 @@
-rvm use --create 2.0.0@asc10_portal
+rvm use --create 2.1.1@asc10_portal
