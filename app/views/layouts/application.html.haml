@@ -2,9 +2,9 @@
 %html
   %head
     %title Ascendance - EU Alonsus
-    = stylesheet_link_tag    "#{request.protocol}://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic"
+    = stylesheet_link_tag    "#{request.protocol}fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic"
     = stylesheet_link_tag    "application", :media => "all", data: { turbolinks_track: true }
-    = javascript_include_tag "#{request.protocol}://static.wowhead.com/widgets/power.js", async: true
+    = javascript_include_tag "#{request.protocol}static.wowhead.com/widgets/power.js", async: true
     = javascript_include_tag "application", data: { turbolinks_track: true }, async: true
     = analytics_init if Rails.env.production?
     = favicon_link_tag '/favicon.png'
