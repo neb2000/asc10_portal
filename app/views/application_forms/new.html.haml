@@ -11,7 +11,6 @@
       = f.input :character_class, label: 'Class', collection: Recruitment.pluck(:name)
       = f.input :character_spec, label: 'Main spec'
       = f.input :server_name
-      = f.input :team_name, label: 'Which team are you applying to?', as: :select, collection: ['Team 1', 'Team 2']
       
     - @template.each_with_index do |section, section_index|
       %fieldset

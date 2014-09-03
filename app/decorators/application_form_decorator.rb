@@ -2,7 +2,7 @@ class ApplicationFormDecorator < Draper::Decorator
   delegate_all
   
   def subject
-    "#{character_name} - #{character_class} (#{team_name})"
+    "#{character_name} - #{character_class}"
   end
   
   def body_text
