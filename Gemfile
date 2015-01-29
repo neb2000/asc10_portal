@@ -41,7 +41,7 @@ gem 'dalli'
 gem 'airbrake'
 
 group :development do
-  gem 'debugger'
+  # gem 'debugger'
   gem 'capistrano'
   gem 'rvm-capistrano'
   
