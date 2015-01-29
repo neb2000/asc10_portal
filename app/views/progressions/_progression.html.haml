@@ -1,12 +1,12 @@
-- unless progression.blank?
-  - progression.each do |raid|
-    .well.well-black.well-small
-      %small.pull-right= raid[:progress]
-      .raid-name
-        = raid[:name]
-      %ul.unstyled.no-whitespace
-        - raid[:details].each do |boss|
-          %li{ class: "#{'normal-killed' if boss[:normal]} #{'heroic-killed' if boss[:heroic]}" }
-            .boss-image.pull-left= image_tag @npc_image_url % boss[:id], width: '21', height: '21'
-            .boss-name= boss[:name]
-        
+-# - unless progression.blank?
+-#   - progression.each do |raid|
+-#     .well.well-black.well-small
+-#       %small.pull-right= raid[:progress]
+-#       .raid-name
+-#         = raid[:name]
+-#       %ul.unstyled.no-whitespace
+-#         - raid[:details].each do |boss|
+-#           %li{ class: "#{'normal-killed' if boss[:normal]} #{'heroic-killed' if boss[:heroic]}" }
+-#             .boss-image.pull-left= image_tag @npc_image_url % boss[:id], width: '21', height: '21'
+-#             .boss-name= boss[:name]
+-#         
