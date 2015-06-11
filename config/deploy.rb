@@ -4,7 +4,7 @@ require 'rvm/capistrano'
 
 # ssh_options[:forward_agent] = true
 set :application, 'asc10'
-set :rvm_ruby_string, "2.1@#{application}"
+set :rvm_ruby_string, "2.2@#{application}"
 set :scm, :git
 set :deploy_via, :remote_cache
 set :repository, "git@github.com:neb2000/asc10_portal.git"
@@ -13,7 +13,7 @@ set :use_sudo, false
 set :user, 'rails'
 set :keep_releases, 2
 
-server '31.222.164.148', :app, :web, :db, :primary => true
+server '213.138.97.87', :app, :web, :db, :primary => true
 
 namespace :deploy do
   namespace :assets do
